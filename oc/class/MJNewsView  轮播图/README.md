@@ -1,16 +1,16 @@
 # common
 
 
-MJNewsView *newsView = [MJNewsView newsView];
-newsView.x = 10;
-newsView.y = 40;
-newsView.timeInterval = 10;
-newsView.news = self.newses;
+    MJNewsView *newsView = [MJNewsView newsView];
+    newsView.x = 10;
+    newsView.y = 40;
+    newsView.timeInterval = 10;
+    newsView.news = self.newses;
 
-[newsView setDidClickNewsAtIndex:^(int index) {
-NSLog(@"%d",index);
-}];
+    [newsView setDidClickNewsAtIndex:^(int index) {
+        NSLog(@"%d",index);
+    }];
 
-[self.view addSubview:newsView];
+    [self.view addSubview:newsView];
 
-[newsView startTimer];
+    [newsView startTimer];
