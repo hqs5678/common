@@ -1,4 +1,4 @@
-# common
+# 简单使用
 
 
     MJNewsView *newsView = [MJNewsView newsView];
