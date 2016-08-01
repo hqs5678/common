@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49A4BA9B6A3E5AF87698433B /* Pods_sina__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4943968B15CC4742CBAB9FD7 /* Pods_sina__.framework */; };
+		04A31690D930367CBB66B856 /* Pods_sina__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AB9226359688888C5C508C /* Pods_sina__.framework */; };
 		BF23916D1D3CAF400090BD34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23916C1D3CAF400090BD34 /* AppDelegate.swift */; };
 		BF2391741D3CAF400090BD34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2391721D3CAF400090BD34 /* Main.storyboard */; };
 		BF2391761D3CAF400090BD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF2391751D3CAF400090BD34 /* Assets.xcassets */; };
@@ -72,9 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C76B49BD37FFC78E4B4B80B /* Pods-sina框架.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sina框架.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sina框架/Pods-sina框架.debug.xcconfig"; sourceTree = "<group>"; };
-		4943968B15CC4742CBAB9FD7 /* Pods_sina__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sina__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C4E16C9978FFF9E25CA1E28 /* Pods-sina框架.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sina框架.release.xcconfig"; path = "Pods/Target Support Files/Pods-sina框架/Pods-sina框架.release.xcconfig"; sourceTree = "<group>"; };
+		6B810CAF3E60B0A677D5924E /* Pods-sina框架.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sina框架.release.xcconfig"; path = "Pods/Target Support Files/Pods-sina框架/Pods-sina框架.release.xcconfig"; sourceTree = "<group>"; };
+		95647689FB4A31704B643933 /* Pods-sina框架.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sina框架.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sina框架/Pods-sina框架.debug.xcconfig"; sourceTree = "<group>"; };
 		BF2391691D3CAF400090BD34 /* sina框架.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sina框架.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF23916C1D3CAF400090BD34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF2391731D3CAF400090BD34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		BF2392B71D3CB9310090BD34 /* ThreadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadHelper.m; sourceTree = "<group>"; };
 		BF2392DB1D3CBAAC0090BD34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BF2392DD1D3CBD6E0090BD34 /* SecViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecViewController.swift; sourceTree = "<group>"; };
+		C1AB9226359688888C5C508C /* Pods_sina__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sina__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,26 +153,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A4BA9B6A3E5AF87698433B /* Pods_sina__.framework in Frameworks */,
+				04A31690D930367CBB66B856 /* Pods_sina__.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		68838DAD3EBCEE9D69711B10 /* Pods */ = {
+		AE44F22AEFECC6CA0871D5DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C76B49BD37FFC78E4B4B80B /* Pods-sina框架.debug.xcconfig */,
-				5C4E16C9978FFF9E25CA1E28 /* Pods-sina框架.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		960CC8448299E181FDC546A9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4943968B15CC4742CBAB9FD7 /* Pods_sina__.framework */,
+				C1AB9226359688888C5C508C /* Pods_sina__.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,8 +174,8 @@
 				BF23916B1D3CAF400090BD34 /* sina框架 */,
 				BF2391721D3CAF400090BD34 /* Main.storyboard */,
 				BF23916A1D3CAF400090BD34 /* Products */,
-				68838DAD3EBCEE9D69711B10 /* Pods */,
-				960CC8448299E181FDC546A9 /* Frameworks */,
+				E47FE008CF867F7B9963608D /* Pods */,
+				AE44F22AEFECC6CA0871D5DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -360,6 +351,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E47FE008CF867F7B9963608D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95647689FB4A31704B643933 /* Pods-sina框架.debug.xcconfig */,
+				6B810CAF3E60B0A677D5924E /* Pods-sina框架.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -367,12 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF23917D1D3CAF400090BD34 /* Build configuration list for PBXNativeTarget "sina框架" */;
 			buildPhases = (
-				AC3911D79307A433D9B27787 /* Check Pods Manifest.lock */,
+				990868DFDBC61C5F0DFDBE61 /* [CP] Check Pods Manifest.lock */,
 				BF2391651D3CAF400090BD34 /* Sources */,
 				BF2391661D3CAF400090BD34 /* Frameworks */,
 				BF2391671D3CAF400090BD34 /* Resources */,
-				0D4439A5A9B4CE717E0616F0 /* Embed Pods Frameworks */,
-				338B3864B24DD5E38036777F /* Copy Pods Resources */,
+				02B3409698EB23A3D9F5B162 /* [CP] Embed Pods Frameworks */,
+				FA679DCA6D7DA44D48C3617E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,14 +433,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D4439A5A9B4CE717E0616F0 /* Embed Pods Frameworks */ = {
+		02B3409698EB23A3D9F5B162 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,34 +448,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sina框架/Pods-sina框架-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		338B3864B24DD5E38036777F /* Copy Pods Resources */ = {
+		990868DFDBC61C5F0DFDBE61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sina框架/Pods-sina框架-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC3911D79307A433D9B27787 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA679DCA6D7DA44D48C3617E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sina框架/Pods-sina框架-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -651,7 +651,7 @@
 		};
 		BF23917E1D3CAF400090BD34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C76B49BD37FFC78E4B4B80B /* Pods-sina框架.debug.xcconfig */;
+			baseConfigurationReference = 95647689FB4A31704B643933 /* Pods-sina框架.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -665,7 +665,7 @@
 		};
 		BF23917F1D3CAF400090BD34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C4E16C9978FFF9E25CA1E28 /* Pods-sina框架.release.xcconfig */;
+			baseConfigurationReference = 6B810CAF3E60B0A677D5924E /* Pods-sina框架.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

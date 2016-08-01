@@ -6,7 +6,7 @@
 target 'sina框架' do
 
 #source 'git@git.oschina.net:akuandev/Specs.git'
-source 'https://gitcafe.com/akuandev/Specs.git'
+#source 'https://gitcafe.com/akuandev/Specs.git'
 
 platform :ios, “8.3”
 
