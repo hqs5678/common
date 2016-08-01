@@ -24,7 +24,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - MJExtension (3.0.10)
+  - MJExtension (3.0.13)
   - MJRefresh (3.0.8)
 
 DEPENDENCIES:
@@ -38,7 +38,7 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AliyunOSSiOS: 8f99dea52bd318ab57aa899815e8475c1bfa6e8a
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
 
 PODFILE CHECKSUM: d2d8e59c87a397df787baf65adbf9f69fed7f409

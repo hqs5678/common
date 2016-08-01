@@ -12,17 +12,17 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#import <AFNetworking/AFNetworking.h>
+//#import <AFNetworking/AFNetworking.h>
 
 #import <CommonCrypto/CommonDigest.h>
 
 //#import <KVNProgress/KVNProgress.h>
 
-#import <FMDB/FMDB.h>
+//#import <FMDB/FMDB.h>
 
-#import <MJRefresh/MJRefresh.h>
+//#import <MJRefresh/MJRefresh.h>
 
-#import <MJExtension/MJExtension.h>
+//#import <MJExtension/MJExtension.h>
 
 #import "SGImagePicker-Bridge-Header.h"
 

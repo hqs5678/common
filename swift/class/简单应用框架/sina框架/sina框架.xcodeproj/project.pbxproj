@@ -659,7 +659,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hqs.sina--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "sina框架/bridging_header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/apple/Documents/WorkSpace/common/swift/class/简单应用框架/sina框架/sina框架/bridging_header.h";
 			};
 			name = Debug;
 		};
@@ -673,7 +673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hqs.sina--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "sina框架/bridging_header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/apple/Documents/WorkSpace/common/swift/class/简单应用框架/sina框架/sina框架/bridging_header.h";
 			};
 			name = Release;
 		};

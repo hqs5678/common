@@ -8,6 +8,7 @@
 
 
 import FMDB
+import MJExtension
 
 let DB_NAME = "fql.db"
 
