@@ -8,7 +8,7 @@
 
 // 一个只有一个输入框的cell
 
-class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
+class SimpleInputCell: BaseCell, UITextFieldDelegate {
     
     let textField: UITextField = UITextField()
     let button: UIButton = UIButton(type: UIButtonType.ContactAdd)
@@ -16,8 +16,9 @@ class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
     
     private let leftView: UIView = UIView()
     
-    var model: SimpleInputModel! {
+    var inputModel: SimpleInputModel! {
         didSet{
+            self.model = inputModel
             self.setupModel()
         }
     }
@@ -50,26 +51,26 @@ class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func valueChanged(switchButton: UISwitch){
-        self.model.isOn = switchButton.on
-        model.valueChanged(switchButton.on)
+        self.inputModel.isOn = switchButton.on
+        inputModel.valueChanged(switchButton.on)
     }
     
     func buttonClick(){
-        model.buttonDidClick(self.button)
+        inputModel.buttonDidClick(self.button)
     }
     
     private func setupModel(){
         
-        if model.inputType == SimpleInputType.Image {
+        if inputModel.inputType == SimpleInputType.Image {
             self.textField.hidden = true
             self.button.hidden = false
             self.switchButton.hidden = true
             
-            self.imageView?.image = model.image
+            self.imageView?.image = inputModel.image
             let w: CGFloat = 80
             self.button.frame = CGRectMake(self.frame.size.width - w, 0, w, self.frame.size.height)
         }
-        else if model.inputType == SimpleInputType.Switch {
+        else if inputModel.inputType == SimpleInputType.Switch {
             self.switchButton.hidden = false
             self.button.hidden = true
             self.textField.hidden = true
@@ -77,20 +78,20 @@ class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
             let p: CGFloat = self.switchButton.frame.size.width * 0.5 + 12
             self.switchButton.center = CGPointMake(self.frame.size.width - p, self.frame.size.height * 0.5)
             
-            if model.isOn == nil {
+            if inputModel.isOn == nil {
                 self.switchButton.on = false
             }
             else{
-                self.switchButton.on = model.isOn!
+                self.switchButton.on = inputModel.isOn!
             }
             
-            if model.switchEnabel != nil {
-                self.switchButton.enabled = model.switchEnabel!
+            if inputModel.switchEnabel != nil {
+                self.switchButton.enabled = inputModel.switchEnabel!
             }
             else {
                 self.switchButton.enabled = true
             }
-            self.textLabel?.text = model.text
+            self.textLabel?.text = inputModel.text
         }
         else{
             self.textField.hidden = false
@@ -98,21 +99,21 @@ class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
             self.switchButton.hidden = true
             
             self.imageView?.image = nil
-            self.textField.text = model.text
-            self.textField.placeholder = model.placeholder
-            self.leftView.frame = CGRectMake(0, 0, self.model.marginLeft, self.frame.size.height)
+            self.textField.text = inputModel.text
+            self.textField.placeholder = inputModel.placeholder
+            self.leftView.frame = CGRectMake(0, 0, self.inputModel.marginLeft, self.frame.size.height)
             self.textField.leftView = self.leftView
-            if model.keyboardType != nil {
-                self.textField.keyboardType = model.keyboardType!
+            if inputModel.keyboardType != nil {
+                self.textField.keyboardType = inputModel.keyboardType!
             }
-            if model.secureTextEntry != nil {
-                self.textField.secureTextEntry = model.secureTextEntry!
+            if inputModel.secureTextEntry != nil {
+                self.textField.secureTextEntry = inputModel.secureTextEntry!
             }
         }
     }
     
     func setModel(_model: SimpleInputModel, indexPath:NSIndexPath){
-        self.model = _model
+        self.inputModel = _model
         self.button.tag = indexPath.section
     }
     
@@ -120,12 +121,12 @@ class SimpleInputCell: UITableViewCell, UITextFieldDelegate {
     /// text field delegate
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.model.text = self.textField.text! + string
+        self.inputModel.text = self.textField.text! + string
         return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        self.model.text = self.textField.text
+        self.inputModel.text = self.textField.text
     }
     
 

@@ -40,64 +40,106 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         contentInset.bottom = 130
         tableView.contentInset = contentInset
         
+        // 初始化菜单列表
+        setupData()
+        
+        setupRightItem()
+    }
+    
+    private func setupData(){
         let user = User()
-        user.userName = "莫甘娜"
-        user.avatar = "head"
+        user.userName = "盖伦"
+        let bundle = NSBundle.mainBundle()
+        user.avatar = bundle.pathForResource("avatar.png", ofType: nil)!
         data.addObject(user)
         
-        let group1 = NSMutableArray()
+        var group = NSMutableArray()
         
         var cellModel = BaseCellModel()
+        cellModel.title = "新任务"
+        cellModel.tail = "3"
+        cellModel.showIndicator = true
+        cellModel.showSeparator = true
+        group.addObject(cellModel)
+        
+        cellModel = BaseCellModel()
+        cellModel.showIndicator = true
+        cellModel.title = "进行中的任务"
+        cellModel.tail = "1"
+        cellModel.showSeparator = true
+        group.addObject(cellModel)
+        
+        cellModel = BaseCellModel()
+        cellModel.showIndicator = true
+        cellModel.title = "累计任务数"
+        cellModel.tail = "43"
+        cellModel.showSeparator = false
+        group.addObject(cellModel)
+        
+        data.addObject(group)
+        
+        group = NSMutableArray()
+        
+        cellModel = BaseCellModel()
         cellModel.title = "我的订单"
         cellModel.showIndicator = true
         cellModel.showSeparator = true
-        group1.addObject(cellModel)
+        group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "我的钱包"
         cellModel.tail = "231.5元"
         cellModel.showSeparator = true
-        group1.addObject(cellModel)
+        group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "积分商城"
         cellModel.showSeparator = false
-        group1.addObject(cellModel)
+        group.addObject(cellModel)
         
-        data.addObject(group1)
+        data.addObject(group)
         
-        let group2 = NSMutableArray()
+        group = NSMutableArray()
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "服务地址管理"
         cellModel.showSeparator = true
-        group2.addObject(cellModel)
+        group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "联系客服"
         cellModel.showSeparator = true
-        group2.addObject(cellModel)
+        group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "推荐给好友"
         cellModel.showSeparator = true
-        group2.addObject(cellModel)
+        group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "更多设置"
-        cellModel.showSeparator = false 
-        group2.addObject(cellModel)
+        cellModel.showSeparator = false
+        group.addObject(cellModel)
         
         
-        data.addObject(group2)
-        
-        
+        data.addObject(group)
+    }
+    
+    private func setupRightItem(){
+        let rightItem = UIBarButtonItem(title: "设置", style: .Plain, target: self, action: #selector(MeViewController.onRightBarItemClick))
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    @objc private func onRightBarItemClick(){
+        let settingVC = SettingTableViewController(style: .Grouped)
+        settingVC.hidesBottomBarWhenPushed = true
+        pushVC(settingVC)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -115,7 +157,8 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserHeaderCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("UserHeaderCell", forIndexPath: indexPath) as! UserHeaderCell
+            cell.user = data[0] as! User
             return cell
         }
         else {

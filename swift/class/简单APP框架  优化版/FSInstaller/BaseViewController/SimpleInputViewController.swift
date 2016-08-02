@@ -19,6 +19,7 @@ class SimpleInputViewController: BaseTableViewController {
         
         self.tableView.registerClass(SimpleInputCell.classForCoder(), forCellReuseIdentifier: "SimpleInputCell")
         self.tableView.allowsSelection = false
+        self.tableView.separatorStyle = .None
     }
     
     
@@ -27,10 +28,10 @@ class SimpleInputViewController: BaseTableViewController {
         let cell: SimpleInputCell = tableView.dequeueReusableCellWithIdentifier("SimpleInputCell", forIndexPath: indexPath) as! SimpleInputCell
         
         let tmpArray: NSArray = self.data[indexPath.section] as! NSArray
-        let model = tmpArray[0] as! SimpleInputModel
+        let model = tmpArray[indexPath.row] as! SimpleInputModel
         
         if model.inputType == SimpleInputType.Text {
-            cell.model = model
+            cell.inputModel = model
             cell.textField.font = cell.textField.font?.fontWithSize(14)
         }
         else{

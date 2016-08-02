@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183FA9591D5051A8001B0D88 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 183FA9581D5051A8001B0D88 /* avatar.png */; };
+		183FA95B1D5053F7001B0D88 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FA95A1D5053F7001B0D88 /* SettingTableViewController.swift */; };
 		18B082C61D4F29890057AD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C51D4F29890057AD56 /* AppDelegate.swift */; };
 		18B082C81D4F29890057AD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C71D4F29890057AD56 /* ViewController.swift */; };
 		18B082CB1D4F29890057AD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B082C91D4F29890057AD56 /* Main.storyboard */; };
@@ -96,6 +98,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183FA9581D5051A8001B0D88 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
+		183FA95A1D5053F7001B0D88 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		18B082C21D4F29890057AD56 /* FSInstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSInstaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B082C51D4F29890057AD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B082C71D4F29890057AD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				18B083811D4F4D090057AD56 /* Tab */,
+				183FA95A1D5053F7001B0D88 /* SettingTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 		18B083771D4F2C7D0057AD56 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				183FA9581D5051A8001B0D88 /* avatar.png */,
 				18B082FB1D4F2B490057AD56 /* bridging_header.h */,
 				18B082C91D4F29890057AD56 /* Main.storyboard */,
 				18B082CE1D4F29890057AD56 /* LaunchScreen.storyboard */,
@@ -567,6 +573,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183FA9591D5051A8001B0D88 /* avatar.png in Resources */,
 				18B0835D1D4F2B490057AD56 /* sg_seleted@1x.png in Resources */,
 				18B082D01D4F29890057AD56 /* LaunchScreen.storyboard in Resources */,
 				18B0835F1D4F2B490057AD56 /* sg_seleted@3x.png in Resources */,
@@ -655,6 +662,7 @@
 				18B0836C1D4F2B490057AD56 /* OSSHelper.swift in Sources */,
 				18B0834D1D4F2B490057AD56 /* String+Size.swift in Sources */,
 				18B083501D4F2B490057AD56 /* UIColor+ST.swift in Sources */,
+				183FA95B1D5053F7001B0D88 /* SettingTableViewController.swift in Sources */,
 				18B083661D4F2B490057AD56 /* ControllerHelper.swift in Sources */,
 				18B083541D4F2B490057AD56 /* UILabel+Text.swift in Sources */,
 				18B083631D4F2B490057AD56 /* SGGroupCell.m in Sources */,

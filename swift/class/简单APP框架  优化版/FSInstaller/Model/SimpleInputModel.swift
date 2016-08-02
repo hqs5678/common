@@ -12,9 +12,8 @@ enum  SimpleInputType{
     case Text
 }
 
-class SimpleInputModel: NSObject {
+class SimpleInputModel: BaseCellModel {
     
-    var title: String!
     var text: String!
     var placeholder: String!
     var marginLeft: CGFloat = 10.0

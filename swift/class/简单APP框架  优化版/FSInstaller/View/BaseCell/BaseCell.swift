@@ -10,12 +10,13 @@
 class BaseCell: UITableViewCell {
     
     private let padding: CGFloat = 10.0
+    private let separatorOpacity: Float = 0.3
      
     var showSeparator = true
     
     var separatorEdgeInset = UIEdgeInsetsZero
     var separatorHeight: CGFloat = 0.4
-    var separatorColor = UIColor.groupTableViewBackgroundColor()
+    var separatorColor = UIColor.lightGrayColor()
     
     private let separator = CALayer()
     
@@ -41,7 +42,8 @@ class BaseCell: UITableViewCell {
     }
     
     private func setup(){
-       
+        separator.backgroundColor = separatorColor.CGColor
+        separator.opacity = separatorOpacity
         self.layer.addSublayer(separator)
     }
     
@@ -73,7 +75,6 @@ class BaseCell: UITableViewCell {
         if showSeparator {
             separator.hidden = false
             separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left + separatorEdgeInset.right, separatorHeight)
-            separator.backgroundColor = separatorColor.CGColor
         }
         else{
             separator.hidden = true
