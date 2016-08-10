@@ -1,4 +1,4 @@
-# common
+# QSTimerButton
 获取验证码
 
     verButton.backgroundColorForNormal = UIColor.RGB(102, g: 66, b: 200)
