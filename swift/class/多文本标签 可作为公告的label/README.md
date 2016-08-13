@@ -14,18 +14,18 @@
         self.view.addSubview(annLabel)
 
         annLabel.didValueChanged = {
-        (text: String, index: Int) -> Void in
+            (text: String, index: Int) -> Void in
 
-        print(text)
-        print(index)
-        return
+            print(text)
+            print(index)
+            return
         }
 
         annLabel.onClickHandle = {
-        (text: String) -> Void in
+            (text: String) -> Void in
 
-        print(text)
-        return
+            print(text)
+            return
         }
 
         annLabel.textAlignment = .Center
