@@ -1,5 +1,5 @@
 # MultiLabel
-获取验证码
+多行文本  文本切换动画
 
         let annLabel = MultiLabel()
         annLabel.frame = CGRectMake(21, 100, 200, 40)
