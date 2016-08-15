@@ -37,6 +37,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         layout.minimumColumnSpacing = 2
         layout.minimumInteritemSpacing = 2
         
+        collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        
         collectionView.collectionViewLayout = layout
         collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, withReuseIdentifier: "Header")
         collectionView.registerClass(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, withReuseIdentifier: "Footer")
@@ -57,17 +59,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        
+        cell.backgroundColor = UIColor.whiteColor()
         if let label = cell.contentView.viewWithTag(1) as? UILabel {
             label.text = String(indexPath.row)
         }
+        
+        let selectedView = UIView(frame: CGRectMake(0, 0, 10, 10))
+        selectedView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        cell.selectedBackgroundView = selectedView
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print(indexPath)
-        
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
