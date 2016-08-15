@@ -13,6 +13,10 @@
 		029C0A32197E226600DA6FE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029C0A31197E226600DA6FE9 /* Images.xcassets */; };
 		029C0A3E197E226600DA6FE9 /* WaterfallFlowLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C0A3D197E226600DA6FE9 /* WaterfallFlowLayoutTests.swift */; };
 		187A610A1D615BB200C524DB /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A61091D615BB200C524DB /* CollectionViewWaterfallLayout.swift */; };
+		187A610D1D61616800C524DB /* RectangleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A610C1D61616800C524DB /* RectangleMenu.swift */; };
+		187A610F1D6165C700C524DB /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A610E1D6165C700C524DB /* TestViewController.swift */; };
+		187A61111D6166DA00C524DB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 187A61101D6166DA00C524DB /* icon.png */; };
+		187A61131D6166F700C524DB /* msg.png in Resources */ = {isa = PBXBuildFile; fileRef = 187A61121D6166F700C524DB /* msg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		029C0A3C197E226600DA6FE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		029C0A3D197E226600DA6FE9 /* WaterfallFlowLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallFlowLayoutTests.swift; sourceTree = "<group>"; };
 		187A61091D615BB200C524DB /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		187A610C1D61616800C524DB /* RectangleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleMenu.swift; sourceTree = "<group>"; };
+		187A610E1D6165C700C524DB /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		187A61101D6166DA00C524DB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		187A61121D6166F700C524DB /* msg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +85,14 @@
 		029C0A27197E226600DA6FE9 /* WaterfallFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
+				187A610B1D6160FB00C524DB /* Menu */,
 				029C0A2A197E226600DA6FE9 /* AppDelegate.swift */,
 				029C0A2C197E226600DA6FE9 /* ViewController.swift */,
+				187A610E1D6165C700C524DB /* TestViewController.swift */,
 				029C0A2E197E226600DA6FE9 /* Main.storyboard */,
 				187A61091D615BB200C524DB /* CollectionViewWaterfallLayout.swift */,
+				187A61121D6166F700C524DB /* msg.png */,
+				187A61101D6166DA00C524DB /* icon.png */,
 				029C0A31197E226600DA6FE9 /* Images.xcassets */,
 				029C0A28197E226600DA6FE9 /* Supporting Files */,
 			);
@@ -110,6 +122,14 @@
 				029C0A3C197E226600DA6FE9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		187A610B1D6160FB00C524DB /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				187A610C1D61616800C524DB /* RectangleMenu.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +214,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				029C0A30197E226600DA6FE9 /* Main.storyboard in Resources */,
+				187A61131D6166F700C524DB /* msg.png in Resources */,
+				187A61111D6166DA00C524DB /* icon.png in Resources */,
 				029C0A32197E226600DA6FE9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187A610F1D6165C700C524DB /* TestViewController.swift in Sources */,
+				187A610D1D61616800C524DB /* RectangleMenu.swift in Sources */,
 				029C0A2D197E226600DA6FE9 /* ViewController.swift in Sources */,
 				187A610A1D615BB200C524DB /* CollectionViewWaterfallLayout.swift in Sources */,
 				029C0A2B197E226600DA6FE9 /* AppDelegate.swift in Sources */,

@@ -34,8 +34,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         layout.headerHeight = 50
         layout.footerHeight = 20
         layout.columnCount = 3
-        layout.minimumColumnSpacing = 2
-        layout.minimumInteritemSpacing = 2
+        layout.minimumColumnSpacing = 10
+        layout.minimumInteritemSpacing = 10
         
         collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
