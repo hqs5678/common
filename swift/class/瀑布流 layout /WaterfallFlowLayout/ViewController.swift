@@ -33,7 +33,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         layout.headerInset = UIEdgeInsetsMake(20, 0, 0, 0)
         layout.headerHeight = 50
         layout.footerHeight = 20
-        layout.columnCount = 2
+        layout.columnCount = 3
         layout.minimumColumnSpacing = 2
         layout.minimumInteritemSpacing = 2
         
