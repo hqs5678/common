@@ -17,7 +17,7 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
             guard menus != nil else {
                 return
             }
-            updateLayout()
+            reloadData()
         }
     }
     
@@ -83,7 +83,8 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         
-        
+        let model = menus[indexPath.item] as! RectangleMenuModel
+        model.onClickHandle(model.title)
     }
     
    
@@ -99,7 +100,7 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
         warterfallLayout.minimumInteritemSpacing = 2
         
         // 不是ContentInsets !!!!
-        warterfallLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10) 
+//        warterfallLayout.sectionInset = UIEdgeInsetsMake(2, 2, 2, 2)
     
         
         self.reloadData()
