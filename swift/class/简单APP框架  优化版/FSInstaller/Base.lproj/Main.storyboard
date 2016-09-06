@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,7 +39,7 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="消息" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="消息" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="gAn-0P-4gD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -50,7 +50,7 @@
         <scene sceneID="XxW-ps-arz">
             <objects>
                 <navigationController title="主页" id="r8s-oM-7HG" customClass="BaseNavigationController" customModule="FSInstaller" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZUv-9E-oxu"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="task" selectedImage="task-s" id="ZUv-9E-oxu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="isK-gX-eie">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -181,5 +181,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="task" width="30" height="30"/>
+        <image name="task-s" width="32" height="32"/>
     </resources>
 </document>
