@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         self.initData()
-        self.view.backgroundColor = App.appBackgroundColor
+        self.view.backgroundColor = kAppBackgroundColor
       
         self.setAppearance()
         

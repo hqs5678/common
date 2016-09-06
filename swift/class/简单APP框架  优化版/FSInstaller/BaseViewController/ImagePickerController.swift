@@ -14,7 +14,7 @@ class ImagePickerController:UIImagePickerController {
         super.viewDidLoad()
         
         // 设定标签栏的背景色和选中的颜色
-        self.navigationBar.barTintColor=App.appMainColor
+        self.navigationBar.barTintColor = kAppMainColor
         // 设置导航栏字体的颜色
         let attr = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationBar.titleTextAttributes = attr

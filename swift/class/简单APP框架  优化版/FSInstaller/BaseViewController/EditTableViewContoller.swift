@@ -24,7 +24,7 @@ class EditTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.backgroundColor = App.appBackgroundColor
+        self.tableView.backgroundColor = kAppBackgroundColor
         self.tableView.registerClass(BaseCell.classForCoder(), forCellReuseIdentifier: "vcCell")
         
         // 去除tableview 后面多余的分割线
@@ -40,7 +40,7 @@ class EditTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return App.groupDividerHeight
+        return kGroupDividerHeight
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

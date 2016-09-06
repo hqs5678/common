@@ -34,17 +34,17 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     
     private func setup(){
         // 设置导航栏的背景颜色
-        self.navigationBar.barTintColor = App.appMainColor
+        self.navigationBar.barTintColor = kAppMainColor
         
         // 设置导航栏字体的颜色
-        let attr = [NSForegroundColorAttributeName: App.appTitleColor]
+        let attr = [NSForegroundColorAttributeName: kAppTitleColor]
         self.navigationBar.titleTextAttributes = attr
         // 设置导航栏返回字体的颜色
-        UINavigationBar.appearance().tintColor = App.appTitleColor
+        UINavigationBar.appearance().tintColor = kAppTitleColor
         UINavigationBar.appearance().translucent = false
         
         let view:UIView = UIView(frame: CGRectMake(0, self.navigationBar.frame.size.height - 1, self.view.frame.size.width, 2))
-        view.backgroundColor = App.appMainColor
+        view.backgroundColor = kAppMainColor
         self.navigationBar.addSubview(view)
         
         // 禁用右滑返回 手势

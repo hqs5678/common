@@ -21,7 +21,7 @@ class BaseTableViewController: UITableViewController {
         
         self.tableView = EditTableView(frame: self.tableView.frame, style: self.tableView.style)
         
-        self.tableView.backgroundColor = App.appBackgroundColor
+        self.tableView.backgroundColor = kAppBackgroundColor
         
         tableView.registerClass(BaseCell.classForCoder(), forCellReuseIdentifier: "BaseCell")
         
@@ -108,7 +108,7 @@ class BaseTableViewController: UITableViewController {
 //        return view
 //    }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return App.groupDividerHeight
+        return kGroupDividerHeight
     }
 
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

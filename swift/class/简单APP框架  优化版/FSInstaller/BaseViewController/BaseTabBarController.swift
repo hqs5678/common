@@ -20,8 +20,8 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         // 设定标签栏的背景色和选中的颜色
-        self.tabBar.barTintColor=App.appMainColor
-        self.tabBar.tintColor=App.appTitleColor
+        self.tabBar.barTintColor = kAppMainColor
+        self.tabBar.tintColor=kAppTitleColor
         self.tabBar.translucent = false 
         
         self.delegate = self
@@ -53,7 +53,7 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
             tabBarButton.item = item
             tabBarButton.tag = i
             tabBarButton.titleColor = UIColor.lightGrayColor()
-            tabBarButton.titleSelectedColor = App.appTitleColor
+            tabBarButton.titleSelectedColor = kAppTitleColor
             tabBar.addSubview(tabBarButton)
             tabBarButtons.addObject(tabBarButton)
             
