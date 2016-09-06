@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		183FA9591D5051A8001B0D88 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 183FA9581D5051A8001B0D88 /* avatar.png */; };
 		183FA95B1D5053F7001B0D88 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FA95A1D5053F7001B0D88 /* SettingTableViewController.swift */; };
+		1880EC7E1D7EC45E00F22099 /* UIColor+ST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880EC7D1D7EC45E00F22099 /* UIColor+ST.swift */; };
+		1880EC801D7EC52E00F22099 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880EC7F1D7EC52E00F22099 /* UIView+Frame.swift */; };
 		18B082C61D4F29890057AD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C51D4F29890057AD56 /* AppDelegate.swift */; };
 		18B082C81D4F29890057AD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C71D4F29890057AD56 /* ViewController.swift */; };
 		18B082CB1D4F29890057AD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B082C91D4F29890057AD56 /* Main.storyboard */; };
@@ -32,7 +34,6 @@
 		18B0834D1D4F2B490057AD56 /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083061D4F2B490057AD56 /* String+Size.swift */; };
 		18B0834E1D4F2B490057AD56 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083071D4F2B490057AD56 /* String+Substring.swift */; };
 		18B0834F1D4F2B490057AD56 /* String+Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083081D4F2B490057AD56 /* String+Verification.swift */; };
-		18B083501D4F2B490057AD56 /* UIColor+ST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083091D4F2B490057AD56 /* UIColor+ST.swift */; };
 		18B083511D4F2B490057AD56 /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0830A1D4F2B490057AD56 /* UIImage+Cache.swift */; };
 		18B083521D4F2B490057AD56 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0830B1D4F2B490057AD56 /* UIImage+Color.swift */; };
 		18B083531D4F2B490057AD56 /* UIImageView+OSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0830C1D4F2B490057AD56 /* UIImageView+OSS.swift */; };
@@ -101,6 +102,8 @@
 /* Begin PBXFileReference section */
 		183FA9581D5051A8001B0D88 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
 		183FA95A1D5053F7001B0D88 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		1880EC7D1D7EC45E00F22099 /* UIColor+ST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ST.swift"; sourceTree = "<group>"; };
+		1880EC7F1D7EC52E00F22099 /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		18B082C21D4F29890057AD56 /* FSInstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSInstaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B082C51D4F29890057AD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B082C71D4F29890057AD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +134,6 @@
 		18B083061D4F2B490057AD56 /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		18B083071D4F2B490057AD56 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		18B083081D4F2B490057AD56 /* String+Verification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Verification.swift"; sourceTree = "<group>"; };
-		18B083091D4F2B490057AD56 /* UIColor+ST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ST.swift"; sourceTree = "<group>"; };
 		18B0830A1D4F2B490057AD56 /* UIImage+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
 		18B0830B1D4F2B490057AD56 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		18B0830C1D4F2B490057AD56 /* UIImageView+OSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+OSS.swift"; sourceTree = "<group>"; };
@@ -306,7 +308,7 @@
 				18B083061D4F2B490057AD56 /* String+Size.swift */,
 				18B083071D4F2B490057AD56 /* String+Substring.swift */,
 				18B083081D4F2B490057AD56 /* String+Verification.swift */,
-				18B083091D4F2B490057AD56 /* UIColor+ST.swift */,
+				1880EC7D1D7EC45E00F22099 /* UIColor+ST.swift */,
 				18B0830A1D4F2B490057AD56 /* UIImage+Cache.swift */,
 				18B0830B1D4F2B490057AD56 /* UIImage+Color.swift */,
 				18B0830C1D4F2B490057AD56 /* UIImageView+OSS.swift */,
@@ -315,6 +317,7 @@
 				18B0830F1D4F2B490057AD56 /* UITextField+Text.swift */,
 				18B083101D4F2B490057AD56 /* UITextView+Text.swift */,
 				18B083111D4F2B490057AD56 /* UIView+Appearance.swift */,
+				1880EC7F1D7EC52E00F22099 /* UIView+Frame.swift */,
 				18B083121D4F2B490057AD56 /* UIView+Subview.swift */,
 				18B083131D4F2B490057AD56 /* UIView+Toast.swift */,
 				18B083141D4F2B490057AD56 /* UIViewController+SocialData.swift */,
@@ -664,7 +667,6 @@
 				18B0834F1D4F2B490057AD56 /* String+Verification.swift in Sources */,
 				18B0836C1D4F2B490057AD56 /* OSSHelper.swift in Sources */,
 				18B0834D1D4F2B490057AD56 /* String+Size.swift in Sources */,
-				18B083501D4F2B490057AD56 /* UIColor+ST.swift in Sources */,
 				183FA95B1D5053F7001B0D88 /* SettingTableViewController.swift in Sources */,
 				18B083661D4F2B490057AD56 /* ControllerHelper.swift in Sources */,
 				18B083541D4F2B490057AD56 /* UILabel+Text.swift in Sources */,
@@ -685,9 +687,11 @@
 				18B083621D4F2B490057AD56 /* SGCollectionController.m in Sources */,
 				18B0834A1D4F2B490057AD56 /* NSNumber+ Converte.swift in Sources */,
 				18B083421D4F2B490057AD56 /* EditTableViewContoller.swift in Sources */,
+				1880EC801D7EC52E00F22099 /* UIView+Frame.swift in Sources */,
 				18B083521D4F2B490057AD56 /* UIImage+Color.swift in Sources */,
 				18EC7B3B1D7E68F200056E39 /* BaseTabBarButton.swift in Sources */,
 				18B0836F1D4F2B490057AD56 /* BaseCellModel.swift in Sources */,
+				1880EC7E1D7EC45E00F22099 /* UIColor+ST.swift in Sources */,
 				18B083431D4F2B490057AD56 /* ImagePickerController.swift in Sources */,
 				18B083531D4F2B490057AD56 /* UIImageView+OSS.swift in Sources */,
 				18B083731D4F2B490057AD56 /* HttpUtil.swift in Sources */,

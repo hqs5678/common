@@ -38,6 +38,7 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         preSelectedIndex = self.selectedIndex
+        
     }
     
     
@@ -67,6 +68,18 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
                 
                 self?.selectedIndex = button.tag
                 self?.tabBar((self?.tabBar)!, didSelectItem: item)
+                
+                
+                
+                if item.badgeValue != nil {
+                    item.badgeValue = nil
+                    button.item = item
+                    
+                    
+                    // 处理有关badge value的逻辑
+                    // ........
+                }
+                
                 return
             }
             

@@ -50,7 +50,7 @@
         <scene sceneID="XxW-ps-arz">
             <objects>
                 <navigationController title="主页" id="r8s-oM-7HG" customClass="BaseNavigationController" customModule="FSInstaller" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="task" image="task" selectedImage="task-s" id="ZUv-9E-oxu"/>
+                    <tabBarItem key="tabBarItem" title="task" image="task" badgeValue="new" selectedImage="task-s" id="ZUv-9E-oxu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="isK-gX-eie">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -108,7 +108,7 @@
         <scene sceneID="rpr-YJ-s2Z">
             <objects>
                 <navigationController id="kbj-UQ-jiw" customClass="BaseNavigationController" customModule="FSInstaller" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="second" image="task" selectedImage="task-s" id="eEW-7M-gwh"/>
+                    <tabBarItem key="tabBarItem" title="second" image="task" badgeValue="3" selectedImage="task-s" id="eEW-7M-gwh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nD5-4p-lO5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +125,7 @@
         <scene sceneID="6xQ-ft-Ihe">
             <objects>
                 <navigationController id="Xfz-TV-17o" customClass="BaseNavigationController" customModule="FSInstaller" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" image="task" selectedImage="task-s" id="DBD-7c-eHs"/>
+                    <tabBarItem key="tabBarItem" title="我" image="task" badgeValue="99+" selectedImage="task-s" id="DBD-7c-eHs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QkC-y8-K3H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
