@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 huangqingsong. All rights reserved.
 //
 
+let separatorHeight: CGFloat = 0.4
 
 class BaseCell: UITableViewCell {
     
@@ -13,9 +14,14 @@ class BaseCell: UITableViewCell {
     private let separatorOpacity: Float = 0.3
      
     var showSeparator = true
+    var imageMargin: CGFloat = 10
+    var imageMarginLeft: CGFloat = 10
     
-    var separatorEdgeInset = UIEdgeInsetsZero
-    var separatorHeight: CGFloat = 0.4
+    var separatorEdgeInset = UIEdgeInsetsZero {
+        didSet{
+            separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, separatorHeight)
+        }
+    }
     var separatorColor = UIColor.lightGrayColor()
     
     private let separator = CALayer()
@@ -45,6 +51,10 @@ class BaseCell: UITableViewCell {
         separator.backgroundColor = separatorColor.CGColor
         separator.opacity = separatorOpacity
         self.layer.addSublayer(separator)
+        
+        self.imageView?.contentMode = .ScaleAspectFill
+        textLabel?.textColor = UIColor.darkGrayColor()
+        self.detailTextLabel?.font = UIFont.boldSystemFontOfSize(12)
     }
     
 
@@ -58,6 +68,7 @@ class BaseCell: UITableViewCell {
         self.textLabel!.text = model.title
         self.detailTextLabel?.text = model.tail
         self.imageView!.image = model.iconImage
+        imageView?.contentMode = .ScaleAspectFit
         self.showSeparator = model.showSeparator
         
         if model.showIndicator {
@@ -74,12 +85,26 @@ class BaseCell: UITableViewCell {
         
         if showSeparator {
             separator.hidden = false
-            separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left + separatorEdgeInset.right, separatorHeight)
+            separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, separatorHeight)
         }
         else{
             separator.hidden = true
         }
         
+        
+        if model != nil &&  model.iconImage != nil {
+            var frame = CGRectZero
+            frame.origin.x = imageMarginLeft
+            frame.origin.y = imageMargin
+            frame.size.height = self.frame.size.height - imageMargin * 2
+            frame.size.width = self.frame.size.height - imageMargin * 2
+            
+            self.imageView?.frame = frame
+            
+            frame = self.textLabel!.frame
+            frame.origin.x = CGRectGetMaxX(imageView!.frame) + 8
+            self.textLabel?.frame = frame
+        }
     }
     
     private func imgWH() -> CGFloat {

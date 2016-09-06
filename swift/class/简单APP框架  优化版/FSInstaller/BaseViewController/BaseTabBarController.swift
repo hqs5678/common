@@ -69,6 +69,11 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
             i += 1
         }
         
+        self.selectedIndex = 1
+        self.preSelectedIndex = selectedIndex
+        let but = tabBarButtons.objectAtIndex(self.selectedIndex) as! BaseTabBarButton
+        but.selected = true
+        
          
         
     }

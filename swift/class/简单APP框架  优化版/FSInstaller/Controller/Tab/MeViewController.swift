@@ -58,6 +58,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         var cellModel = BaseCellModel()
         cellModel.title = "新任务"
         cellModel.tail = "3"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showIndicator = true
         cellModel.showSeparator = true
         group.addObject(cellModel)
@@ -66,6 +67,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.showIndicator = true
         cellModel.title = "进行中的任务"
         cellModel.tail = "1"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
         group.addObject(cellModel)
         
@@ -73,6 +75,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.showIndicator = true
         cellModel.title = "累计任务数"
         cellModel.tail = "43"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
         group.addObject(cellModel)
         
@@ -82,6 +85,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         
         cellModel = BaseCellModel()
         cellModel.title = "我的订单"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showIndicator = true
         cellModel.showSeparator = true
         group.addObject(cellModel)
@@ -90,12 +94,14 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.showIndicator = true
         cellModel.title = "我的钱包"
         cellModel.tail = "231.5元"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
         group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "积分商城"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
         group.addObject(cellModel)
         
@@ -106,24 +112,28 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "服务地址管理"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
         group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "联系客服"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
         group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "推荐给好友"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
         group.addObject(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "更多设置"
+        cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
         group.addObject(cellModel)
         
@@ -166,6 +176,8 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
             let model = self.modelForIndexPath(indexPath)
             
             cell.model = model
+            
+            cell.imageMargin = 15
             return cell
         }
     }
