@@ -859,7 +859,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FSTM.FSInstaller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Documents/WorkSpace/FSTM/FSInstaller/FSInstaller/bridging_header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/apple/Documents/WorkSpace/common/swift/class/简单APP框架  优化版/FSInstaller/bridging_header.h";
 			};
 			name = Debug;
 		};
@@ -872,7 +872,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FSTM.FSInstaller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Documents/WorkSpace/FSTM/FSInstaller/FSInstaller/bridging_header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/apple/Documents/WorkSpace/common/swift/class/简单APP框架  优化版/FSInstaller/bridging_header.h";
 			};
 			name = Release;
 		};
