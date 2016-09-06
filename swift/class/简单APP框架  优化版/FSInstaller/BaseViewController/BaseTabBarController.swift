@@ -45,20 +45,10 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.removeAllSubviews()
         
-        var y: CGFloat = 90
-        
         var frame = CGRectMake(0, 0, self.view.frame.size.width/CGFloat(self.tabBar.items!.count), self.tabBar.frame.size.height)
         
         var i = 0
         for item in self.tabBar.items! {
-            
-            let view = UIImageView(frame: CGRectMake(0, y, 100, 100))
-            view.image = item.selectedImage
-            
-            self.view.addSubview(view)
-            
-            y += 120
-            
             let tabBarButton = BaseTabBarButton(frame: frame)
             tabBarButton.item = item
             tabBarButton.tag = i
