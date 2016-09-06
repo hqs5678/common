@@ -40,6 +40,11 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         preSelectedIndex = self.selectedIndex
     }
     
+    
+    // 优化系统TabBarController
+    // 移除 系统tabBar 中的控件 添加自定义的控件
+    // 有点: 能够设置tab不同状态的图片, 不会被系统自动渲染
+    // 解决: 使用BaseTabBarButton 代替系统 的 tabBarItem, 并添加到tabBar 中
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -69,13 +74,16 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
             i += 1
         }
         
-        self.selectedIndex = 1
+        // 设置当前选中
+        setCurSelectedIndex(2)
+    }
+    
+    // 设置当前选中项
+    private func setCurSelectedIndex(index: Int){
+        self.selectedIndex = index
         self.preSelectedIndex = selectedIndex
         let but = tabBarButtons.objectAtIndex(self.selectedIndex) as! BaseTabBarButton
         but.selected = true
-        
-         
-        
     }
 
 }

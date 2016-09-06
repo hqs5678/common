@@ -87,6 +87,8 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     }
     
     
+    
+    // 设置 返回按钮的标题为 '返回'   BackButtonItem
     override func pushViewController(viewController: UIViewController, animated: Bool) {
         // 设置BackButtonItem 文字
         action = 0
@@ -101,8 +103,6 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         self.viewControllers[self.viewControllers.count - 2].title = self.titles.lastObject! as? String
         return super.popViewControllerAnimated(animated)
     }
-    
-    
     
     
     
