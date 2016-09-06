@@ -77,6 +77,7 @@
 		18B083861D4F4D090057AD56 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083831D4F4D090057AD56 /* MeViewController.swift */; };
 		18B083871D4F4D090057AD56 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083841D4F4D090057AD56 /* TaskViewController.swift */; };
 		18B0838D1D4F575A0057AD56 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0838B1D4F575A0057AD56 /* BaseCell.swift */; };
+		18EC7B3B1D7E68F200056E39 /* BaseTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */; };
 		EC251C57C48C0D494A580F17 /* Pods_FSInstaller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A066301C1BAA0F8DAB3396C /* Pods_FSInstaller.framework */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		18B083831D4F4D090057AD56 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		18B083841D4F4D090057AD56 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		18B0838B1D4F575A0057AD56 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarButton.swift; sourceTree = "<group>"; };
 		1A066301C1BAA0F8DAB3396C /* Pods_FSInstaller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSInstaller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2B86A25FC2D7E8212FAA70 /* Pods-FSInstaller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSInstaller.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSInstaller/Pods-FSInstaller.debug.xcconfig"; sourceTree = "<group>"; };
 		E3AF7C9C67817D3C9B54106A /* Pods-FSInstaller.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSInstaller.release.xcconfig"; path = "Pods/Target Support Files/Pods-FSInstaller/Pods-FSInstaller.release.xcconfig"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				18B082F41D4F2B490057AD56 /* BaseNavigationController.swift */,
 				18B082F51D4F2B490057AD56 /* BaseTabBarController.swift */,
+				18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */,
 				18B082F61D4F2B490057AD56 /* BaseTableViewController.swift */,
 				18B082F71D4F2B490057AD56 /* BaseViewController.swift */,
 				18B082F81D4F2B490057AD56 /* EditTableViewContoller.swift */,
@@ -683,6 +686,7 @@
 				18B0834A1D4F2B490057AD56 /* NSNumber+ Converte.swift in Sources */,
 				18B083421D4F2B490057AD56 /* EditTableViewContoller.swift in Sources */,
 				18B083521D4F2B490057AD56 /* UIImage+Color.swift in Sources */,
+				18EC7B3B1D7E68F200056E39 /* BaseTabBarButton.swift in Sources */,
 				18B0836F1D4F2B490057AD56 /* BaseCellModel.swift in Sources */,
 				18B083431D4F2B490057AD56 /* ImagePickerController.swift in Sources */,
 				18B083531D4F2B490057AD56 /* UIImageView+OSS.swift in Sources */,
