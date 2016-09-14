@@ -36,6 +36,6 @@ extension UILabel {
         else {
             return 0
         }
-    }
+    } 
 }
 

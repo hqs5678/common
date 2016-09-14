@@ -22,8 +22,8 @@ extension UIViewController{
         return ImagePickerProcessor.sharedInstance
     }
     
-    func selectPic(){
-        let actionSheet = UIAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
+    func selectSinglePic(){
+        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
         var action = UIAlertAction(title: "手机相册", style: .Default) { [weak self] (action: UIAlertAction) in
             
             self?.selectPicFromSource(.PhotoLibrary)
@@ -43,16 +43,37 @@ extension UIViewController{
         
     }
     
+    func selectMultiPic(){
+        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
+        var action = UIAlertAction(title: "手机相册", style: .Default) { [weak self] (action: UIAlertAction) in
+            self?.selectMultiPic2()
+        }
+        actionSheet.addAction(action)
+        
+        action = UIAlertAction(title: "相机", style: .Default) { [weak self] (action: UIAlertAction) in
+            self?.selectPicFromSource(.Camera)
+            print("相机")
+        }
+        actionSheet.addAction(action)
+        
+        action = UIAlertAction(title: "取消", style: .Default, handler: nil)
+        actionSheet.addAction(action)
+        
+        actionSheet.cancelAble = true
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+        
+    }
     
-    func selectMultiPic() {
+    
+    func selectMultiPic2() {
         
         let imagePicker = SGImagePickerController()
-        imagePicker.titleColor = UIColor.whiteColor()
+        imagePicker.titleColor = kAppTitleColor
         
         imagePicker.navigationBar.barTintColor = self.navigationController?.navigationBar.barTintColor
         imagePicker.navigationBar.tintColor = self.navigationController?.navigationBar.tintColor
         
-        imagePicker.statusBarStyleLightContent = true
+        imagePicker.statusBarStyleLightContent = false
         
         self.presentViewController(imagePicker, animated: true, completion: nil)
         
