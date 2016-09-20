@@ -12,8 +12,7 @@ class TaskViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = self.tabBarItem.title
-        
+        self.title = self.tabBarItem.title
     }
 
 }

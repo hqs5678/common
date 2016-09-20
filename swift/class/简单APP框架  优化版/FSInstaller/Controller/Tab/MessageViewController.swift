@@ -13,7 +13,7 @@ class MessageViewController: BaseViewController {
         super.viewDidLoad()
         
         
-        self.navigationItem.title = self.tabBarItem.title
+        self.title = self.tabBarItem.title
         
     }
 

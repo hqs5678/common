@@ -39,7 +39,7 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="task" image="task" selectedImage="task-s" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="gAn-0P-4gD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -97,7 +97,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="second" image="task" selectedImage="task-s" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" id="7MK-7P-y4u"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

@@ -89,7 +89,7 @@ class SimpleInputViewController: BaseTableViewController {
     func selectImage(button: UIButton) -> Void {
         
         self.selectPicIndex = button.tag
-        self.selectPic()
+        self.selectMultiPic()
     }
     
     override func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
