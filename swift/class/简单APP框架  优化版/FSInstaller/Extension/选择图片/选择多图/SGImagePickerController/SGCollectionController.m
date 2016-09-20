@@ -107,7 +107,7 @@ static NSString * const reuseIdentifier = @"Cell";
                     
                     if ( i == self.selectedModels.count - 1) {//最后一个
                         if (picker.didFinishSelectImages) {
-                            picker.didFinishSelectImages(self.selectedImages);
+                            picker.didFinishSelectImages((SGImagePickerController *)self.navigationController, self.selectedImages);
                         }
                         
                     }

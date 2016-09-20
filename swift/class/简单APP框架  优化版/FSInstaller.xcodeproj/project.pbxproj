@@ -78,6 +78,7 @@
 		18B083861D4F4D090057AD56 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083831D4F4D090057AD56 /* MeViewController.swift */; };
 		18B083871D4F4D090057AD56 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B083841D4F4D090057AD56 /* TaskViewController.swift */; };
 		18B0838D1D4F575A0057AD56 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0838B1D4F575A0057AD56 /* BaseCell.swift */; };
+		18C0FA731D91148B007BA61A /* QSAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0FA721D91148B007BA61A /* QSAlertController.swift */; };
 		18EC7B3B1D7E68F200056E39 /* BaseTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */; };
 		EC251C57C48C0D494A580F17 /* Pods_FSInstaller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A066301C1BAA0F8DAB3396C /* Pods_FSInstaller.framework */; };
 /* End PBXBuildFile section */
@@ -185,6 +186,7 @@
 		18B083831D4F4D090057AD56 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		18B083841D4F4D090057AD56 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		18B0838B1D4F575A0057AD56 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		18C0FA721D91148B007BA61A /* QSAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QSAlertController.swift; sourceTree = "<group>"; };
 		18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarButton.swift; sourceTree = "<group>"; };
 		1A066301C1BAA0F8DAB3396C /* Pods_FSInstaller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSInstaller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2B86A25FC2D7E8212FAA70 /* Pods-FSInstaller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSInstaller.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSInstaller/Pods-FSInstaller.debug.xcconfig"; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				18B0837A1D4F3AD10057AD56 /* userHeaderCell */,
 				18B0833C1D4F2B490057AD56 /* EditTableView.swift */,
 				18B0833D1D4F2B490057AD56 /* SimpleInputCell.swift */,
+				18C0FA721D91148B007BA61A /* QSAlertController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				18B083511D4F2B490057AD56 /* UIImage+Cache.swift in Sources */,
 				18B083601D4F2B490057AD56 /* SGAssetModel.m in Sources */,
 				18B082C61D4F29890057AD56 /* AppDelegate.swift in Sources */,
+				18C0FA731D91148B007BA61A /* QSAlertController.swift in Sources */,
 				18B083571D4F2B490057AD56 /* UITextView+Text.swift in Sources */,
 				18B083561D4F2B490057AD56 /* UITextField+Text.swift in Sources */,
 				18B083871D4F4D090057AD56 /* TaskViewController.swift in Sources */,

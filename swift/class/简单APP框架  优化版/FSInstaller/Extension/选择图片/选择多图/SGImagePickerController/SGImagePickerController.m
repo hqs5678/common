@@ -12,13 +12,17 @@
 
 @interface SGImagePickerController ()
 @property (nonatomic,strong) SGAssetsGroupController *assetsGroupVC;
+@property (nonatomic,strong) UIView *separatorOverView;
 @end
 
 @implementation SGImagePickerController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
+    _separatorOverView = [[UIView alloc]initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height - 1, self.view.frame.size.width, 2)];
+    _separatorOverView.backgroundColor = _barTintColor;
+    [self.navigationBar addSubview:_separatorOverView];
 }
 
 - (instancetype)init{
@@ -53,15 +57,32 @@
     return _assetsGroupVC;
 }
 
-- (void)setTitleColor:(UIColor *)titleColor{
-    _titleColor = titleColor;
+- (void)setTintColor:(UIColor *)tintColor{
+    _tintColor = tintColor;
     
-    NSDictionary * dict=[NSDictionary dictionaryWithObject:self.titleColor forKey:NSForegroundColorAttributeName];
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
     self.navigationBar.titleTextAttributes = dict;
+    
+    self.navigationBar.tintColor = tintColor;
+}
+
+
+- (void)setBarTintColor:(UIColor *)barTintColor{
+    _barTintColor = barTintColor;
+    
+    if (_separatorOverView ) {
+        _separatorOverView.backgroundColor = barTintColor;
+    }
+    
+    self.navigationBar.barTintColor = barTintColor;
 }
 
 - (void)dismiss{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)dealloc{
+    NSLog(@"---- dealloc SGImagePickerController ----");
 }
 
 @end
