@@ -23,11 +23,12 @@ class UserHeaderCell: UITableViewCell {
         }
     }
     
-    private let borderColor = UIColor.RGB(250, g: 181, b: 79)
-    private let bgColor = UIColor.RGB(255, g: 152, b: 1)
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let borderColor = UIColor.RGB(250, g: 181, b: 79)
+        
+        let bgColor = UIColor.RGB(255, g: 152, b: 1)
         
         nameLabel.text = "莫甘娜"
         nameLabel.textColor = UIColor.whiteColor()

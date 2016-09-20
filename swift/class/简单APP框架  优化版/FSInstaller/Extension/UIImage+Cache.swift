@@ -16,4 +16,8 @@ extension UIImage{
         let data = UIImagePNGRepresentation(self)!
         data.writeToFile(filePath, atomically: false)
     }
+    
+    func saveToFile(filePath: String){
+        writeToFile(filePath)
+    }
 }

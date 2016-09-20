@@ -15,6 +15,10 @@ extension Int {
     var stringValue: String {
         return "\(self)"
     }
+    
+    var uIntValue: UInt {
+        return UInt(self)
+    }
 }
 
 

@@ -30,7 +30,7 @@ public extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 
-    public class func colorRandom() -> UIColor
+    public class func randomColor() -> UIColor
     {
         let hue: CGFloat = (CGFloat(random() % 256) / 256.0 );  //  0.0 to 1.0
         let saturation: CGFloat = (CGFloat(random() % 128) / 256.0) + 0.5;  //  0.5 to 1.0, away from white
