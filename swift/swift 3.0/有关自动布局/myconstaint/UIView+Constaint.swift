@@ -37,7 +37,6 @@ extension UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.removeConstraints(self.constraints)
         
         if self.superview != view {
             self.removeFromSuperview()
@@ -72,8 +71,6 @@ extension UIView {
     
     public func layoutInView(view: UIView, _ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.removeConstraints(self.constraints)
         
         if self.superview != view {
             self.removeFromSuperview()
