@@ -22,6 +22,7 @@
 		1874FE501D94C9A30027A45F /* HttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE4F1D94C9A30027A45F /* HttpHelper.swift */; };
 		1874FE521D94C9FE0027A45F /* NSNumber+ Converte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE511D94C9FE0027A45F /* NSNumber+ Converte.swift */; };
 		1874FE541D94CAD70027A45F /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE531D94CAD70027A45F /* DBHelper.swift */; };
+		1874FE561D94CC9B0027A45F /* BaseTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE551D94CC9B0027A45F /* BaseTabBar.swift */; };
 		18B082C61D4F29890057AD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C51D4F29890057AD56 /* AppDelegate.swift */; };
 		18B082C81D4F29890057AD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B082C71D4F29890057AD56 /* ViewController.swift */; };
 		18B082CB1D4F29890057AD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B082C91D4F29890057AD56 /* Main.storyboard */; };
@@ -131,6 +132,7 @@
 		1874FE4F1D94C9A30027A45F /* HttpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHelper.swift; sourceTree = "<group>"; };
 		1874FE511D94C9FE0027A45F /* NSNumber+ Converte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+ Converte.swift"; sourceTree = "<group>"; };
 		1874FE531D94CAD70027A45F /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		1874FE551D94CC9B0027A45F /* BaseTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBar.swift; sourceTree = "<group>"; };
 		18B082C21D4F29890057AD56 /* FSInstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSInstaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B082C51D4F29890057AD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B082C71D4F29890057AD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				18B082F41D4F2B490057AD56 /* BaseNavigationController.swift */,
 				18B082F51D4F2B490057AD56 /* BaseTabBarController.swift */,
+				1874FE551D94CC9B0027A45F /* BaseTabBar.swift */,
 				18EC7B3A1D7E68F200056E39 /* BaseTabBarButton.swift */,
 				18B082F61D4F2B490057AD56 /* BaseTableViewController.swift */,
 				18B082F71D4F2B490057AD56 /* BaseViewController.swift */,
@@ -696,6 +699,7 @@
 				18B083441D4F2B490057AD56 /* SimpleInputViewController.swift in Sources */,
 				18C0FAA81D911694007BA61A /* UITextField+Text.swift in Sources */,
 				18C0FAAE1D911694007BA61A /* UIView+Toast.swift in Sources */,
+				1874FE561D94CC9B0027A45F /* BaseTabBar.swift in Sources */,
 				1874FE4D1D94C8750027A45F /* SGImagePickerController.m in Sources */,
 				18B0836D1D4F2B490057AD56 /* UserHelper.swift in Sources */,
 				18B0836C1D4F2B490057AD56 /* OSSHelper.swift in Sources */,

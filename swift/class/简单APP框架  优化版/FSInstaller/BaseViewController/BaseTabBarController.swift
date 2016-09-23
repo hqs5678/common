@@ -8,13 +8,10 @@
 
 
 
-class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
+class BaseTabBarController: UITabBarController {
     
     var isLoining = false
     
-    fileprivate var preSelectedIndex = -1
-    
-    let tabBarButtons = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,81 +21,29 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.tintColor=kAppTitleColor
         self.tabBar.isTranslucent = false 
         
-        self.delegate = self
-       
-    }
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
-        if preSelectedIndex != selectedIndex {
+        // 设置选中tab 事件
+        let baseBar = self.tabBar as! BaseTabBar
+        baseBar.didSelectItemHandle = {
+            [weak self] (item: UITabBarItem, tabButton: BaseTabBarButton, index: Int) -> Void in
+            self?.selectedIndex = index
             
-            if preSelectedIndex >= 0 && preSelectedIndex < tabBarButtons.count {
-                let preButton = tabBarButtons.object(at: self.preSelectedIndex) as! BaseTabBarButton
-                preButton.selected = false
-            }
-        }
-        preSelectedIndex = self.selectedIndex
-        
-    }
-    
-    
-    // 优化系统TabBarController
-    // 移除 系统tabBar 中的控件 添加自定义的控件
-    // 有点: 能够设置tab不同状态的图片, 不会被系统自动渲染
-    // 解决: 使用BaseTabBarButton 代替系统 的 tabBarItem, 并添加到tabBar 中
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBar.removeAllSubviews()
-        
-        var frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width/CGFloat(self.tabBar.items!.count), height: self.tabBar.frame.size.height)
-        
-        var i = 0
-        for item in self.tabBar.items! {
-            let tabBarButton = BaseTabBarButton(frame: frame)
-            tabBarButton.item = item
-            tabBarButton.tag = i
-            tabBarButton.titleColor = UIColor.lightGray
-            tabBarButton.titleSelectedColor = kAppTitleColor
-            tabBar.addSubview(tabBarButton)
-            tabBarButtons.add(tabBarButton)
+            print(item.title)
             
-            tabBarButton.onSelectedHandle = {
-                [weak self] (item: UITabBarItem, button: BaseTabBarButton) -> Void in
-                
-                self?.selectedIndex = button.tag
-                self?.tabBar((self?.tabBar)!, didSelect: item)
-                
-                
-                
-                if item.badgeValue != nil {
-                    item.badgeValue = nil
-                    button.item = item
-                    
-                    
-                    // 处理有关badge value的逻辑
-                    // ........
-                }
-                
-                return
-            }
             
-            frame.origin.x += frame.size.width
-            i += 1
+            // 处理badge value
+            item.badgeValue = ""
+            tabButton.badgeView.text = ""
+            
+            return
         }
         
-        // 设置当前选中
-        setCurSelectedIndex(2)
+        self.selectedIndex = 2
+        
+        baseBar.currentSelect = self.selectedIndex
     }
     
-    // 设置当前选中项
-    fileprivate func setCurSelectedIndex(_ index: Int){
-        self.selectedIndex = index
-        self.preSelectedIndex = selectedIndex
-        let but = tabBarButtons.object(at: self.selectedIndex) as! BaseTabBarButton
-        but.selected = true
-    }
-
+    
+ 
 }
 
 
