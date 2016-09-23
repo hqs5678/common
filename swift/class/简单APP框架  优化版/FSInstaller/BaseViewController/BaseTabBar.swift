@@ -42,15 +42,25 @@ class BaseTabBar: UITabBar {
         self.removeAllSubviews()
     }
     
+    override func addSubview(_ view: UIView) {
+        if view.tag > 100 {
+            super.addSubview(view)
+        }
+    }
+    
     override func layoutSubviews() {
-        self.removeAllSubviews()
-        tabBarButtons.removeAllObjects()
-        
         guard self.items != nil else {
             return
         }
         
-        print("-----------------------")
+        if self.tabBarButtons.count == items?.count {
+            return
+        }
+        
+        self.removeAllSubviews()
+        tabBarButtons.removeAllObjects()
+        
+        print("----------- 为自定义的tab bar 添加view ------------")
         
         self.backgroundColor = self.barTintColor
         
@@ -60,7 +70,7 @@ class BaseTabBar: UITabBar {
         for item in self.items! {
             let tabBarButton = BaseTabBarButton(frame: frame)
             tabBarButton.item = item
-            tabBarButton.tag = i
+            tabBarButton.tag = i + 111
             tabBarButton.titleColor = UIColor.lightGray
             tabBarButton.titleSelectedColor = kAppTitleColor
             tabBarButton.selected = i == currentSelect
@@ -71,7 +81,7 @@ class BaseTabBar: UITabBar {
                 [weak self] (item: UITabBarItem, button: BaseTabBarButton) -> Void in
                 
                 if let wself = self { 
-                    wself.currentSelect = button.tag
+                    wself.currentSelect = button.tag - 111
                     self?.updateSelectedItemIndex()
                     
                     wself.didSelectItemHandle(item, button, wself.currentSelect)

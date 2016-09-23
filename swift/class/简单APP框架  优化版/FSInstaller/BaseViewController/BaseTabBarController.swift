@@ -32,7 +32,7 @@ class BaseTabBarController: UITabBarController {
             
             // 处理badge value
             item.badgeValue = ""
-            tabButton.badgeView.text = ""
+            tabButton.item = item
             
             return
         }
