@@ -11,8 +11,8 @@
 class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
     
     // 记录在跳转之前viewController title
-    private var titles = NSMutableArray()
-    private var action:Int = 0    // 0 add  1 remove
+    fileprivate var titles = NSMutableArray()
+    fileprivate var action:Int = 0    // 0 add  1 remove
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
@@ -26,13 +26,13 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         setup()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         setup()
     }
     
-    private func setup(){
+    fileprivate func setup(){
         // 设置导航栏的背景颜色
         self.navigationBar.barTintColor = kAppMainColor
         
@@ -41,15 +41,15 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         self.navigationBar.titleTextAttributes = attr
         // 设置导航栏返回字体的颜色
         UINavigationBar.appearance().tintColor = kAppTitleColor
-        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().isTranslucent = false
         
-        let view:UIView = UIView(frame: CGRectMake(0, self.navigationBar.frame.size.height - 1, self.view.frame.size.width, 2))
+        let view:UIView = UIView(frame: CGRect(x: 0, y: self.navigationBar.frame.size.height - 1, width: self.view.frame.size.width, height: 2))
         view.backgroundColor = kAppMainColor
         self.navigationBar.addSubview(view)
         
         // 禁用右滑返回 手势
         if self.interactivePopGestureRecognizer != nil {
-            self.interactivePopGestureRecognizer?.enabled = false
+            self.interactivePopGestureRecognizer?.isEnabled = false
         }
         
         self.delegate = self
@@ -62,7 +62,7 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
 //        self.presentViewController(loginVC, animated: true, completion: nil)
     }
     
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
   
         if UserHelper.isLogined() == false {
             turnToLogin()
@@ -71,17 +71,17 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         
         // 设置BackButtonItem 文字
         if titles.count == 0 {
-            titles.addObject(viewController.title!)
+            titles.add(viewController.title!)
         }
         else{
             if action == 0 {
                 // 注意 这个地方出错的原因可能是 将要push 的viewController 没有设置title 导致
-                self.titles.addObject(viewController.title!)
+                self.titles.add(viewController.title!)
             }
         }
     }
     
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
         
     }
@@ -89,25 +89,25 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     
     
     // 设置 返回按钮的标题为 '返回'   BackButtonItem
-    override func pushViewController(viewController: UIViewController, animated: Bool) {
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         // 设置BackButtonItem 文字
         action = 0
         self.viewControllers[self.viewControllers.count - 1].title = "返回"
         super.pushViewController(viewController, animated: animated)
     }
     
-    override func popViewControllerAnimated(animated: Bool) -> UIViewController? {
+    override func popViewController(animated: Bool) -> UIViewController? {
         // 设置BackButtonItem 文字
         self.titles.removeLastObject()
         action = 1
         self.viewControllers[self.viewControllers.count - 2].title = self.titles.lastObject! as? String
-        return super.popViewControllerAnimated(animated)
+        return super.popViewController(animated: animated)
     }
     
     
     
     // 设置状态栏的样式
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 }

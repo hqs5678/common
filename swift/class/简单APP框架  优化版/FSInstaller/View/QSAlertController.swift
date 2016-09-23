@@ -11,8 +11,8 @@ class QSAlertController: UIAlertController {
     
     // 设定圆角大小
     var cornerRadius: CGFloat = 5
-    var titleColor = UIColor.blackColor()
-    var cancelTitleColor = UIColor.redColor()
+    var titleColor = UIColor.black
+    var cancelTitleColor = UIColor.red
     var titleFontSize: CGFloat = 15
     
     // 当不添加 cancel 按钮时 点击灰色的区域时  dismiss
@@ -26,7 +26,7 @@ class QSAlertController: UIAlertController {
             }
         }
     }
-    private var tap: UITapGestureRecognizer!
+    fileprivate var tap: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,20 +46,20 @@ class QSAlertController: UIAlertController {
         traversalView(self.view)
     }
     
-    @objc private func onTap(tap: UITapGestureRecognizer){
+    @objc fileprivate func onTap(_ tap: UITapGestureRecognizer){
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func traversalView(view: UIView){
+    func traversalView(_ view: UIView){
         
         if view.layer.cornerRadius > 2 {
             view.layer.cornerRadius = cornerRadius
         }
         
-        if view.isKindOfClass(UILabel.classForCoder()){
+        if view.isKind(of: UILabel.classForCoder()){
             let label = view as! UILabel
-            label.textColor = UIColor.grayColor()
+            label.textColor = UIColor.gray
             
             
             if label.text != nil {
@@ -76,7 +76,7 @@ class QSAlertController: UIAlertController {
                     else {
                         attr.addAttribute(NSForegroundColorAttributeName, value: titleColor, range: range)
                     }
-                    attr.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(titleFontSize), range: range)
+                    attr.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: titleFontSize), range: range)
                     
                     label.attributedText = attr
                 }

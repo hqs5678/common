@@ -21,6 +21,36 @@ extension Int {
     }
 }
 
+extension UInt {
+    
+    var floatValue: CGFloat {
+        return CGFloat(self)
+    }
+    
+    var stringValue: String {
+        return "\(self)"
+    }
+    
+    var intValue: Int {
+        return Int(self)
+    }
+}
+
+extension UInt32 {
+    
+    var floatValue: CGFloat {
+        return CGFloat(self)
+    }
+    
+    var stringValue: String {
+        return "\(self)"
+    }
+    
+    var intValue: Int {
+        return Int(self)
+    }
+}
+
 
 extension CGFloat {
     

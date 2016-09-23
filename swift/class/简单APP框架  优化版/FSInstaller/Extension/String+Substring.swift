@@ -8,15 +8,15 @@
 
 extension String {
     
-    func substringToIndex(index: Int) -> String{
-        return (self as NSString).substringToIndex(index) as String
+    func substringToIndex(_ index: Int) -> String{
+        return (self as NSString).substring(to: index) as String
     }
     
-    func substringFromIndex(index: Int) -> String{
-        return (self as NSString).substringFromIndex(index) as String
+    func substringFromIndex(_ index: Int) -> String{
+        return (self as NSString).substring(from: index) as String
     }
     
-    func substringWithRange(range: NSRange) -> String {
-        return (self as NSString).substringWithRange(range) as String
+    func substringWithRange(_ range: NSRange) -> String {
+        return (self as NSString).substring(with: range) as String
     }
 }

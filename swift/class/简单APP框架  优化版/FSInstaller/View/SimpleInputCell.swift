@@ -11,10 +11,10 @@
 class SimpleInputCell: BaseCell, UITextFieldDelegate {
     
     let textField: UITextField = UITextField()
-    let button: UIButton = UIButton(type: UIButtonType.ContactAdd)
+    let button: UIButton = UIButton(type: UIButtonType.contactAdd)
     let switchButton: UISwitch = UISwitch()
     
-    private let leftView: UIView = UIView()
+    fileprivate let leftView: UIView = UIView()
     
     var inputModel: SimpleInputModel! {
         didSet{
@@ -33,99 +33,99 @@ class SimpleInputCell: BaseCell, UITextFieldDelegate {
     }
     
      
-    private func setup(){
+    fileprivate func setup(){
         self.textField.frame = self.bounds 
         self.textField.delegate  = self
-        self.textField.leftViewMode = .Always
-        self.textField.clearButtonMode = .Always
+        self.textField.leftViewMode = .always
+        self.textField.clearButtonMode = .always
         self.addSubview(self.textField)
         
         self.addSubview(switchButton)
-        self.switchButton.addTarget(self, action: #selector(SimpleInputCell.valueChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.switchButton.addTarget(self, action: #selector(SimpleInputCell.valueChanged(_:)), for: UIControlEvents.valueChanged)
         
         self.addSubview(button)
-        button.addTarget(self, action: #selector(SimpleInputCell.buttonClick), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(SimpleInputCell.buttonClick), for: UIControlEvents.touchUpInside)
         
-        let newTransform = CGAffineTransformScale(self.button.transform, 2.0, 2.0);
+        let newTransform = self.button.transform.scaledBy(x: 2.0, y: 2.0);
         self.button.transform = newTransform
     }
     
-    func valueChanged(switchButton: UISwitch){
-        self.inputModel.isOn = switchButton.on
-        inputModel.valueChanged(switchButton.on)
+    func valueChanged(_ switchButton: UISwitch){
+        self.inputModel.isOn = switchButton.isOn
+        inputModel.valueChanged(switchButton.isOn)
     }
     
     func buttonClick(){
         inputModel.buttonDidClick(self.button)
     }
     
-    private func setupModel(){
+    fileprivate func setupModel(){
         
-        if inputModel.inputType == SimpleInputType.Image {
-            self.textField.hidden = true
-            self.button.hidden = false
-            self.switchButton.hidden = true
+        if inputModel.inputType == SimpleInputType.image {
+            self.textField.isHidden = true
+            self.button.isHidden = false
+            self.switchButton.isHidden = true
             
             self.imageView?.image = inputModel.image
             let w: CGFloat = 80
-            self.button.frame = CGRectMake(self.frame.size.width - w, 0, w, self.frame.size.height)
+            self.button.frame = CGRect(x: self.frame.size.width - w, y: 0, width: w, height: self.frame.size.height)
         }
-        else if inputModel.inputType == SimpleInputType.Switch {
-            self.switchButton.hidden = false
-            self.button.hidden = true
-            self.textField.hidden = true
+        else if inputModel.inputType == SimpleInputType.switch {
+            self.switchButton.isHidden = false
+            self.button.isHidden = true
+            self.textField.isHidden = true
             
             let p: CGFloat = self.switchButton.frame.size.width * 0.5 + 12
-            self.switchButton.center = CGPointMake(self.frame.size.width - p, self.frame.size.height * 0.5)
+            self.switchButton.center = CGPoint(x: self.frame.size.width - p, y: self.frame.size.height * 0.5)
             
             if inputModel.isOn == nil {
-                self.switchButton.on = false
+                self.switchButton.isOn = false
             }
             else{
-                self.switchButton.on = inputModel.isOn!
+                self.switchButton.isOn = inputModel.isOn!
             }
             
             if inputModel.switchEnabel != nil {
-                self.switchButton.enabled = inputModel.switchEnabel!
+                self.switchButton.isEnabled = inputModel.switchEnabel!
             }
             else {
-                self.switchButton.enabled = true
+                self.switchButton.isEnabled = true
             }
             self.textLabel?.text = inputModel.text
         }
         else{
-            self.textField.hidden = false
-            self.button.hidden = true
-            self.switchButton.hidden = true
+            self.textField.isHidden = false
+            self.button.isHidden = true
+            self.switchButton.isHidden = true
             
             self.imageView?.image = nil
             self.textField.text = inputModel.text
             self.textField.placeholder = inputModel.placeholder
-            self.leftView.frame = CGRectMake(0, 0, self.inputModel.marginLeft, self.frame.size.height)
+            self.leftView.frame = CGRect(x: 0, y: 0, width: self.inputModel.marginLeft, height: self.frame.size.height)
             self.textField.leftView = self.leftView
             if inputModel.keyboardType != nil {
                 self.textField.keyboardType = inputModel.keyboardType!
             }
             if inputModel.secureTextEntry != nil {
-                self.textField.secureTextEntry = inputModel.secureTextEntry!
+                self.textField.isSecureTextEntry = inputModel.secureTextEntry!
             }
         }
     }
     
-    func setModel(_model: SimpleInputModel, indexPath:NSIndexPath){
+    func setModel(_ _model: SimpleInputModel, indexPath:IndexPath){
         self.inputModel = _model
-        self.button.tag = indexPath.section
+        self.button.tag = (indexPath as NSIndexPath).section
     }
     
     
     /// text field delegate
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         self.inputModel.text = self.textField.text! + string
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         self.inputModel.text = self.textField.text
     }
     

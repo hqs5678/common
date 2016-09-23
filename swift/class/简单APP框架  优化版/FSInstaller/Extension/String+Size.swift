@@ -10,29 +10,29 @@
 
 extension String{
     
-    func boundWithSize(size:CGSize ,font:UIFont) -> CGRect{
+    func boundWithSize(_ size:CGSize ,font:UIFont) -> CGRect{
         let newStr:NSString = NSString(string: self)
         
-        return newStr.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil)
+        return newStr.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil)
     }
     
     func trim() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
+        return self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
     }
     
     func length() -> Int {
         return (self as NSString).length
     }
     
-    func data2String(data:NSData) -> String{
-        let str = NSString(data: data, encoding: NSUTF8StringEncoding)
+    func data2String(_ data:Data) -> String{
+        let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
         return str as! String
     }
     
     func toFArray() -> NSArray!{
         if self.length() > 3 {
-            let array = self.componentsSeparatedByString(",,,")
-            return array
+            let array = self.components(separatedBy: ",,,")
+            return array as NSArray!
         }
         else {
             return nil

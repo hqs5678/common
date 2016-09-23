@@ -4,13 +4,13 @@ import UIKit
  
 extension UIView {
     
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var tapHandlePer = "tapHandlePer"
     }
     
-    public func addTapWithHandle(tapHandle: (tap: UITapGestureRecognizer) -> Void){
+    public func addTapWithHandle(_ tapHandle: @escaping (_ tap: UITapGestureRecognizer) -> Void){
         
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.onTapGestureRecognizerHandle(_:)))
         self.addGestureRecognizer(tap)
         
@@ -19,7 +19,7 @@ extension UIView {
         setTapHandle(tmpClass)
     }
     
-    @objc private func onTapGestureRecognizerHandle(tap: UITapGestureRecognizer){
+    @objc fileprivate func onTapGestureRecognizerHandle(_ tap: UITapGestureRecognizer){
         
         let tmpClass = objc_getAssociatedObject(self, &AssociatedKeys.tapHandlePer) as? TmpHandleClass
         if tmpClass != nil {
@@ -27,7 +27,7 @@ extension UIView {
         }
     }
     
-    private func setTapHandle(tapHandle: TmpHandleClass){
+    fileprivate func setTapHandle(_ tapHandle: TmpHandleClass){
         objc_setAssociatedObject(self, &AssociatedKeys.tapHandlePer, tapHandle, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
  

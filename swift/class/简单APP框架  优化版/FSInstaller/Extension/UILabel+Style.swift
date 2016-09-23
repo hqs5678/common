@@ -8,7 +8,7 @@
 
 extension UILabel {
     
-    public func setFontColor(fontColor: UIColor, range: NSRange){
+    public func setFontColor(_ fontColor: UIColor, range: NSRange){
         
         let attributedString = NSMutableAttributedString(attributedString: self.attributedText!)
         attributedString.addAttribute(NSForegroundColorAttributeName, value: fontColor, range: range)
@@ -17,17 +17,17 @@ extension UILabel {
     }
     
     // 设置行间距
-    func setTextLineSpacing(lineSpacing: CGFloat) {
+    func setTextLineSpacing(_ lineSpacing: CGFloat) {
         
         let len = (self.text! as NSString).length
         let range = NSMakeRange(0, len)
         let attributedString = NSMutableAttributedString(attributedString: self.attributedText!)
-        let sourceParagraphStyle = attributedString.attribute(NSParagraphStyleAttributeName, atIndex: 0, longestEffectiveRange: nil, inRange: range)!
+        let sourceParagraphStyle = attributedString.attribute(NSParagraphStyleAttributeName, at: 0, longestEffectiveRange: nil, in: range)!
         
         let paragraphStyle = NSMutableParagraphStyle()
         
         paragraphStyle.lineSpacing = lineSpacing
-        paragraphStyle.firstLineHeadIndent = sourceParagraphStyle.firstLineHeadIndent
+        paragraphStyle.firstLineHeadIndent = (sourceParagraphStyle as AnyObject).firstLineHeadIndent
         paragraphStyle.paragraphSpacing = 0
         paragraphStyle.minimumLineHeight = 4
         attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
@@ -36,16 +36,16 @@ extension UILabel {
     }
     
     // 首行缩进
-    func setFirstLineIndentation(indentation: CGFloat) {
+    func setFirstLineIndentation(_ indentation: CGFloat) {
         
         let len = (self.text! as NSString).length
         let range = NSMakeRange(0, len)
         let attributedString = NSMutableAttributedString(attributedString: self.attributedText!)
-        let sourceParagraphStyle = attributedString.attribute(NSParagraphStyleAttributeName, atIndex: 0, longestEffectiveRange: nil, inRange: range)!
+        let sourceParagraphStyle = attributedString.attribute(NSParagraphStyleAttributeName, at: 0, longestEffectiveRange: nil, in: range)!
         
         let paragraphStyle = NSMutableParagraphStyle()
         
-        paragraphStyle.lineSpacing = sourceParagraphStyle.lineSpacing
+        paragraphStyle.lineSpacing = (sourceParagraphStyle as AnyObject).lineSpacing
         paragraphStyle.firstLineHeadIndent = indentation
         
         attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)

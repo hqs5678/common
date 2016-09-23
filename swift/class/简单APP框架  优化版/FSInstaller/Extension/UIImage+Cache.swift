@@ -12,12 +12,12 @@
 extension UIImage{
   
     
-    func writeToFile(filePath:String){
+    func writeToFile(_ filePath:String){
         let data = UIImagePNGRepresentation(self)!
-        data.writeToFile(filePath, atomically: false)
+        try? data.write(to: URL(fileURLWithPath: filePath), options: [])
     }
     
-    func saveToFile(filePath: String){
+    func saveToFile(_ filePath: String){
         writeToFile(filePath)
     }
 }

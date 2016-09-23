@@ -10,6 +10,9 @@
 
 class User: NSObject {
     
+    static let sharedInstance = User()
+    
+    
     var birthday:String = ""
     var userId:String = "0"
     var sex:String = ""
@@ -22,37 +25,31 @@ class User: NSObject {
     var totalMonay: String = "23"
     var coinNumber: String = "200"
     
+    var thumbNumber = 100       // 点赞数
+    var commentNumber = 22      // 评论数
+    
     var token: String = "this_is_initial_token"
     
-    class var sharedInstance:User{
-        struct Instance {
-            static var onceToken:dispatch_once_t = 0
-            static var instance:User?
-        }
-        
-        dispatch_once(&Instance.onceToken, { () -> Void in
-            // 获取本地数据
-            let tmpUserInfo = Helper.valueForKeyFromUserDefaults("userInfo")
-            if tmpUserInfo == nil {
-                Instance.instance = User()
-            }
-            else {
-                let dict = tmpUserInfo as! NSDictionary
-                Instance.instance = User.mj_objectWithKeyValues(dict)
-            }
-        })
-        
-        return Instance.instance!
+    override init() {
+        super.init()
+        // 获取本地数据
+        let tmpUserInfo = Helper.valueForKeyFromUserDefaults("userInfo")
+        self.mj_setKeyValues(tmpUserInfo)
     }
+    
     
     func setValuesFromLocal(){
         User.sharedInstance.mj_setKeyValues(Helper.valueForKeyFromUserDefaults("userInfo") as? NSDictionary)
     }
     
+    func removeValuesFromLocal(){
+        Helper.saveToUserDefaults(nil, key: "userInfo")
+    }
+    
     // 保存到本地
     func saveToLocal(){
         let dict = self.mj_JSONObject()
-        Helper.saveToUserDefaults(dict, key: "userInfo")
-    } 
+        Helper.saveToUserDefaults(dict as AnyObject?, key: "userInfo")
+    }
     
 }

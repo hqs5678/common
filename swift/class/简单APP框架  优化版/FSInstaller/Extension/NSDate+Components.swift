@@ -9,12 +9,12 @@
 
 import UIKit
 
-extension NSDate{
+extension Date{
     
     
-    public func components() -> NSDateComponents {
-        let c = NSCalendar(calendarIdentifier: NSCalendarIdentifierRepublicOfChina)
-        let comp =  c!.components([.Year, .Month, .Day, .Weekday, .Hour, .Minute, .Second], fromDate: self)
+    public func components() -> DateComponents {
+        let c = Calendar(identifier: Calendar.Identifier.republicOfChina)
+        let comp =  (c as NSCalendar).components([.year, .month, .day, .weekday, .hour, .minute, .second], from: self)
         
         return comp
     }
@@ -32,28 +32,28 @@ extension NSDate{
     }
     
     public func yearString() -> String {
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     public func monthString() -> String {
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM"
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     public func dayString() -> String {
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     // 返回某个月的天数
-    public static func dateSizeOfMonth(mon: Int, year: Int) -> Int{
+    public static func dateSizeOfMonth(_ mon: Int, year: Int) -> Int{
         let size = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         
         if mon == 2 {

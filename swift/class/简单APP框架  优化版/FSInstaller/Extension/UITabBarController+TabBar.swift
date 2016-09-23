@@ -11,7 +11,7 @@
 extension UITabBarController{
     
     // 淡入
-    func fadeInTabBarWithDuration(duration:NSTimeInterval){
+    func fadeInTabBarWithDuration(_ duration:TimeInterval){
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
         self.tabBar.alpha = 1.0
@@ -21,7 +21,7 @@ extension UITabBarController{
         fadeInTabBarWithDuration(0.2)
     }
     // 淡出
-    func fadeOutTabBarWithDuration(duration:NSTimeInterval){
+    func fadeOutTabBarWithDuration(_ duration:TimeInterval){
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
         self.tabBar.alpha = 0.0
@@ -31,11 +31,11 @@ extension UITabBarController{
         fadeOutTabBarWithDuration(0.2)
     }
     // 推入
-    func pushInTabBarWithDuration(duration:NSTimeInterval){
+    func pushInTabBarWithDuration(_ duration:TimeInterval){
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
         var frame = self.tabBar.frame
-        frame.origin.y = UIScreen.mainScreen().bounds.size.height - frame.size.height
+        frame.origin.y = UIScreen.main.bounds.size.height - frame.size.height
         self.tabBar.frame = frame
         UIView.commitAnimations()
     }
@@ -43,11 +43,11 @@ extension UITabBarController{
         pushInTabBarWithDuration(0.2)
     }
     // 推出
-    func pushOutTabBarWithDuration(duration:NSTimeInterval){
+    func pushOutTabBarWithDuration(_ duration:TimeInterval){
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
         var frame = self.tabBar.frame
-        frame.origin.y = UIScreen.mainScreen().bounds.size.height
+        frame.origin.y = UIScreen.main.bounds.size.height
         self.tabBar.frame = frame
         UIView.commitAnimations()
     }

@@ -18,45 +18,45 @@ class SettingTableViewController: SimpleInputViewController {
         setup()
     }
     
-    private func setup(){
+    fileprivate func setup(){
         var tmpArray = NSMutableArray()
         var model = SimpleInputModel()
-        model.inputType = SimpleInputType.Switch
+        model.inputType = SimpleInputType.switch
         model.isOn = true
         model.text = "消息提醒"
         model.showSeparator = false
-        tmpArray.addObject(model)
+        tmpArray.add(model)
         
-        data.addObject(tmpArray)
+        data.add(tmpArray)
         
         tmpArray = NSMutableArray()
         
         model = SimpleInputModel()
-        model.inputType = SimpleInputType.Switch
+        model.inputType = SimpleInputType.switch
         model.text = "声音"
         model.isOn = true
         model.showSeparator = true
-        tmpArray.addObject(model)
+        tmpArray.add(model)
         
         model = SimpleInputModel()
-        model.inputType = SimpleInputType.Switch
+        model.inputType = SimpleInputType.switch
         model.text = "震动"
         model.isOn = true
         model.showSeparator = false
-        tmpArray.addObject(model)
+        tmpArray.add(model)
         
-        data.addObject(tmpArray)
+        data.add(tmpArray)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0001
     }
  

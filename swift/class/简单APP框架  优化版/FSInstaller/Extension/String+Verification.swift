@@ -16,7 +16,7 @@ extension String{
         
         let test: NSPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
         
-        return test.evaluateWithObject(self)
+        return test.evaluate(with: self)
     }
     
     // 判断是否合法邮箱
@@ -25,6 +25,6 @@ extension String{
         
         let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         
-        return emailTest.evaluateWithObject(self)
+        return emailTest.evaluate(with: self)
     }
 }

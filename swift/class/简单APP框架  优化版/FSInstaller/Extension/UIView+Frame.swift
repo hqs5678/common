@@ -70,21 +70,21 @@ extension UIView {
     }
     
     // MARK: 当self 在view中居中显示时的 originX
-    public func centerXInView(view: UIView) -> CGFloat{
+    public func centerXInView(_ view: UIView) -> CGFloat{
         
         let x = (view.sizeWidth - self.sizeWidth) * 0.5
         return x
     }
     
     // MARK: 当self 在view中居中显示时的 originY
-    public func centerYInView(view: UIView) -> CGFloat{
+    public func centerYInView(_ view: UIView) -> CGFloat{
         
         let y = (view.sizeHeight - self.sizeHeight) * 0.5
         return y
     }
     
     // MARK: 设置self 在view中居中
-    public func centerInView(view: UIView) {
+    public func centerInView(_ view: UIView) {
         
         let x = (view.sizeWidth - self.sizeWidth) * 0.5
         let y = (view.sizeHeight - self.sizeHeight) * 0.5

@@ -12,9 +12,9 @@ import UIKit
 public extension UIColor {
     
     convenience init(hexString: String) {
-        let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        NSScanner(string: hex).scanHexInt(&int)
+        Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
         switch hex.characters.count {
         case 3: // RGB (12-bit)
@@ -39,35 +39,35 @@ public extension UIColor {
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
     }
     
-    public class func RGBA(r: Int, g: Int, b: Int, a: Float) -> UIColor {
+    public class func RGBA(_ r: Int, g: Int, b: Int, a: Float) -> UIColor {
         return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
     }
     
-    public class func RGB(r:Int, g:Int, b:Int) -> UIColor {
+    public class func RGB(_ r:Int, g:Int, b:Int) -> UIColor {
         return RGBA(r, g: g, b: b, a: 1)
     }
     
     public func colorR() -> CGFloat {
         
-        let colors = CGColorGetComponents(self.CGColor)
-        return colors[0] * 255.0
+        let colors = self.cgColor.components
+        return colors![0] * 255.0
     }
     
     public func colorG() -> CGFloat {
         
-        let colors = CGColorGetComponents(self.CGColor)
-        return colors[1] * 255.0
+        let colors = self.cgColor.components
+        return colors![1] * 255.0
     }
     
     public func colorB() -> CGFloat {
         
-        let colors = CGColorGetComponents(self.CGColor)
-        return colors[2] * 255.0
+        let colors = self.cgColor.components
+        return colors![2] * 255.0
     }
     
     public func colorA() -> CGFloat {
-        let colors = CGColorGetComponents(self.CGColor)
-        return colors[3]
+        let colors = self.cgColor.components
+        return colors![3]
     }
     
     

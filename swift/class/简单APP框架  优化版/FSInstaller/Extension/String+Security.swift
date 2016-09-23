@@ -10,10 +10,10 @@ extension String {
     
     
     var md5: String! {
-        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
-        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let str = self.cString(using: String.Encoding.utf8)
+        let strLen = CC_LONG(self.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
         
         CC_MD5(str!, strLen, result)
         
@@ -22,16 +22,16 @@ extension String {
             hash.appendFormat("%02x", result[i])
         }
         
-        result.destroy()
+        result.deinitialize()
         
         return String(format: hash as String)
     }
     
     var sha1: String! {
-        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
-        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let str = self.cString(using: String.Encoding.utf8)
+        let strLen = CC_LONG(self.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_SHA1_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
         
         CC_SHA1(str!, strLen, result)
         
@@ -40,29 +40,29 @@ extension String {
             hash.appendFormat("%02x", result[i])
         }
         
-        result.destroy()
+        result.deinitialize()
         
         return String(format: hash as String)
     }
     
     var base64String: String!{
-        let plainData = dataUsingEncoding(NSUTF8StringEncoding)
-        let base64String = plainData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        let plainData = data(using: String.Encoding.utf8)
+        let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         return base64String!
     }
     
     var fromBase64String: String! {
         
-        let data = NSData(base64EncodedString: self, options: .IgnoreUnknownCharacters)
+        let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters)
         if data == nil {
             return self
         }
-        return String.init(data: data!, encoding: NSUTF8StringEncoding)
+        return String.init(data: data!, encoding: String.Encoding.utf8)
     }
     
     
     public static func uuid() -> String {
-        return NSUUID().UUIDString
+        return UUID().uuidString
     }
     
 }

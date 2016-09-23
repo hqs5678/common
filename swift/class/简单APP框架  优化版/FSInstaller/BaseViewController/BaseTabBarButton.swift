@@ -21,8 +21,8 @@ class BaseTabBarButton: UIView {
     
     var padding: CGFloat = 2
     
-    var titleColor = UIColor.blackColor()
-    var titleSelectedColor = UIColor.whiteColor()
+    var titleColor = UIColor.black
+    var titleSelectedColor = UIColor.white
     
     var onSelectedHandle = {
         (item: UITabBarItem, button: BaseTabBarButton) -> Void in
@@ -52,35 +52,35 @@ class BaseTabBarButton: UIView {
         let wh: CGFloat = 32
         
         let x: CGFloat = (self.frame.size.width - wh) * 0.5
-        imageView.frame = CGRectMake(x, padding, wh, wh)
+        imageView.frame = CGRect(x: x, y: padding, width: wh, height: wh)
         
         let h: CGFloat = frame.size.height - 32 - padding * 3
-        titleLabel.frame = CGRectMake(0, frame.size.height - h - padding, frame.size.width, h)
+        titleLabel.frame = CGRect(x: 0, y: frame.size.height - h - padding, width: frame.size.width, height: h)
         
-        titleLabel.font = UIFont.systemFontOfSize(h * 0.99)
+        titleLabel.font = UIFont.systemFont(ofSize: h * 0.99)
         
         if badgeView.isEmpty() {
-            badgeView.hidden = true
+            badgeView.isHidden = true
         }
         else{
-            badgeView.hidden = false
+            badgeView.isHidden = false
             
             let bW: CGFloat = 14
             let padding: CGFloat = 4
             
             if badgeView.textLength() > 1 {
-                badgeView.frame = CGRectMake(CGRectGetMaxX(imageView.frame) - padding, padding, bW * CGFloat(badgeView.textLength()) - 10, bW)
+                badgeView.frame = CGRect(x: imageView.frame.maxX - padding, y: padding, width: bW * CGFloat(badgeView.textLength()) - 10, height: bW)
             }
             else{
-                badgeView.frame = CGRectMake(CGRectGetMaxX(imageView.frame) - padding, padding, bW, bW)
+                badgeView.frame = CGRect(x: imageView.frame.maxX - padding, y: padding, width: bW, height: bW)
             }
             
-            badgeView.setRoundAppearance(UIColor.clearColor(), cornerRadius: bW * 0.5, backgroundColor: UIColor(hexString: "fc3d39"))
+            badgeView.setRoundAppearance(UIColor.clear, cornerRadius: bW * 0.5, backgroundColor: UIColor(hexString: "fc3d39"))
         }
     }
     
     
-    private func setup(){
+    fileprivate func setup(){
         
         addSubview(imageView)
         addSubview(titleLabel)
@@ -89,13 +89,13 @@ class BaseTabBarButton: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(BaseTabBarButton.onTap(_:)))
         addGestureRecognizer(tap)
         
-        titleLabel.textAlignment = .Center
-        badgeView.textAlignment = .Center
-        badgeView.textColor = UIColor.whiteColor()
-        badgeView.font = UIFont.systemFontOfSize(10)
+        titleLabel.textAlignment = .center
+        badgeView.textAlignment = .center
+        badgeView.textColor = UIColor.white
+        badgeView.font = UIFont.systemFont(ofSize: 10)
     }
     
-    @objc private func onTap(tap: UITapGestureRecognizer){
+    @objc fileprivate func onTap(_ tap: UITapGestureRecognizer){
         guard self.item != nil else {
             return
         }
@@ -107,7 +107,7 @@ class BaseTabBarButton: UIView {
         onSelectedHandle(item, self)
     }
     
-    private func didSetItem(){
+    fileprivate func didSetItem(){
         if selected {
             imageView.image = item.selectedImage
             titleLabel.textColor = titleSelectedColor
@@ -119,13 +119,13 @@ class BaseTabBarButton: UIView {
         titleLabel.text = item.title
         
         if item.badgeValue != nil {
-            if item.badgeValue?.length() > 0 {
+            if (item.badgeValue?.length())! > 0 {
                 badgeView.text = item.badgeValue
-                badgeView.hidden = false
+                badgeView.isHidden = false
                 return
             }
         }
-        badgeView.hidden = true
+        badgeView.isHidden = true
         
     }
     

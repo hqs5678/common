@@ -10,21 +10,21 @@ let separatorHeight: CGFloat = 0.4
 
 class BaseCell: UITableViewCell {
     
-    private let padding: CGFloat = 10.0
-    private let separatorOpacity: Float = 0.3
+    fileprivate let padding: CGFloat = 10.0
+    fileprivate let separatorOpacity: Float = 0.3
      
     var showSeparator = true
     var imageMargin: CGFloat = 10
     var imageMarginLeft: CGFloat = 10
     
-    var separatorEdgeInset = UIEdgeInsetsZero {
+    var separatorEdgeInset = UIEdgeInsets.zero {
         didSet{
-            separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, separatorHeight)
+            separator.frame = CGRect(x: separatorEdgeInset.left, y: self.frame.size.height - separatorHeight, width: self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, height: separatorHeight)
         }
     }
-    var separatorColor = UIColor.lightGrayColor()
+    var separatorColor = UIColor.lightGray
     
-    private let separator = CALayer()
+    fileprivate let separator = CALayer()
     
     var model: BaseCellModel! {
         didSet{
@@ -33,7 +33,7 @@ class BaseCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
@@ -47,34 +47,34 @@ class BaseCell: UITableViewCell {
         
     }
     
-    private func setup(){
-        separator.backgroundColor = separatorColor.CGColor
+    fileprivate func setup(){
+        separator.backgroundColor = separatorColor.cgColor
         separator.opacity = separatorOpacity
         self.layer.addSublayer(separator)
         
-        self.imageView?.contentMode = .ScaleAspectFill
-        textLabel?.textColor = UIColor.darkGrayColor()
-        self.detailTextLabel?.font = UIFont.boldSystemFontOfSize(12)
+        self.imageView?.contentMode = .scaleAspectFill
+        textLabel?.textColor = UIColor.darkGray
+        self.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 12)
     }
     
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    private func didSetModel(){
+    fileprivate func didSetModel(){
         self.textLabel!.text = model.title
         self.detailTextLabel?.text = model.tail
         self.imageView!.image = model.iconImage
-        imageView?.contentMode = .ScaleAspectFit
+        imageView?.contentMode = .scaleAspectFit
         self.showSeparator = model.showSeparator
         
         if model.showIndicator {
-            self.accessoryType = .DisclosureIndicator
+            self.accessoryType = .disclosureIndicator
         } else{
-            self.accessoryType = .None
+            self.accessoryType = .none
         }
         
     }
@@ -84,16 +84,16 @@ class BaseCell: UITableViewCell {
         super.layoutSubviews()
         
         if showSeparator {
-            separator.hidden = false
-            separator.frame = CGRectMake(separatorEdgeInset.left, self.frame.size.height - separatorHeight, self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, separatorHeight)
+            separator.isHidden = false
+            separator.frame = CGRect(x: separatorEdgeInset.left, y: self.frame.size.height - separatorHeight, width: self.frame.size.width - separatorEdgeInset.left - separatorEdgeInset.right, height: separatorHeight)
         }
         else{
-            separator.hidden = true
+            separator.isHidden = true
         }
         
         
         if model != nil &&  model.iconImage != nil {
-            var frame = CGRectZero
+            var frame = CGRect.zero
             frame.origin.x = imageMarginLeft
             frame.origin.y = imageMargin
             frame.size.height = self.frame.size.height - imageMargin * 2
@@ -102,12 +102,12 @@ class BaseCell: UITableViewCell {
             self.imageView?.frame = frame
             
             frame = self.textLabel!.frame
-            frame.origin.x = CGRectGetMaxX(imageView!.frame) + 8
+            frame.origin.x = imageView!.frame.maxX + 8
             self.textLabel?.frame = frame
         }
     }
     
-    private func imgWH() -> CGFloat {
+    fileprivate func imgWH() -> CGFloat {
         return self.frame.size.height - padding * 2
     }
     

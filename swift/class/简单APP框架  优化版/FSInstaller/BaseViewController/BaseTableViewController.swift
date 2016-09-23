@@ -13,7 +13,7 @@ class BaseTableViewController: UITableViewController {
     var data:NSMutableArray = NSMutableArray()
     var hiddenTabBar = true
     
-    private var rightBarButtonHandle = { }
+    fileprivate var rightBarButtonHandle = { }
     
     
     override func viewDidLoad() {
@@ -23,11 +23,11 @@ class BaseTableViewController: UITableViewController {
         
         self.tableView.backgroundColor = kAppBackgroundColor
         
-        tableView.registerClass(BaseCell.classForCoder(), forCellReuseIdentifier: "BaseCell")
+        tableView.register(BaseCell.classForCoder(), forCellReuseIdentifier: "BaseCell")
         
         // 去除tableview 后面多余的分割线
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         // 设置界面数据
         initData()
@@ -50,13 +50,13 @@ class BaseTableViewController: UITableViewController {
         self.tableView.mj_header.endRefreshing()
     }
     
-    func showRightBarButtonWithTitle(title: String, handler: (Void)->(Void)){
-        let rightBtn = UIBarButtonItem(title: title, style: .Plain, target: self, action: #selector(BaseTableViewController.save))
+    func showRightBarButtonWithTitle(_ title: String, handler: @escaping (Void)->(Void)){
+        let rightBtn = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(BaseTableViewController.save))
         self.navigationItem.rightBarButtonItem = rightBtn
         self.rightBarButtonHandle = handler
     }
     
-    @objc private func save(){
+    @objc fileprivate func save(){
         self.view.endEditing(true)
         rightBarButtonHandle()
     }
@@ -66,39 +66,39 @@ class BaseTableViewController: UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 
-        return (data.objectAtIndex(section) as! NSArray).count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 
+        return (data.object(at: section) as! NSArray).count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:BaseCell = tableView.dequeueReusableCellWithIdentifier("BaseCell", forIndexPath: indexPath) as! BaseCell
-        let cellModel:BaseCellModel = data.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as! BaseCellModel
+        let cell:BaseCell = tableView.dequeueReusableCell(withIdentifier: "BaseCell", for: indexPath) as! BaseCell
+        let cellModel:BaseCellModel = (data.object(at: (indexPath as NSIndexPath).section) as AnyObject).object(at: (indexPath as NSIndexPath).row) as! BaseCellModel
         cell.model = cellModel
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 
-        let cellModel = data.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as! BaseCellModel
+        let cellModel = (data.object(at: (indexPath as NSIndexPath).section) as AnyObject).object(at: (indexPath as NSIndexPath).row) as! BaseCellModel
         cellModel.clickAction()
     }
     
-    func modelForIndexPath(indexPath: NSIndexPath) -> AnyObject {
+    func modelForIndexPath(_ indexPath: IndexPath) -> AnyObject {
         
-        let array = self.data.objectAtIndex(indexPath.section) as! NSArray
-        let model = array.objectAtIndex(indexPath.row)
-        return model
+        let array = self.data.object(at: (indexPath as NSIndexPath).section) as! NSArray
+        let model = array.object(at: (indexPath as NSIndexPath).row)
+        return model as AnyObject
     }
     
-    func modelForSection(section: Int, row: Int) -> AnyObject {
+    func modelForSection(_ section: Int, row: Int) -> AnyObject {
         
-        let indexPath = NSIndexPath(forRow: row, inSection: section)
+        let indexPath = IndexPath(row: row, section: section)
         return self.modelForIndexPath(indexPath)
     }
     
@@ -107,11 +107,11 @@ class BaseTableViewController: UITableViewController {
 //        view.backgroundColor = App.appGroupTableViewBackgroundColor
 //        return view
 //    }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return kGroupDividerHeight
     }
 
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0001
     }
 //
@@ -120,52 +120,52 @@ class BaseTableViewController: UITableViewController {
 //    }
     
     // 跳转界面
-    func pushViewControllerWithId(storyBoardId:String){
+    func pushViewControllerWithId(_ storyBoardId:String){
         self.pushViewControllerWithId(storyBoardId, storyBoardName: "Main")
     }
     
     // 跳转界面
-    func pushViewControllerWithId(storyBoardId:String, storyBoardName:String){
+    func pushViewControllerWithId(_ storyBoardId:String, storyBoardName:String){
         let vc = ControllerHelper.controllerFromStoryBoardWithIdentifier(storyBoardId, storyBoardName: storyBoardName)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // 跳转界面
-    func presentViewControllerWithId(storyBoardId:String){
+    func presentViewControllerWithId(_ storyBoardId:String){
         self.pushViewControllerWithId(storyBoardId, storyBoardName: "Main")
     }
     
     // 跳转界面
-    func presentViewControllerWithId(storyBoardId:String, storyBoardName:String){
+    func presentViewControllerWithId(_ storyBoardId:String, storyBoardName:String){
         let vc = ControllerHelper.controllerFromStoryBoardWithIdentifier(storyBoardId, storyBoardName: storyBoardName)
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     // 设置状态栏的样式
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
-    func tableViewReloadDataAtIndexPath(indexPath: NSIndexPath){
-        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+    func tableViewReloadDataAtIndexPath(_ indexPath: IndexPath){
+        self.tableView.reloadRows(at: [indexPath], with: .none)
     }
     
-    func tableViewReloadDataAtSection(section: Int, row: Int){
-        let indexPath = NSIndexPath(forRow: row, inSection: section)
+    func tableViewReloadDataAtSection(_ section: Int, row: Int){
+        let indexPath = IndexPath(row: row, section: section)
         self.tableViewReloadDataAtIndexPath(indexPath) 
     }
     
-    func makeToast(message: String) {
+    func makeToast(_ message: String) {
         self.navigationController?.view.makeToast(message)
     }
     
     
-    func pushVC(vc: UIViewController){
+    func pushVC(_ vc: UIViewController){
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func popVC(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     deinit{

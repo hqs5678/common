@@ -11,7 +11,7 @@
 extension NSDictionary{
     
     func toJsonString() -> String{
-        let data:NSData = try! NSJSONSerialization.dataWithJSONObject(self, options: NSJSONWritingOptions())
+        let data:Data = try! JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions())
         
         return data.toString()
     }

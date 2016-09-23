@@ -8,8 +8,8 @@
 
 class App: NSObject {
     struct Constants {
-        static var appToastPosition:CGPoint = CGPointMake(UIScreen.mainScreen().bounds.size.width * 0.5, UIScreen.mainScreen().bounds.size.height - 100)
-        static var appScreenSize:CGSize = UIScreen.mainScreen().bounds.size
+        static var appToastPosition:CGPoint = CGPoint(x: UIScreen.main.bounds.size.width * 0.5, y: UIScreen.main.bounds.size.height - 100)
+        static var appScreenSize:CGSize = UIScreen.main.bounds.size
         static var keyboardHight:CGFloat = -1
     }
     
@@ -46,7 +46,7 @@ let SCREEN_WIDTH: CGFloat = App.appScreenSize.width
 let SCREEN_HEIGHT: CGFloat = App.appScreenSize.width
 
 let kAppMainColor:UIColor = UIColor.RGB(60, g: 57, b: 43)
-let kAppTitleColor:UIColor = UIColor.whiteColor()
+let kAppTitleColor:UIColor = UIColor.white
 let kAppBackgroundColor:UIColor = UIColor.RGB(239, g: 239, b: 239)
 
 let kUserRole = "0"
@@ -56,4 +56,8 @@ let kApiCode:Int = 0
 
 
 let kAppVersion = "V 1.0.0"
+
+public func random() -> Int {
+    return arc4random().intValue
+}
 

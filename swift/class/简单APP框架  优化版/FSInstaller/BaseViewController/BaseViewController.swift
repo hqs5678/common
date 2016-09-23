@@ -12,7 +12,7 @@ class BaseViewController: UIViewController {
     var hiddenTabBar = true
     var addedKeyboardObserver = false
     
-    private var rightBarButtonHandle = {
+    fileprivate var rightBarButtonHandle = {
         () -> () in
         return
     }
@@ -28,13 +28,13 @@ class BaseViewController: UIViewController {
     }
     
     
-    func showRightBarButtonWithTitle(title: String, handler: (Void)->(Void)){
-        let rightBtn = UIBarButtonItem(title: title, style: .Plain, target: self, action: #selector(BaseViewController.save))
+    func showRightBarButtonWithTitle(_ title: String, handler: @escaping (Void)->(Void)){
+        let rightBtn = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(BaseViewController.save))
         self.navigationItem.rightBarButtonItem = rightBtn
         self.rightBarButtonHandle = handler
     }
     
-    @objc private func save(){
+    @objc fileprivate func save(){
         rightBarButtonHandle()
     }
     
@@ -47,31 +47,31 @@ class BaseViewController: UIViewController {
         }
         print("-----添加键盘监听器-----")
         // 监听键盘  添加监听器
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.keyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.keyboardDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
     
-    func keyboardWillShow(notification:NSNotification){
+    func keyboardWillShow(_ notification:Notification){
         //获取键盘的高度
-        let userInfo:NSDictionary = notification.userInfo!
+        let userInfo:NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
         let value = userInfo[UIKeyboardFrameEndUserInfoKey]
-        let rect = value?.CGRectValue
+        let rect = (value as AnyObject).cgRectValue
         let height = rect?.size.height
 //        print("-----keyboard height ---- \(height) ----")
         App.keyboardHight = height!
     }
     
-    func keyboardDidShow(notification:NSNotification){
+    func keyboardDidShow(_ notification:Notification){
         
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    func keyboardWillHide(_ notification:Notification){
         
     }
     
-    func keyboardDidHide(notification:NSNotification){
+    func keyboardDidHide(_ notification:Notification){
         
     }
     
@@ -83,30 +83,30 @@ class BaseViewController: UIViewController {
         
     }
     
-    func pushViewControllerWithId(storyBoardId:String){
+    func pushViewControllerWithId(_ storyBoardId:String){
         self.pushViewControllerWithId(storyBoardId, storyBoardName: "Main")
     }
     
-    func pushViewControllerWithId(storyBoardId:String, storyBoardName:String){
+    func pushViewControllerWithId(_ storyBoardId:String, storyBoardName:String){
         let vc = ControllerHelper.controllerFromStoryBoardWithIdentifier(storyBoardId, storyBoardName: storyBoardName)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func presentViewControllerWithId(storyBoardId:String){
+    func presentViewControllerWithId(_ storyBoardId:String){
         self.pushViewControllerWithId(storyBoardId, storyBoardName: "Main")
     }
     
-    func presentViewControllerWithId(storyBoardId:String, storyBoardName:String){
+    func presentViewControllerWithId(_ storyBoardId:String, storyBoardName:String){
         let vc = ControllerHelper.controllerFromStoryBoardWithIdentifier(storyBoardId, storyBoardName: storyBoardName)
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     // 设置状态栏的样式
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
-    func makeToast(message: String) {
+    func makeToast(_ message: String) {
         self.navigationController?.view.makeToast(message)
     }
     
@@ -115,16 +115,16 @@ class BaseViewController: UIViewController {
         // 移除监听器
         if addedKeyboardObserver {
             print("-----移除键盘监听器-----")
-            NSNotificationCenter.defaultCenter().removeObserver(self)
+            NotificationCenter.default.removeObserver(self)
         }
     }
     
-    func pushVC(vc: UIViewController){
+    func pushVC(_ vc: UIViewController){
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func popVC(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

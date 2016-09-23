@@ -15,10 +15,10 @@ extension NSArray {
         }
         let str = NSMutableString()
         for obj in self {
-            str.appendString(obj as! String)
-            str.appendString(",,,")
+            str.append(obj as! String)
+            str.append(",,,")
         }
-        return str.substringToIndex(str.length - 3)
+        return str.substring(to: str.length - 3)
     }
 
 }

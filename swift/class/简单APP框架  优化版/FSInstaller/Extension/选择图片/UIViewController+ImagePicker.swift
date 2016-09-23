@@ -18,49 +18,49 @@ extension UIViewController{
      
      */
     
-    private var imagePickerProcessor: ImagePickerProcessor {
+    fileprivate var imagePickerProcessor: ImagePickerProcessor {
         return ImagePickerProcessor.sharedInstance
     }
     
     func selectSinglePic(){
-        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
-        var action = UIAlertAction(title: "手机相册", style: .Default) { [weak self] (action: UIAlertAction) in
+        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .actionSheet)
+        var action = UIAlertAction(title: "手机相册", style: .default) { [weak self] (action: UIAlertAction) in
             
-            self?.selectPicFromSource(.PhotoLibrary)
+            self?.selectPicFromSource(.photoLibrary)
         }
         actionSheet.addAction(action)
         
-        action = UIAlertAction(title: "相机", style: .Default) { [weak self] (action: UIAlertAction) in
-            self?.selectPicFromSource(.Camera)
+        action = UIAlertAction(title: "相机", style: .default) { [weak self] (action: UIAlertAction) in
+            self?.selectPicFromSource(.camera)
             print("相机")
         }
         actionSheet.addAction(action)
         
-        action = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        action = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         actionSheet.addAction(action)
         
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     
     func selectMultiPic(){
-        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
-        var action = UIAlertAction(title: "手机相册", style: .Default) { [weak self] (action: UIAlertAction) in
+        let actionSheet = QSAlertController(title: "请选择", message: "", preferredStyle: .actionSheet)
+        var action = UIAlertAction(title: "手机相册", style: .default) { [weak self] (action: UIAlertAction) in
             self?.selectMultiPic2()
         }
         actionSheet.addAction(action)
         
-        action = UIAlertAction(title: "相机", style: .Default) { [weak self] (action: UIAlertAction) in
-            self?.selectPicFromSource(.Camera)
+        action = UIAlertAction(title: "相机", style: .default) { [weak self] (action: UIAlertAction) in
+            self?.selectPicFromSource(.camera)
             print("相机")
         }
         actionSheet.addAction(action)
         
-        action = UIAlertAction(title: "取消", style: .Default, handler: nil)
+        action = UIAlertAction(title: "取消", style: .default, handler: nil)
         actionSheet.addAction(action)
         
         actionSheet.cancelAble = true
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     
@@ -73,18 +73,18 @@ extension UIViewController{
         
         imagePicker.statusBarStyleLightContent = false
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
         
         imagePicker.didFinishSelectImages = {
-            [weak self] (picker, images: [AnyObject]!) -> Void in
+            [weak self] (picker, images: [Any]?) -> Void in
             
-            picker.dismissViewControllerAnimated(true, completion: nil)
-            self?.imagePickerController(picker, didFinishPickingImages: images)
+            picker!.dismiss(animated: true, completion: nil)
+            self?.imagePickerController(picker!, didFinishPickingImages: images as [AnyObject]!)
         }
     }
     
     
-    private func selectPicFromSource(source: UIImagePickerControllerSourceType){
+    fileprivate func selectPicFromSource(_ source: UIImagePickerControllerSourceType){
         let imagePickerController = ImagePickerController()
         imagePickerController.allowsEditing = true
         imagePickerController.delegate = self.imagePickerProcessor
@@ -94,21 +94,21 @@ extension UIViewController{
         imagePickerController.navigationBar.barTintColor = self.navigationController?.navigationBar.barTintColor
         imagePickerController.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.titleTextAttributes
         
-        self.presentViewController(imagePickerController, animated: true, completion: nil)
+        self.present(imagePickerController, animated: true, completion: nil)
         
         self.imagePickerProcessor.imagePickerDidFinishPickingImage = {
             [weak self] (image: UIImage, picker: UIImagePickerController, editingInfo: [String : AnyObject]?) -> () in
             
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
             self!.imagePickerController(picker, didFinishPickingImage: image, editingInfo: editingInfo)
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
     }
     
-    func imagePickerController(picker: SGImagePickerController, didFinishPickingImages images: [AnyObject]!) {
+    func imagePickerController(_ picker: SGImagePickerController, didFinishPickingImages images: [AnyObject]!) {
         
     }
     
@@ -118,30 +118,32 @@ extension UIViewController{
 
 class ImagePickerProcessor: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    private static var __once: () = {
+            Inner.instance = ImagePickerProcessor()
+        }()
+    
     var imagePickerDidFinishPickingImage = {
         (image: UIImage, picker: UIImagePickerController, editingInfo: [String : AnyObject]?) -> () in return
     }
     
     class var sharedInstance: ImagePickerProcessor {
-        dispatch_once(&Inner.token) {
-            Inner.instance = ImagePickerProcessor()
-        }
+        _ = ImagePickerProcessor.__once
         return Inner.instance!
     }
     struct Inner {
         static var instance: ImagePickerProcessor?
-        static var token: dispatch_once_t = 0
+        static var token: Int = 0
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
         self.imagePickerDidFinishPickingImage(image, picker, editingInfo)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

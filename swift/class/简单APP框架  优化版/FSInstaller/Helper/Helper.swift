@@ -12,33 +12,33 @@
 class Helper {
     
     // 在延迟timeInterval时间后在主线程中执行 task
-    class func doInMainThreadAfter(timeInterval:CGFloat,  task: (() -> Void)){
+    class func doInMainThreadAfter(_ timeInterval:CGFloat,  task: @escaping (() -> Void)){
         if timeInterval < 0 {
             doInMainThread(task)
         }
         else {
             let time = timeInterval * CGFloat(NSEC_PER_SEC)
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(time)), dispatch_get_main_queue(), task)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(time)) / Double(NSEC_PER_SEC), execute: task)
         }
     }
     
-    class func doInMainThread(task: (() -> Void)){
-        dispatch_async(dispatch_get_main_queue(), task)
+    class func doInMainThread(_ task: @escaping (() -> Void)){
+        DispatchQueue.main.async(execute: task)
     }
     
     
     // 在延迟timeInterval时间后在后台线程中执行 task
-    class func doInBackgroundAfter(timeInterval:CGFloat, task: (() -> Void)){
+    class func doInBackgroundAfter(_ timeInterval:CGFloat, task: @escaping (() -> Void)){
         let time = timeInterval * CGFloat(NSEC_PER_SEC)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(time)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), task)
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).asyncAfter(deadline: DispatchTime.now() + Double(Int64(time)) / Double(NSEC_PER_SEC), execute: task)
     }
     
     // 在后台线程中执行
-    class func doInBackground(task:(() -> Void)){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), task)
+    class func doInBackground(_ task:@escaping (() -> Void)){
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: task)
     }
-    class func doInBackground(task:(() -> Void), completion:(() -> Void)){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+    class func doInBackground(_ task:@escaping (() -> Void), completion:@escaping (() -> Void)){
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
             task()
             completion()
         }
@@ -46,15 +46,15 @@ class Helper {
      
     
     // 将数字转化为字母
-    class func num2Char(num:Int) -> String {
+    class func num2Char(_ num:Int) -> String {
         let chs:NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let range:NSRange = NSMakeRange(num-1, 1)
-        return chs.substringWithRange(range)
+        return chs.substring(with: range)
     }
     
     // 用户文件路径
     class func userDocumentDir() -> String{
-        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+        return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
     }
     
     // 调查问卷路径
@@ -71,10 +71,10 @@ class Helper {
     }
     
     // 创建文件夹
-    class func createDir(path:String) -> String {
-        let defaultManager = NSFileManager.defaultManager()
+    class func createDir(_ path:String) -> String {
+        let defaultManager = FileManager.default
         do {
-            try defaultManager.createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil)
+            try defaultManager.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
         } catch {
             
         }
@@ -82,12 +82,12 @@ class Helper {
     }
     
     // 删除文件夹
-    class func removeDir(path: String) {
-        let fileManager = NSFileManager.defaultManager()
+    class func removeDir(_ path: String) {
+        let fileManager = FileManager.default
         
-        if fileManager.fileExistsAtPath(path) {
+        if fileManager.fileExists(atPath: path) {
             do{
-                try fileManager.removeItemAtPath(path)
+                try fileManager.removeItem(atPath: path)
             } catch let error as NSError {
                 print("Could not remove dir at path \(path) \n error: \(error)")
             }
@@ -95,23 +95,23 @@ class Helper {
     }
     
     // 有关用户设置
-    class func saveToUserDefaults(value: AnyObject?, key: String){
+    class func saveToUserDefaults(_ value: AnyObject?, key: String){
         if value != nil {
-            let userDef = NSUserDefaults.standardUserDefaults()
-            userDef.setObject(value, forKey: key)
+            let userDef = UserDefaults.standard
+            userDef.set(value, forKey: key)
             userDef.synchronize()
         } 
     }
-    class func valueForKeyFromUserDefaults(key: String) -> AnyObject? {
-        let userDef = NSUserDefaults.standardUserDefaults()
-        return userDef.objectForKey(key)
+    class func valueForKeyFromUserDefaults(_ key: String) -> AnyObject? {
+        let userDef = UserDefaults.standard
+        return userDef.object(forKey: key) as AnyObject?
     }
     
     class func curDateString() -> String{
-        let date = NSDate()
-        let dateFormat = NSDateFormatter()
+        let date = Date()
+        let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormat.stringFromDate(date)
+        return dateFormat.string(from: date)
     }
     
 //    class func dismissProgressWithCompletion(completion: KVNCompletionBlock!){
@@ -151,36 +151,36 @@ class Helper {
     
     // 有关时间
     class func curTimeString() -> String {
-        return Helper.dateStringWithFormatter(NSDate())
+        return Helper.dateStringWithFormatter(Date())
     }
     class func curTimestamp() -> String{
-        return "\(Int(NSDate().timeIntervalSince1970))"
+        return "\(Int(Date().timeIntervalSince1970))"
     }
     
-    class func dateStringWithFormatter(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
+    class func dateStringWithFormatter(_ date: Date) -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
     
-    class func dateStringWithFormatter(date: NSDate, format: String) -> String {
-        let formatter = NSDateFormatter()
+    class func dateStringWithFormatter(_ date: Date, format: String) -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
     
     class func uuid() -> String{
-        return NSUUID().UUIDString
+        return UUID().uuidString
     }
      
     
-    class func fileExists(filePath: String) -> Bool {
-        return NSFileManager.defaultManager().fileExistsAtPath(filePath)
+    class func fileExists(_ filePath: String) -> Bool {
+        return FileManager.default.fileExists(atPath: filePath)
     }
     
-    class func removeFileWithFilePath(filePath:String) {
+    class func removeFileWithFilePath(_ filePath:String) {
         do {
-            try NSFileManager.defaultManager().removeItemAtPath(filePath)
+            try FileManager.default.removeItem(atPath: filePath)
         }
         catch {
             print("文件删除失败:\(filePath)")

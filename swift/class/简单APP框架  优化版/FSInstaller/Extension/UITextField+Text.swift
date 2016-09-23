@@ -16,7 +16,7 @@ extension UITextField {
         return false
     }
     
-    func textEqualTo(textField: UITextField) -> Bool {
+    func textEqualTo(_ textField: UITextField) -> Bool {
         if self.isEmpty() {
             return false
         }

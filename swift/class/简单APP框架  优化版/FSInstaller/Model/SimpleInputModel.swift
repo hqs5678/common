@@ -7,9 +7,9 @@
 //
 
 enum  SimpleInputType{
-    case Image
-    case Switch
-    case Text
+    case image
+    case `switch`
+    case text
 }
 
 class SimpleInputModel: BaseCellModel {
@@ -33,6 +33,6 @@ class SimpleInputModel: BaseCellModel {
         return
     }
     
-    var inputType: SimpleInputType = .Text
+    var inputType: SimpleInputType = .text
 
 }

@@ -4,74 +4,82 @@
  
 import AFNetworking
  
-typealias HttpRequestCallBack = (isSuccess:Bool, content:AnyObject) -> ()
+typealias HttpRequestCallBack = (_ isSuccess:Bool, _ content:AnyObject) -> ()
  
 class HttpHelper: NSObject {
     
     var manager:AFHTTPSessionManager!
+      
+    static let sharedInstance = HttpHelper()
     
-    class var sharedInstance:HttpHelper{
-        struct Instance {
-            static var onceToken:dispatch_once_t = 0
-            static var instance:HttpHelper?=nil
-        }
-        
-        dispatch_once(&Instance.onceToken, { () -> Void in
-            Instance.instance = HttpHelper()
-            Instance.instance!.manager = AFHTTPSessionManager()
-            Instance.instance!.manager.responseSerializer = AFHTTPResponseSerializer()
-            Instance.instance!.manager.responseSerializer.acceptableContentTypes = ["text/html","text/plain","application/json"]
-            Instance.instance!.manager.requestSerializer = AFJSONRequestSerializer()
-        })
-        
-        return Instance.instance!
+    override init() {
+        super.init()
+        setup()
     }
     
-    func postRequestWithUrl(url:String, params:NSMutableDictionary, callBackClosure:HttpRequestCallBack){
+    fileprivate func setup(){
+        manager = AFHTTPSessionManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer.acceptableContentTypes = ["text/html","text/plain","application/json"]
+        manager.requestSerializer = AFJSONRequestSerializer()
+    }
+    
+    func postRequestWithUrl(_ url:String, params:NSMutableDictionary?, callBackClosure:HttpRequestCallBack?){
         print("----url----",url)
         
-        let para = HttpUtil.sharedInstance.genRequestParams(params)
+        var para: NSDictionary!
+        if params != nil {
+            para = HttpUtil.sharedInstance.genRequestParams(params!)
+            print("----params----",para)
+        }
         
-        print("----params----",para)
+        
        
         manager.requestSerializer.setValue(HttpUtil.sharedInstance.genCertification().mj_JSONString(), forHTTPHeaderField: "certification")
         
-        manager.POST(url, parameters: para,
-                     success: { (task:NSURLSessionDataTask, obj:AnyObject) -> Void in
+        manager.post(url, parameters: para,
+                     success: { (task:URLSessionDataTask, obj:Any) -> Void in
                         
                         // 成功
                         
-                        print("task === \(task)")
-                        if obj.isKindOfClass(NSData.classForCoder()){
-                            print("data obj === \n\n\((obj as! NSData).toString())")
-                            callBackClosure(isSuccess: true,content: (obj as! NSData).mj_JSONObject())
+                        let tmpObj = obj as AnyObject
+                        
+                        print("task === \(task.description)")
+                        
+                        if tmpObj.isKind(of: NSData.classForCoder()){
+                            print("data obj === \n\n\((obj as! Data).toString())")
+                            
+                            callBackClosure?(true, tmpObj)
                         }
-                        else if obj.isKindOfClass(NSDictionary.classForCoder()){
+                        else if tmpObj.isKind(of: NSDictionary.classForCoder()){
                             print("obj === \n\n\(obj)")
-                            callBackClosure(isSuccess: true,content: obj)
+                            
+                            callBackClosure?(true, tmpObj)
                         }
                         else{
                             print("content type error === \(obj)")
-                            callBackClosure(isSuccess: false,content: obj)
+                            
+                            callBackClosure?(false, tmpObj)
                         }
                         
                         
                         
-        }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
+        }) { (task:URLSessionDataTask?, error:Error) -> Void in
             
             // 失败
             
             print("error === \(error)")
-            callBackClosure(isSuccess: false,content: error)
+            
+            callBackClosure?(false,error as AnyObject)
 
         } 
         
     }
     
-    func dict2Json(dict:NSDictionary) -> AnyObject{
+    func dict2Json(_ dict:NSDictionary) -> AnyObject{
         do{
-            let jsonData:NSData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.PrettyPrinted)
-            let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+            let jsonData:Data = try JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
             
             return jsonString!
         } catch{

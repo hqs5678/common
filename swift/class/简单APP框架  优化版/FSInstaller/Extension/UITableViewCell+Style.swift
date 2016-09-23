@@ -10,9 +10,9 @@
 
 extension UITableViewCell{
     
-    public func setSelectedBackgroundColor(color: UIColor){
+    public func setSelectedBackgroundColor(_ color: UIColor){
         
-        let bgview = UIView(frame: CGRectMake(0, 0, 10, 10))
+        let bgview = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         bgview.backgroundColor = color
         self.selectedBackgroundView = bgview
     }

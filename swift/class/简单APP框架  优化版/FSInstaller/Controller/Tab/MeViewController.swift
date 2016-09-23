@@ -10,8 +10,8 @@ import UIKit
 
 class MeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource{
     
-    private var tableView: UITableView!
-    private let data = NSMutableArray()
+    fileprivate var tableView: UITableView!
+    fileprivate let data = NSMutableArray()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +21,20 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
  
    
-    private func setup(){
-        tableView = UITableView(frame: self.view.bounds, style: .Grouped)
+    fileprivate func setup(){
+        tableView = UITableView(frame: self.view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
         
-        var nib = UINib(nibName: "UserHeaderCell", bundle: NSBundle.mainBundle())
-        tableView.registerNib(nib, forCellReuseIdentifier: "UserHeaderCell")
-        nib = UINib(nibName: "BaseCell", bundle: NSBundle.mainBundle())
-        tableView.registerNib(nib, forCellReuseIdentifier: "BaseCell")
+        var nib = UINib(nibName: "UserHeaderCell", bundle: Bundle.main)
+        tableView.register(nib, forCellReuseIdentifier: "UserHeaderCell")
+        nib = UINib(nibName: "BaseCell", bundle: Bundle.main)
+        tableView.register(nib, forCellReuseIdentifier: "BaseCell")
         
-        tableView.registerClass(BaseCell.classForCoder(), forCellReuseIdentifier: "BaseCell");
+        tableView.register(BaseCell.classForCoder(), forCellReuseIdentifier: "BaseCell");
         
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         
         var contentInset = tableView.contentInset
         contentInset.bottom = 130
@@ -46,12 +46,12 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         setupRightItem()
     }
     
-    private func setupData(){
+    fileprivate func setupData(){
         let user = User()
         user.userName = "盖伦"
-        let bundle = NSBundle.mainBundle()
-        user.avatar = bundle.pathForResource("avatar.png", ofType: nil)!
-        data.addObject(user)
+        let bundle = Bundle.main
+        user.avatar = bundle.path(forResource: "avatar.png", ofType: nil)!
+        data.add(user)
         
         var group = NSMutableArray()
         
@@ -61,7 +61,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showIndicator = true
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
@@ -69,7 +69,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.tail = "1"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
@@ -77,9 +77,9 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.tail = "43"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
-        group.addObject(cellModel)
+        group.add(cellModel)
         
-        data.addObject(group)
+        data.add(group)
         
         group = NSMutableArray()
         
@@ -88,7 +88,7 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showIndicator = true
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
@@ -96,16 +96,16 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.tail = "231.5元"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "积分商城"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
-        group.addObject(cellModel)
+        group.add(cellModel)
         
-        data.addObject(group)
+        data.add(group)
         
         group = NSMutableArray()
         
@@ -114,65 +114,65 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         cellModel.title = "服务地址管理"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "联系客服"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "推荐给好友"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = true
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         cellModel = BaseCellModel()
         cellModel.showIndicator = true
         cellModel.title = "更多设置"
         cellModel.iconImage = UIImage(named: "task-s")
         cellModel.showSeparator = false
-        group.addObject(cellModel)
+        group.add(cellModel)
         
         
-        data.addObject(group)
+        data.add(group)
     }
     
-    private func setupRightItem(){
-        let rightItem = UIBarButtonItem(title: "设置", style: .Plain, target: self, action: #selector(MeViewController.onRightBarItemClick))
+    fileprivate func setupRightItem(){
+        let rightItem = UIBarButtonItem(title: "设置", style: .plain, target: self, action: #selector(MeViewController.onRightBarItemClick))
         self.navigationItem.rightBarButtonItem = rightItem
     }
     
-    @objc private func onRightBarItemClick(){
-        let settingVC = SettingTableViewController(style: .Grouped)
+    @objc fileprivate func onRightBarItemClick(){
+        let settingVC = SettingTableViewController(style: .grouped)
         settingVC.hidesBottomBarWhenPushed = true
         pushVC(settingVC)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }
         else {
-            return (data.objectAtIndex(section) as! NSArray).count
+            return (data.object(at: section) as! NSArray).count
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserHeaderCell", forIndexPath: indexPath) as! UserHeaderCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserHeaderCell", for: indexPath) as! UserHeaderCell
             cell.user = data[0] as! User
             return cell
         }
         else {
-            let cell: BaseCell = tableView.dequeueReusableCellWithIdentifier("BaseCell", forIndexPath: indexPath) as! BaseCell
+            let cell: BaseCell = tableView.dequeueReusableCell(withIdentifier: "BaseCell", for: indexPath) as! BaseCell
             let model = self.modelForIndexPath(indexPath)
             
             cell.model = model
@@ -182,31 +182,31 @@ class MeViewController: BaseViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0 {
             return 160
         }
         return 50
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0.000001
         }
         return 20
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.00001
     }
     
-    private func modelForIndexPath(indexPath: NSIndexPath) -> BaseCellModel {
-        let model = (data.objectAtIndex(indexPath.section) as! NSArray).objectAtIndex(indexPath.row) as! BaseCellModel
+    fileprivate func modelForIndexPath(_ indexPath: IndexPath) -> BaseCellModel {
+        let model = (data.object(at: (indexPath as NSIndexPath).section) as! NSArray).object(at: (indexPath as NSIndexPath).row) as! BaseCellModel
         return model
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

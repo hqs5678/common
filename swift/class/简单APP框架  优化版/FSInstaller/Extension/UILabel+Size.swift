@@ -8,9 +8,9 @@
 
 extension UILabel {
      
-    func boundWithSize(size: CGSize) -> CGRect {
+    func boundWithSize(_ size: CGSize) -> CGRect {
         
-        return self.attributedText!.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, context: nil)
+        return self.attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
     }
 }
 

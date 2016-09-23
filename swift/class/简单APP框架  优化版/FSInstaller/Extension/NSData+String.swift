@@ -8,11 +8,11 @@
 
 
 
-extension NSData{
+extension Data{
     
     
     func toString() -> String{
-        let str = NSString(data: self, encoding: NSUTF8StringEncoding)
+        let str = NSString(data: self, encoding: String.Encoding.utf8.rawValue)
         return str as! String
     }
     

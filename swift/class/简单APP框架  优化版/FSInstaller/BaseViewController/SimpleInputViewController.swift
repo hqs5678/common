@@ -12,27 +12,27 @@
 class SimpleInputViewController: BaseTableViewController {
     
     
-    private var selectPicIndex: Int!
+    fileprivate var selectPicIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerClass(SimpleInputCell.classForCoder(), forCellReuseIdentifier: "SimpleInputCell")
+        self.tableView.register(SimpleInputCell.classForCoder(), forCellReuseIdentifier: "SimpleInputCell")
         self.tableView.allowsSelection = false
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: SimpleInputCell = tableView.dequeueReusableCellWithIdentifier("SimpleInputCell", forIndexPath: indexPath) as! SimpleInputCell
+        let cell: SimpleInputCell = tableView.dequeueReusableCell(withIdentifier: "SimpleInputCell", for: indexPath) as! SimpleInputCell
         
-        let tmpArray: NSArray = self.data[indexPath.section] as! NSArray
-        let model = tmpArray[indexPath.row] as! SimpleInputModel
+        let tmpArray: NSArray = self.data[(indexPath as NSIndexPath).section] as! NSArray
+        let model = tmpArray[(indexPath as NSIndexPath).row] as! SimpleInputModel
         
-        if model.inputType == SimpleInputType.Text {
+        if model.inputType == SimpleInputType.text {
             cell.inputModel = model
-            cell.textField.font = cell.textField.font?.fontWithSize(14)
+            cell.textField.font = cell.textField.font?.withSize(14)
         }
         else{
             cell.setModel(model, indexPath: indexPath)
@@ -42,21 +42,21 @@ class SimpleInputViewController: BaseTableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let tmpArray: NSArray = self.data[section] as! NSArray
         let model = tmpArray[0] as! SimpleInputModel
         return model.title 
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let tmpArray: NSArray = self.data[indexPath.section] as! NSArray
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tmpArray: NSArray = self.data[(indexPath as NSIndexPath).section] as! NSArray
         
         let model = tmpArray[0] as! SimpleInputModel
-        if model.inputType == SimpleInputType.Image {
+        if model.inputType == SimpleInputType.image {
             // 选择图片上传
             
             
@@ -64,11 +64,11 @@ class SimpleInputViewController: BaseTableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let tmpArray: NSArray = self.data[indexPath.section] as! NSArray
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let tmpArray: NSArray = self.data[(indexPath as NSIndexPath).section] as! NSArray
         let model = tmpArray[0] as! SimpleInputModel
         
-        if model.inputType == SimpleInputType.Text || model.inputType == SimpleInputType.Switch{
+        if model.inputType == SimpleInputType.text || model.inputType == SimpleInputType.switch{
             return 44
         }
         else{
@@ -76,7 +76,7 @@ class SimpleInputViewController: BaseTableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         if section != self.data.count - 1 {
             return super.tableView(tableView, heightForFooterInSection: section)
@@ -86,21 +86,21 @@ class SimpleInputViewController: BaseTableViewController {
     }
     
     
-    func selectImage(button: UIButton) -> Void {
+    func selectImage(_ button: UIButton) -> Void {
         
         self.selectPicIndex = button.tag
         self.selectMultiPic()
     }
     
-    override func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         let tmpArray = data[self.selectPicIndex] as! NSArray
         let model = tmpArray[0] as! SimpleInputModel
         model.image = image
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: self.selectPicIndex)
+        let indexPath = IndexPath(row: 0, section: self.selectPicIndex)
         
-        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     
