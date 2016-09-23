@@ -23,10 +23,10 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         // 测试
         self.imgView.backgroundColor = UIColor.colorRandom()
-        self.titleLabel.textColor = UIColor.whiteColor()
+        self.titleLabel.textColor = UIColor.white
     }
     
-    private func setupModel(){
+    fileprivate func setupModel(){
         self.titleLabel.text = self.model.title
     }
  

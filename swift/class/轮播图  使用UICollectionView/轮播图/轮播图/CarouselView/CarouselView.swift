@@ -15,8 +15,8 @@ class CarouselView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var pageControll: UIPageControl!
-    private var timer: NSTimer!
-    var timeInterval: NSTimeInterval = 1
+    fileprivate var timer: Timer!
+    var timeInterval: TimeInterval = 1
     
     var isAutoPlay: Bool = false {
         didSet{
@@ -24,7 +24,7 @@ class CarouselView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
     
-    private var preIsAutoPlay: Bool!
+    fileprivate var preIsAutoPlay: Bool!
     
     var didClickItemAt = {
         (index: Int) -> Void in
@@ -51,19 +51,19 @@ class CarouselView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     
     
     class func  viewFromNib() -> CarouselView {
-        return NSBundle.mainBundle().loadNibNamed("CarouselView", owner: nil, options: nil).first as! CarouselView
+        return Bundle.main.loadNibNamed("CarouselView", owner: nil, options: nil)!.first as! CarouselView
     }
     
     
-    private func setup(){
+    fileprivate func setup(){
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        let nib = UINib(nibName: "CarouselCollectionViewCell", bundle: NSBundle.mainBundle())
-        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "CarouselCollectionViewCell")
-        self.userInteractionEnabled = true
-        self.collectionView.backgroundColor = UIColor.whiteColor()
+        let nib = UINib(nibName: "CarouselCollectionViewCell", bundle: Bundle.main)
+        self.collectionView.register(nib, forCellWithReuseIdentifier: "CarouselCollectionViewCell")
+        self.isUserInteractionEnabled = true
+        self.collectionView.backgroundColor = UIColor.white
     }
     
     
@@ -76,64 +76,64 @@ class CarouselView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        let offset = CGPointMake(self.frame.size.width * CGFloat(kNumberOfItemCarouselView / 2 * self.models.count), 0)
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        let offset = CGPoint(x: self.frame.size.width * CGFloat(kNumberOfItemCarouselView / 2 * self.models.count), y: 0)
         self.collectionView.setContentOffset(offset , animated: false)
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.models.count * kNumberOfItemCarouselView
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CarouselCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("CarouselCollectionViewCell", forIndexPath: indexPath) as! CarouselCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: CarouselCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
          
-        let mo = models[indexPath.row % self.models.count] as! CarouselCollectionViewCellModel
+        let mo = models[(indexPath as NSIndexPath).row % self.models.count] as! CarouselCollectionViewCellModel
         cell.model = mo
         
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: IndexPath!) -> CGSize{
         
         return self.bounds.size
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.didClickItemAt(indexPath.row % self.models.count)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.didClickItemAt((indexPath as NSIndexPath).row % self.models.count)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.pageControll.currentPage = Int(self.collectionView.contentOffset.x / self.frame.size.width) % self.models.count
         // 避免到头 手动调整  实现无限循环效果
         if self.collectionView.contentOffset.x > CGFloat(self.models.count * (kNumberOfItemCarouselView - 1)) * self.frame.size.width
             || self.collectionView.contentOffset.x < CGFloat(self.models.count) * self.frame.size.width {
             
-            let offset1 = CGPointMake(self.frame.size.width * CGFloat(self.models.count + self.pageControll.currentPage), 0)
+            let offset1 = CGPoint(x: self.frame.size.width * CGFloat(self.models.count + self.pageControll.currentPage), y: 0)
             self.collectionView.setContentOffset(offset1 , animated: false)
 //            print("-----shoudong调整------")
         }
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 
         self.preIsAutoPlay = self.isAutoPlay
         self.isAutoPlay = false
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.isAutoPlay = self.preIsAutoPlay
         self.preIsAutoPlay = nil
     }
     
-    private func updateAutoDisplay(){
+    fileprivate func updateAutoDisplay(){
         if isAutoPlay{
             if self.timer != nil {
                 self.timer.invalidate()
             }
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(self.timeInterval, target: self, selector: #selector(CarouselView.sutoScroll), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: self.timeInterval, target: self, selector: #selector(CarouselView.sutoScroll), userInfo: nil, repeats: true)
         }
         else {
             if self.timer != nil {
@@ -143,11 +143,11 @@ class CarouselView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
     
-    @objc private func sutoScroll(){
+    @objc fileprivate func sutoScroll(){
         // 避免自动播放到头
         if self.collectionView.contentOffset.x > CGFloat(self.models.count * (kNumberOfItemCarouselView - 1)) * self.frame.size.width {
             
-            let offset1 = CGPointMake(self.frame.size.width * CGFloat(self.models.count + self.pageControll.currentPage), 0)
+            let offset1 = CGPoint(x: self.frame.size.width * CGFloat(self.models.count + self.pageControll.currentPage), y: 0)
             self.collectionView.setContentOffset(offset1 , animated: false)
 //            print("-----自动播放调整------")
         }

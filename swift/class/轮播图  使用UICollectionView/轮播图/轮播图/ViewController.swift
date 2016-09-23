@@ -22,12 +22,12 @@ class ViewController: UIViewController {
             let mo = CarouselCollectionViewCellModel()
             mo.title = "\(i)"
             mo.imageName = "image-\(i)"
-            models.addObject(mo)
+            models.add(mo)
         }
         
         
         self.carouselView = CarouselView.viewFromNib()
-        self.carouselView.frame = CGRectMake(0, 0, self.view.frame.size.width, 300)
+        self.carouselView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
         self.view.addSubview(self.carouselView)
         
         self.carouselView.models = models
@@ -37,13 +37,13 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func startAnimation(sender: AnyObject) {
+    @IBAction func startAnimation(_ sender: AnyObject) {
         
         self.carouselView.isAutoPlay = true
         
     }
     
-    @IBAction func stopPlay(sender: AnyObject) {
+    @IBAction func stopPlay(_ sender: AnyObject) {
         self.carouselView.isAutoPlay = false
     }
     

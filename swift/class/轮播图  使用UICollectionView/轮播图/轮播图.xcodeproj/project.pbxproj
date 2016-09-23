@@ -123,6 +123,7 @@
 					BF7049BD1D3CC05100ED16B3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V6E9T3LZ88;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -286,6 +287,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hqs.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -297,6 +299,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hqs.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -319,6 +322,7 @@
 				BF7049D21D3CC05100ED16B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
