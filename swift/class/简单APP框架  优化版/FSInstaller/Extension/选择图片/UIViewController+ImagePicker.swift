@@ -90,10 +90,6 @@ extension UIViewController{
         imagePickerController.delegate = self.imagePickerProcessor
         imagePickerController.sourceType = source
         
-        imagePickerController.navigationBar.tintColor = self.navigationController?.navigationBar.tintColor
-        imagePickerController.navigationBar.barTintColor = self.navigationController?.navigationBar.barTintColor
-        imagePickerController.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.titleTextAttributes
-        
         self.present(imagePickerController, animated: true, completion: nil)
         
         self.imagePickerProcessor.imagePickerDidFinishPickingImage = {

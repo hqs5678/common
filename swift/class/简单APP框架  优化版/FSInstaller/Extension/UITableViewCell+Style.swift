@@ -19,9 +19,9 @@ extension UITableViewCell{
     
     
     // 个性设置   复用本文件时可忽略掉
-//    public func setupCellStyle(){
-//        
-//        self.layer.masksToBounds = true
-//        setSelectedBackgroundColor(kSelectedRowBackgroundColor)
-//    }
+    public func setupCellStyle(){
+        
+        self.layer.masksToBounds = true
+        setSelectedBackgroundColor(kSelectedRowBackgroundColor)
+    }
 }

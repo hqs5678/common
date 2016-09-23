@@ -29,4 +29,8 @@ extension UITextField {
             }
         }
     }
+    
+    func setPlaceholderTextColor(_ color: UIColor) {
+        self.attributedPlaceholder = NSMutableAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName : color])
+    }
 }

@@ -6,11 +6,11 @@
 //  Copyright © 2016年 hqs. All rights reserved.
 //
 
-//import Foundation
-//import UIKit
-//
-//extension UIImageView{
-//    
+import Foundation
+import UIKit
+
+extension UIImageView{
+    
 //    func setOSSObjectKey(_ objectKey: String){
 //        self.setOSSObjectKey(objectKey, placeholderImage: nil)
 //    }
@@ -26,11 +26,11 @@
 //        }
 //    }
 //    
-//    func setOSSObjectKey(_ objectKey: String, placeholderImage: UIImage?, downloadProgress: ((progress: CGFloat) -> ()), completion: ((data: Data) -> Void)){
+//    func setOSSObjectKey(_ objectKey: String, placeholderImage: UIImage?, downloadProgress: @escaping ((_ progress: CGFloat) -> ()), completion: @escaping ((_ data: Data) -> Void)){
 //        
 //        let fileName = objectKey.md5
 //        let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/"
-//        let file = cachePath + fileName
+//        let file = cachePath + fileName!
 //        let fileM = FileManager.default
 //        
 //        
@@ -39,7 +39,7 @@
 //        // 判读文件是否存在
 //        if fileM.fileExists(atPath: file) {
 //            self.image = UIImage(contentsOfFile: file)
-//            completion(data: try! Data(contentsOf: URL(fileURLWithPath: file)))
+//            completion(try! Data(contentsOf: URL(fileURLWithPath: file)))
 //        }
 //        else{
 //            if placeholderImage != nil {
@@ -71,6 +71,6 @@
 //            }
 //        }
 //    }
-//
-//
-//}
+
+
+}
