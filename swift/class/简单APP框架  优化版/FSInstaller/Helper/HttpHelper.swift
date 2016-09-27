@@ -1,7 +1,4 @@
  
-
-
- 
 import AFNetworking
  
 typealias HttpRequestCallBack = (_ isSuccess:Bool, _ content:AnyObject) -> ()
@@ -10,7 +7,7 @@ class HttpHelper: NSObject {
     
     var manager:AFHTTPSessionManager!
       
-    static let sharedInstance = HttpHelper()
+    static let shared = HttpHelper()
     
     override init() {
         super.init()
@@ -25,44 +22,21 @@ class HttpHelper: NSObject {
     }
     
     func postRequestWithUrl(_ url:String, params:NSMutableDictionary?, callBackClosure:HttpRequestCallBack?){
+        
+        let header = HttpUtil.sharedInstance.genCertification().mj_JSONString()
+        manager.requestSerializer.setValue(header, forHTTPHeaderField: "header")
+        
         print("----url----",url)
+        print("----params----",params)
+        print("----header----",HttpUtil.sharedInstance.genCertification())
         
-        var para: NSDictionary!
-        if params != nil {
-            para = HttpUtil.sharedInstance.genRequestParams(params!)
-            print("----params----",para)
-        }
-        
-        
-       
-        manager.requestSerializer.setValue(HttpUtil.sharedInstance.genCertification().mj_JSONString(), forHTTPHeaderField: "certification")
-        
-        manager.post(url, parameters: para,
-                     success: { (task:URLSessionDataTask, obj:Any) -> Void in
+        manager.post(url, parameters: params,
+                     success: { [weak self](task:URLSessionDataTask, obj:Any) -> Void in
                         
                         // 成功
-                        
-                        let tmpObj = obj as AnyObject
+                        self?.dealResult(result: obj, callBackClosure: callBackClosure)
                         
                         print("task === \(task.description)")
-                        
-                        if tmpObj.isKind(of: NSData.classForCoder()){
-                            print("data obj === \n\n\((obj as! Data).toString())")
-                            
-                            callBackClosure?(true, tmpObj)
-                        }
-                        else if tmpObj.isKind(of: NSDictionary.classForCoder()){
-                            print("obj === \n\n\(obj)")
-                            
-                            callBackClosure?(true, tmpObj)
-                        }
-                        else{
-                            print("content type error === \(obj)")
-                            
-                            callBackClosure?(false, tmpObj)
-                        }
-                        
-                        
                         
         }) { (task:URLSessionDataTask?, error:Error) -> Void in
             
@@ -72,20 +46,35 @@ class HttpHelper: NSObject {
             
             callBackClosure?(false,error as AnyObject)
 
-        } 
-        
-    }
-    
-    func dict2Json(_ dict:NSDictionary) -> AnyObject{
-        do{
-            let jsonData:Data = try JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
-            let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
-            
-            return jsonString!
-        } catch{
-            print("-----dict2json error----")
-            return dict
         }
     }
-     
+    
+    private func dealResult(result: Any, callBackClosure:HttpRequestCallBack?){
+      
+        let tmpObj = result as AnyObject
+        if tmpObj.isKind(of: NSData.classForCoder()){
+            print("data obj === \n\n\((tmpObj as! Data).toString())")
+        }
+        else{
+            print("content type error === \(tmpObj)")
+        }
+        
+        let hresult = HttpResult()
+        hresult.mj_setKeyValues(result)
+        
+        
+        if hresult.state {
+            callBackClosure?(true, hresult.data!)
+        }
+        else {
+            callBackClosure?(false, hresult.msg as AnyObject)
+        }
+    }
+    
+ }
+ 
+ class HttpResult: NSObject {
+    lazy var state = false
+    lazy var msg = ""
+    var data: AnyObject?
  }
