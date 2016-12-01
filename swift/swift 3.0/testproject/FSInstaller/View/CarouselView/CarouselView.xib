@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarouselView" customModule="FSInstaller" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="EaO-ry-lV5" customClass="CarouselView" customModule="FSInstaller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Apk-ay-WXv">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="30U-eO-eVa">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RBa-w7-ft6">
+                    <color key="pageIndicatorTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Apk-ay-WXv" firstAttribute="top" secondItem="EaO-ry-lV5" secondAttribute="top" id="6qC-fM-pwS"/>
+                <constraint firstAttribute="trailing" secondItem="Apk-ay-WXv" secondAttribute="trailing" id="6v4-vS-0uV"/>
+                <constraint firstItem="Apk-ay-WXv" firstAttribute="leading" secondItem="EaO-ry-lV5" secondAttribute="leading" id="DLh-sT-J02"/>
+                <constraint firstAttribute="bottom" secondItem="Apk-ay-WXv" secondAttribute="bottom" id="UCU-r4-lEn"/>
+                <constraint firstAttribute="bottom" secondItem="RBa-w7-ft6" secondAttribute="bottom" id="bQZ-Vc-phw"/>
+                <constraint firstAttribute="trailing" secondItem="RBa-w7-ft6" secondAttribute="trailing" id="iim-Ka-42S"/>
+                <constraint firstItem="RBa-w7-ft6" firstAttribute="leading" secondItem="EaO-ry-lV5" secondAttribute="leading" id="qtl-yx-44l"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="Apk-ay-WXv" id="3ux-L3-rWQ"/>
+                <outlet property="pageControll" destination="RBa-w7-ft6" id="agy-4A-hJG"/>
+            </connections>
+            <point key="canvasLocation" x="536" y="26"/>
+        </view>
+    </objects>
+</document>

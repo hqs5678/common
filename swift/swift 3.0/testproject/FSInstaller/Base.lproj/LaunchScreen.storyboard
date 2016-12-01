@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bg" translatesAutoresizingMaskIntoConstraints="NO" id="WN4-Xp-O5l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版权所有: 北京富顺天牧科技有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMP-Pf-hHF">
+                                <rect key="frame" x="0.0" y="559" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ml6-24-bJG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.61176470588235299" green="0.55294117647058827" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fxa-xm-50n">
+                                <rect key="frame" x="127.5" y="113" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="48J-Fs-BV8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="52F-Wb-4hh"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_word" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-aA-Vs6">
+                                <rect key="frame" x="79.5" y="258" width="216" height="22"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="RbE-aA-Vs6" firstAttribute="top" secondItem="fxa-xm-50n" secondAttribute="bottom" constant="25" id="2oU-Pv-hGf"/>
+                            <constraint firstItem="RbE-aA-Vs6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-64.5" id="Cba-Ex-XvH"/>
+                            <constraint firstItem="fxa-xm-50n" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DOX-dW-FOc"/>
+                            <constraint firstAttribute="trailing" secondItem="WN4-Xp-O5l" secondAttribute="trailing" id="Jtz-uu-Y5C"/>
+                            <constraint firstItem="WN4-Xp-O5l" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="N8S-cv-9N8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xMP-Pf-hHF" secondAttribute="trailing" constant="-16" id="U1w-cv-JnV"/>
+                            <constraint firstItem="xMP-Pf-hHF" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="WFC-0H-LOV"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="xMP-Pf-hHF" secondAttribute="bottom" constant="87" id="WV2-YQ-RWv"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="WN4-Xp-O5l" secondAttribute="bottom" id="Zjd-Sb-ksQ"/>
+                            <constraint firstItem="fxa-xm-50n" firstAttribute="width" secondItem="WN4-Xp-O5l" secondAttribute="width" multiplier="0.32" id="iET-Q0-wZR"/>
+                            <constraint firstItem="RbE-aA-Vs6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="imV-yG-wzx"/>
+                            <constraint firstItem="WN4-Xp-O5l" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mg3-RL-G6g"/>
+                            <constraint firstItem="RbE-aA-Vs6" firstAttribute="width" secondItem="fxa-xm-50n" secondAttribute="width" multiplier="1.8" id="nLH-sH-SUW"/>
+                            <constraint firstItem="fxa-xm-50n" firstAttribute="height" secondItem="WN4-Xp-O5l" secondAttribute="width" multiplier="0.32" id="vp5-13-Wvm"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="login-bg" width="750" height="1334"/>
+        <image name="logo" width="170" height="170"/>
+        <image name="logo_word" width="142" height="22"/>
+    </resources>
+</document>

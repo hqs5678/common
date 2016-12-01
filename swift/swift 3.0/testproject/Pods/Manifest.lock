@@ -1,0 +1,60 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BaiduMapKit (3.0.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - MBProgressHUD (1.0.0)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.0.8)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SimpleKeychain (0.7.0)
+  - UMengAnalytics-NO-IDFA (4.0.5)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.6.3)
+  - BaiduMapKit (~> 3.0.0)
+  - FMDB (~> 2.6.2)
+  - MBProgressHUD (~> 1.0.0)
+  - MJExtension (~> 3.0.10)
+  - MJRefresh (~> 3.0.8)
+  - SDWebImage (~> 3.8.1)
+  - SimpleKeychain (~> 0.7.0)
+  - UMengAnalytics-NO-IDFA (~> 4.0.5)
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
+  UMengAnalytics-NO-IDFA: 965a219b05475ff2a4c09a164139a27bbaa0e25b
+
+PODFILE CHECKSUM: 77ac7cb8ea87c0a18f27ee18dfdb96dfc2561f8f
+
+COCOAPODS: 1.0.1
