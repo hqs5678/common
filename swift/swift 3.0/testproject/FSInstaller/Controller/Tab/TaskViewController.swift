@@ -30,7 +30,9 @@ class TaskViewController: BaseTabViewController {
         // 下拉刷新
         refreshHeader = RefreshNormalHeader(refreshingBlock: {
             [weak self] in
-            
+            doInMainThreadAfter(1, task: {
+                self?.refreshHeader.endRefreshing()
+            })
             return
         }) 
         
