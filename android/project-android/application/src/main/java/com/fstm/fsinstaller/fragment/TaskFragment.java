@@ -14,7 +14,6 @@ import com.fstm.fsinstaller.adapter.TaskFragmentListViewAdapter;
 import com.fstm.fsinstaller.helper.ActivityHelper;
 import com.fstm.fsinstaller.helper.Helper;
 import com.fstm.fsinstaller.model.MenuListItemModel;
-import com.fstm.fsinstaller.model.TaskStat;
 import com.fstm.fsinstaller.veiw.SearchView;
 
 import java.util.ArrayList;
@@ -143,15 +142,6 @@ public class TaskFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     public void updateStat() {
 
-        if (menuModels != null){
-            menuModels.get(1).tail = TaskStat.getInstance().waitToDoorNum;
-            menuModels.get(2).tail = TaskStat.getInstance().havingTaskNum;
-            menuModels.get(3).tail = TaskStat.getInstance().checkingNum;
-            menuModels.get(4).tail = TaskStat.getInstance().checkFailedNum;
-            menuModels.get(5).tail = TaskStat.getInstance().finishedTaskNum;
-            menuModels.get(6).tail = TaskStat.getInstance().overtimeTaskNum;
 
-            adapter.notifyDataSetChanged();
-        }
     }
 }

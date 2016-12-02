@@ -20,7 +20,6 @@ import com.fstm.fsinstaller.helper.ActivityHelper;
 import com.fstm.fsinstaller.helper.Helper;
 import com.fstm.fsinstaller.model.MenuListItemModel;
 import com.fstm.fsinstaller.model.MyHeadViewModel;
-import com.fstm.fsinstaller.model.TaskStat;
 import com.fstm.fsinstaller.utils.FileUtil;
 import com.fstm.fsinstaller.veiw.MeComponent;
 import com.fstm.fsinstaller.veiw.SingleSelectDialog;
@@ -209,10 +208,6 @@ public class MeFragment extends BaseFragment implements SwipeRefreshLayout.OnRef
 
     @Override
     public void updateStat() {
-        if (menuModels != null){
-            menuModels.get(1).tail = TaskStat.getInstance().newTaskNum;
-            menuModels.get(2).tail = TaskStat.getInstance().countTaskNum;
-            adapter.notifyDataSetChanged();
-        }
+
     }
 }

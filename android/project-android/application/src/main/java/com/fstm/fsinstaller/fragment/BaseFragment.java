@@ -8,16 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.fstm.fsinstaller.R;
-import com.fstm.fsinstaller.app.Constant;
-import com.fstm.fsinstaller.helper.Helper;
-import com.fstm.fsinstaller.helper.HttpHelper;
-import com.fstm.fsinstaller.model.TaskStat;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by apple on 16/9/29.

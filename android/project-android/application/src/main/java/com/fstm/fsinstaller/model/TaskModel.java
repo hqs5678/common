@@ -74,8 +74,6 @@ public class TaskModel {
     @Column(name = "record")
     public String record;
 
-    public ArrayList<TaskRecord> records;
-
 
     public TaskModel(){}
 
