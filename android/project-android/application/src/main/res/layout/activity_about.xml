@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hqs.view.NavigationBarLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    android:orientation="vertical"
+    app:navigationBarBackgroundColor="@color/colorPrimary"
+    app:navigationBarHeight="@dimen/titleBarHeight"
+    app:navigationBarTitle="关于">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/marginEdge"
+            android:src="@mipmap/logo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/marginEdge"
+            android:src="@mipmap/logo_word"
+            android:tint="@color/titleColorLight" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"/>
+
+</com.hqs.view.NavigationBarLinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fstm.fsinstaller.veiw.MenuListItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listViewRowHeight"
+    android:background="@color/whiteColor">
+
+    <!--标题-->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listViewRowHeight"
+        android:gravity="center"
+        android:text="this is title"
+        android:textColor="@color/titleColor"
+        android:textSize="@dimen/fontSize" />
+
+    <!--divider-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dividerColor" />
+
+
+</com.fstm.fsinstaller.veiw.MenuListItemView>
+
+

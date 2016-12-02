@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hqs.view.NavigationBarLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_get_user_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    android:orientation="vertical"
+    app:navigationBarBackgroundColor="@color/colorPrimary"
+    app:navigationBarHeight="@dimen/titleBarHeight"
+    app:navigationBarTitle="请输入">
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/marginEdge"
+        android:background="@color/whiteColor"
+        android:gravity="top"
+        android:padding="@dimen/marginEdge"
+        android:textColor="@color/titleColor"
+        android:textSize="@dimen/fontSize" />
+
+</com.hqs.view.NavigationBarLinearLayout>

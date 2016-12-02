@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hqs.view.NavigationBarLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_single_select"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    android:orientation="vertical"
+    app:navigationBarBackgroundColor="@color/colorPrimary"
+    app:navigationBarHeight="@dimen/titleBarHeight"
+    app:navigationBarTitle="请选择">
+
+    <ListView
+        android:id="@+id/lv_select"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:listSelector="@color/redColor" />
+
+</com.hqs.view.NavigationBarLinearLayout>

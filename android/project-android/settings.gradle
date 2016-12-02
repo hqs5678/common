@@ -1,0 +1,1 @@
+include ':application', ':WheelPicker', ':hqs', ':takephoto_library', ':multipleimageselect', ':togglebutton', ':logreport'

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fstm.fsinstaller.veiw.MenuListItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listViewRowHeight"
+    android:background="@color/whiteColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/marginEdge">
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/imageWHOfListView"
+            android:layout_height="@dimen/imageWHOfListView"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/marginEdge"
+            android:scaleType="center"
+            android:src="@mipmap/message" />
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_icon"
+            android:gravity="left|center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:paddingBottom="@dimen/marginEdge"
+            android:paddingTop="@dimen/marginEdge"
+            android:text="this is title"
+            android:textColor="@color/titleColor"
+            android:textSize="@dimen/fontSize" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/marginEdge"
+            android:gravity="right|center_vertical">
+
+            <!--tail-->
+            <TextView
+                android:id="@+id/tv_tail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/img_indicator"
+                android:text="this is tail"
+                android:textColor="@color/titleColor"
+                android:textSize="@dimen/fontSizeSmall" />
+
+            <!--箭头-->
+            <ImageView
+                android:id="@+id/img_indicator"
+                android:layout_width="@dimen/indicatorWH"
+                android:layout_height="@dimen/indicatorWH"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="-4dp"
+                android:rotation="180"
+                android:src="@mipmap/back"
+                android:tint="@color/indicatorTintColor"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <!--divider-->
+    <TextView
+        android:id="@+id/tv_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dividerColor" />
+
+
+</com.fstm.fsinstaller.veiw.MenuListItemView>
+
+

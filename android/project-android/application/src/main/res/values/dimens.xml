@@ -1,0 +1,66 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="tabBarHeight">60dp</dimen>
+    <!--系统默认的tool bar 的高-->
+    <dimen name="titleBarHeight">56dp</dimen>
+    <dimen name="titleFontSize">17sp</dimen>
+    <dimen name="itemFontSize">15sp</dimen>
+    <dimen name="fontSize">15sp</dimen>
+    <dimen name="fontSizeSmall">13sp</dimen>
+    <dimen name="marginEdge">10dp</dimen>
+    <dimen name="backImageWidth">20dp</dimen>
+    <dimen name="loginInputViewWidth">300dp</dimen>
+    <dimen name="loginButtonWidth">280dp</dimen>
+    <dimen name="inputViewHeight">40dp</dimen>
+    <!--按钮圆角的大小-->
+    <dimen name="cornerRadius">6dp</dimen>
+
+    <dimen name="buttonWidth">280dp</dimen>
+    <dimen name="buttonHeight">38dp</dimen>
+    <dimen name="buttonWidthSmall">130dp</dimen>
+
+    <!--有关list view-->
+    <dimen name="imageWHOfListView">35dp</dimen>
+    <dimen name="listViewRowHeight">58dp</dimen>
+    <dimen name="dividerHeight">1px</dimen>
+    <dimen name="dividerHeightSection">15dp</dimen>
+    <dimen name="listViewRowHeightMessage">70dp</dimen>
+    <dimen name="imageWHOfListViewMessage">40dp</dimen>
+
+    <!--header-->
+    <dimen name="headerHeight">180dp</dimen>
+    <dimen name="headerImageWH">110dp</dimen>
+    <dimen name="headerLittleImageWH">23dp</dimen>
+
+    <!--行距-->
+    <dimen name="lineSpacingExtra">5dp</dimen>
+
+    <!--任务-->
+    <dimen name="searchViewHeight">32dp</dimen>
+
+    <!--反馈界面-->
+    <dimen name="inputContentViewHeight">100dp</dimen>
+    <dimen name="minusButtonSize">28dp</dimen>
+
+    <!--选择图片控件的高度-->
+    <dimen name="selectPhotoViewHeight">80dp</dimen>
+
+    <!--toggle size-->
+    <dimen name="toggleButtonW">50dp</dimen>
+    <dimen name="toggleButtonH">22dp</dimen>
+
+    <!--修改密码-->
+    <dimen name="titleWidth">80dp</dimen>
+
+    <!--圆形进度条的大小-->
+    <dimen name="circleProgressWH">90dp</dimen>
+
+    <dimen name="timeoutBgHeight">40dp</dimen>
+    <dimen name="rowHeightLower">40dp</dimen>
+
+
+</resources>

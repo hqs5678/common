@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hqs.view.NavigationBarLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:toggle="http://schemas.android.com/tools"
+    android:id="@+id/activity_search_task"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    android:orientation="vertical"
+    app:navigationBarBackgroundColor="@color/colorPrimary"
+    app:navigationBarHeight="@dimen/titleBarHeight"
+    app:navigationBarTitle="搜索">
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listViewRowHeight"
+        android:background="@color/whiteColor">
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginEdge"
+            android:text="请输入搜索条件"
+            android:textColor="@color/titleColor"
+            android:textSize="@dimen/fontSize" />
+
+    </RelativeLayout>
+
+</com.hqs.view.NavigationBarLinearLayout>

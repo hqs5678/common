@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fstm.fsinstaller.veiw.ToggleListItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toggle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listViewRowHeight"
+    android:background="@color/whiteColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listViewRowHeight"
+        android:layout_marginLeft="@dimen/marginEdge">
+
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_icon"
+            android:text="this is title"
+            android:textColor="@color/titleColor"
+            android:textSize="@dimen/fontSize" />
+
+
+        <com.zcw.togglebutton.ToggleButton
+            android:id="@+id/btn_toggle"
+            android:layout_width="@dimen/toggleButtonW"
+            android:layout_height="@dimen/toggleButtonH"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/marginEdge"
+            toggle:tbBorderWidth="1dp"
+            toggle:tbAnimate = "false"
+            toggle:tbOffBorderColor="@color/lightGrayColor"
+            toggle:tbOffColor="@color/lightGrayColor"
+            toggle:tbOnColor="@color/colorAccent"
+            toggle:tbRadius="2dp"
+            toggle:tbSpotColor="@color/whiteColor" />
+
+    </RelativeLayout>
+
+    <!--divider-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dividerColor" />
+
+
+</com.fstm.fsinstaller.veiw.ToggleListItemView>
+
+

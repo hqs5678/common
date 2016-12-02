@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WheelPicker/WheelPicker.iml" filepath="$PROJECT_DIR$/WheelPicker/WheelPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/application/application.iml" filepath="$PROJECT_DIR$/application/application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hqs/hqs.iml" filepath="$PROJECT_DIR$/hqs/hqs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logreport/logreport.iml" filepath="$PROJECT_DIR$/logreport/logreport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multipleimageselect/multipleimageselect.iml" filepath="$PROJECT_DIR$/multipleimageselect/multipleimageselect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-android.iml" filepath="$PROJECT_DIR$/project-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/takephoto_library/takephoto_library.iml" filepath="$PROJECT_DIR$/takephoto_library/takephoto_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/togglebutton/togglebutton.iml" filepath="$PROJECT_DIR$/togglebutton/togglebutton.iml" />
+    </modules>
+  </component>
+</project>

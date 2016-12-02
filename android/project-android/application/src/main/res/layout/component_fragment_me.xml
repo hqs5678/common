@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/headerHeight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/ll_imgs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginEdge"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/headerLittleImageWH"
+                android:layout_height="@dimen/headerLittleImageWH"
+                android:src="@mipmap/about" />
+
+            <TextView
+                android:id="@+id/tv_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lineSpacingExtra"
+                android:gravity="center"
+                android:text="100"
+                android:textColor="@color/titleColor"
+                android:textSize="@dimen/fontSizeSmall" />
+        </LinearLayout>
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_header"
+            android:layout_width="@dimen/headerImageWH"
+            android:layout_height="@dimen/headerImageWH"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/marginEdge"
+            android:layout_marginRight="@dimen/marginEdge"
+            android:src="@mipmap/header_default" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginEdge"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/headerLittleImageWH"
+                android:layout_height="@dimen/headerLittleImageWH"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/about" />
+
+            <TextView
+                android:id="@+id/tv_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lineSpacingExtra"
+                android:gravity="center"
+                android:text="23"
+                android:textColor="@color/titleColor"
+                android:textSize="@dimen/fontSizeSmall" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_imgs"
+        android:layout_marginTop="@dimen/marginEdge"
+        android:gravity="center"
+        android:text="工号: A48392872792"
+        android:textSize="@dimen/fontSize" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/baitiao" />
+
+</RelativeLayout>
+

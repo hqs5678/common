@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏颜色-->
+    <color name="colorPrimary">#ead24e</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">#c9a103</color>
+    <color name="colorAccent">#eebf19</color>
+    <color name="colorButtonNormal">#b4d337</color>
+    <!--按钮长按颜色, 水波颜色  ripple color-->
+    <color name="colorControlHighlight">#c1e2ef</color>
+    <color name="colorControlNormal">#fdee16</color>
+    <color name="titleColor">#584a37</color>
+    <color name="titleColorLight">#878786</color>
+    <color name="yellowTitleColor">#b4a542</color>
+
+    <color name="appBackgroundColor">#f5f5f5</color>
+    <color name="dividerColor">#ccc9c9</color>
+
+    <color name="loginBackgroundColor">#2f2923</color>
+
+    <color name="indicatorTintColor">#9e9c99</color>
+    <color name="checkTintColor">#07c126</color>
+
+    <color name="progressColor">#f4cf01</color>
+    <color name="tabBgColor">#fefbea</color>
+    <color name="tabTitleColor">#848480</color>
+    <color name="tabSelectedTitleColor">#584a37</color>
+    <color name="hintTextColor">#999997</color>
+    <color name="yellowColor">#f8e145</color>
+    <color name="whiteColor">#ffffff</color>
+    <color name="blackColor">#ffffff</color>
+    <color name="lightGrayColor">#b4b4b4</color>
+    <color name="lightGreenColor">#b4d337</color>
+    <color name="greenColor">#36bc05</color>
+    <color name="lightRed">#ef7f16</color>
+    <color name="redColor">#f40e34</color>
+    <color name="transparent">#00000000</color>
+    <color name="blueColor">#0089ef</color>
+    <color name="lightBlueColor">#6dbaf2</color>
+
+
+    <color name="dialogBackgroundColor">#eb211f1f</color>
+
+    <!--消息界面中消息类型的字体颜色-->
+    <color name="messageTypeCompanyNotice">#c44e53</color>
+    <color name="messageTypeCompanySend">#42c9ea</color>
+    <color name="messageTypeSystemMessage">#ea8a34</color>
+    <color name="messageTypeUserSend">#84cc42</color>
+
+    <!--任务列表颜色-->
+    <color name="typeInstall">#43b0e9</color>
+    <color name="typeRepair">#f58020</color>
+
+
+
+
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fstm.fsinstaller.veiw.InputListItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listViewRowHeight"
+    android:background="@color/whiteColor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/marginEdge">
+
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/fontSize"
+            android:background="@null" />
+
+
+    </RelativeLayout>
+
+    <!--divider-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dividerHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dividerColor" />
+
+
+</com.fstm.fsinstaller.veiw.InputListItemView>
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hqs.view.NavigationBarLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_welcome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/loginBackgroundColor"
+    android:orientation="vertical"
+    app:navigationBarBackgroundColor="@color/colorPrimary"
+    app:navigationBarHeight="@dimen/titleBarHeight" >
+
+
+    <com.hqs.view.WelcomeView
+        android:id="@+id/welcome_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.hqs.view.NavigationBarLinearLayout>
