@@ -9,6 +9,7 @@
 class MessageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableView: UITableView!
+    private var slideBar: FDSlideBar!
     
     lazy var data = {
         return NSMutableArray()
@@ -19,7 +20,7 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         
-        self.navigationItem.title = "消息"
+        self.navigationItem.title = ""
         setup()
          
     }
@@ -28,12 +29,26 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     fileprivate func setup(){
         
+        slideBar = FDSlideBar(frame: CGRect(x: 0, y: 0, width: self.view.sizeWidth, height: self.navigationController!.navigationBar.sizeHeight))
+        
+        slideBar.itemsTitle = ["要闻", "视频", "上海", "娱乐", "体育NBA", "财经", "科技", "社会", "军事", "时尚", "汽车", "游戏", "图片", "股票"]
+        slideBar.slideBarItemSelectedCallback { (index) in
+            appPrint("\(index)")
+        }
+        
+        slideBar.itemColor = kAppTitleColor
+        slideBar.itemSelectedColor = UIColor.brown
+        slideBar.sliderColor = UIColor.brown
+        
+        self.navigationController?.navigationBar.addSubview(slideBar)
+        
+        
         tableView = UITableView(frame: self.view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = kAppBackgroundColor
         self.view.addSubview(tableView)
-           
+        
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableView.separatorStyle = .none
         

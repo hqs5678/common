@@ -111,7 +111,7 @@ weak var currentViewController: UIViewController?
 // 日志输出  发布应用时屏蔽
 func appPrint(_ items: Any...){
     
-//    print(items)
+    print(items)
 }
 
 
