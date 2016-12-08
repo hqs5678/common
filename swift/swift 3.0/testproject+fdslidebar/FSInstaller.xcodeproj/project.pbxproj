@@ -42,6 +42,7 @@
 		1867BEBB1D87CA1400B56BCF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867BEBA1D87CA1400B56BCF /* SettingViewController.swift */; };
 		186BDF461D80146C0050DEA4 /* NSDate+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186BDF451D80146C0050DEA4 /* NSDate+Components.swift */; };
 		186BDF481D8014AB0050DEA4 /* DateTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186BDF471D8014AB0050DEA4 /* DateTimePickerView.swift */; };
+		186F636C1DF936BF0046B64A /* SlideBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186F636B1DF936BF0046B64A /* SlideBarContentView.swift */; };
 		1874715F1DBF0F550056E39E /* UINavigationController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874715E1DBF0F550056E39E /* UINavigationController+Navigation.swift */; };
 		1874FE591D94E1190027A45F /* BaseTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE571D94E1190027A45F /* BaseTabBar.swift */; };
 		1874FE5A1D94E1190027A45F /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874FE581D94E1190027A45F /* BaseTabBarController.swift */; };
@@ -207,6 +208,7 @@
 		1867BEBA1D87CA1400B56BCF /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		186BDF451D80146C0050DEA4 /* NSDate+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Components.swift"; sourceTree = "<group>"; };
 		186BDF471D8014AB0050DEA4 /* DateTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerView.swift; sourceTree = "<group>"; };
+		186F636B1DF936BF0046B64A /* SlideBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideBarContentView.swift; sourceTree = "<group>"; };
 		1874715E1DBF0F550056E39E /* UINavigationController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Navigation.swift"; sourceTree = "<group>"; };
 		1874FE571D94E1190027A45F /* BaseTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBar.swift; sourceTree = "<group>"; };
 		1874FE581D94E1190027A45F /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 				18B0837A1D4F3AD10057AD56 /* userHeaderCell */,
 				1806DAE41D544E1E00BBC8CD /* TextFieldCell */,
 				186BDF471D8014AB0050DEA4 /* DateTimePickerView.swift */,
+				186F636B1DF936BF0046B64A /* SlideBarContentView.swift */,
 				189F40BC1D5D8F00000C5143 /* RefreshNormalHeader.swift */,
 				18B0833C1D4F2B490057AD56 /* EditTableView.swift */,
 			);
@@ -1214,6 +1217,7 @@
 				18B083491D4F2B490057AD56 /* NSDictionary+Json.swift in Sources */,
 				18B934C71D8F9DFA00AA6642 /* BaseButton.swift in Sources */,
 				18B0833E1D4F2B490057AD56 /* BaseNavigationController.swift in Sources */,
+				186F636C1DF936BF0046B64A /* SlideBarContentView.swift in Sources */,
 				189E565E1D581CD500559ABC /* MapHelper.swift in Sources */,
 				18D46F201D5196D40035E388 /* SearchViewController.swift in Sources */,
 				18C2D3FA1D533CDE00F4B0B7 /* MJPhotoToolbar.m in Sources */,

@@ -18,6 +18,10 @@ typedef void(^FDSlideBarItemSelectedCallback)(NSUInteger idx);
 // All the item's text color of the normal state
 @property (strong, nonatomic) UIColor *itemColor;
 
+@property (assign, nonatomic) NSInteger selectedIndex;
+
+@property (strong, nonatomic) NSString *selectedTitle;
+
 // The selected item's text color
 @property (strong, nonatomic) UIColor *itemSelectedColor;
 

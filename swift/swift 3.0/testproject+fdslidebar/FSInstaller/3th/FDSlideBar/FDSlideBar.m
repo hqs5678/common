@@ -196,9 +196,19 @@
     }
     
     item.selected = YES;
+    self.selectedIndex = index;
     [self scrollToVisibleItem:item];
     [self addAnimationWithSelectedItem:item];
     self.selectedItem = item;
+}
+
+- (NSString *)selectedTitle {
+    if (_selectedTitle) {
+        return _selectedTitle;
+    }
+    else{
+        return _selectedItem.title;
+    }
 }
 
 #pragma mark - FDSlideBarItemDelegate
@@ -210,6 +220,7 @@
     
     [self addAnimationWithSelectedItem:item];
     self.selectedItem = item;
+    self.selectedTitle = item.title;
     _callback([self.items indexOfObject:item]);
 }
 

@@ -8,8 +8,9 @@
 
 class MessageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var tableView: UITableView!
+//    var tableView: UITableView!
     private var slideBar: FDSlideBar!
+    private var contentView: SlideBarContentView!
     
     lazy var data = {
         return NSMutableArray()
@@ -32,8 +33,11 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
         slideBar = FDSlideBar(frame: CGRect(x: 0, y: 0, width: self.view.sizeWidth, height: self.navigationController!.navigationBar.sizeHeight))
         
         slideBar.itemsTitle = ["要闻", "视频", "上海", "娱乐", "体育NBA", "财经", "科技", "社会", "军事", "时尚", "汽车", "游戏", "图片", "股票"]
-        slideBar.slideBarItemSelectedCallback { (index) in
+        slideBar.slideBarItemSelectedCallback { [weak self] (index) in
             appPrint("\(index)")
+            
+            let rect = CGRect(x: index.floatValue * self!.contentView.sizeWidth, y: 0, width: self!.contentView.sizeWidth, height: self!.contentView.sizeHeight)
+            self?.contentView.collectionView.scrollRectToVisible(rect, animated: true)
         }
         
         slideBar.itemColor = kAppTitleColor
@@ -43,47 +47,109 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.addSubview(slideBar)
         
         
-        tableView = UITableView(frame: self.view.bounds, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = kAppBackgroundColor
-        self.view.addSubview(tableView)
         
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
-        tableView.separatorStyle = .none
-        
-        var contentInset = tableView.contentInset
-        contentInset.bottom = 130
-        tableView.contentInset = contentInset
+        contentView = SlideBarContentView(frame: self.view.bounds)
+        contentView.numberOfSections = slideBar.itemsTitle.count
+        self.view.addSubview(contentView)
         
         
+        contentView.collectionViewWillShowCellHandle = {
+            [weak self] (cell: SlideBarContentViewCell, indexPath: IndexPath) -> Void  in
+            
+            cell.tableView.backgroundColor = UIColor.randomColor()
+            weak var wcell = cell
+            cell.tableView.mj_header = RefreshNormalHeader(refreshingBlock: {
+                [weak self] in
+                
+                doInMainThreadAfter(0.5, task: {
+                    wcell?.tableView.mj_header.endRefreshing()
+                })
+                return
+            })
+            
+            cell.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+            cell.tableView.delegate = self
+            cell.tableView.dataSource = self
+            
+            
+            self?.initData(index: indexPath.section)
+            cell.tableView.reloadData()
+            
+            return
+        }
         
+        contentView.collectionViewDidShowCellHandle = {
+            [weak self] (cell: SlideBarContentViewCell, indexPath: IndexPath) -> Void  in
+            
+            self?.slideBar.selectItem(at: indexPath.section.uIntValue)
+            
+            
+            return
+        }
+        
+        
+        contentView.collectionView.reloadData()
+        
+        
+        
+        
+//        tableView = UITableView(frame: self.view.bounds, style: .grouped)
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.backgroundColor = kAppBackgroundColor
+////        self.view.addSubview(tableView)
+//        
+//        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+//        
+//        var contentInset = tableView.contentInset
+//        contentInset.bottom = 130
+//        tableView.contentInset = contentInset
+//        
+//        
+//        
         // 下拉刷新
         refreshHeader = RefreshNormalHeader(refreshingBlock: {
             [weak self] in
             
-            doInMainThreadAfter(1, task: {
+            doInMainThreadAfter(0.5, task: {
                 self?.refreshHeader.endRefreshing()
             })
             return
         })
+
+//        tableView.mj_header = refreshHeader
+    }
+    
+    override func initData() {
+        data.removeAllObjects()
         
-        tableView.mj_header = refreshHeader
+    }
+    
+    func initData(index: Int) {
+        data.removeAllObjects()
+        
+        if self.slideBar == nil {
+            return
+        }
+        let title = self.slideBar.itemsTitle[index]
+        for i in 0 ... 10 {
+            data.add("\(title)---------\(i)")
+        }
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        
-        
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.text = data[indexPath.row] as? String
         return cell
     }
     

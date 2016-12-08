@@ -15,6 +15,8 @@
 @property (assign, nonatomic) BOOL selected;
 @property (weak, nonatomic) id<FDSlideBarItemDelegate> delegate;
 
+@property (copy, nonatomic) NSString *title;
+
 - (void)setItemTitle:(NSString *)title;
 - (void)setItemTitleFont:(CGFloat)fontSize;
 - (void)setItemTitleColor:(UIColor *)color;
