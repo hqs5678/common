@@ -73,10 +73,6 @@ class SlideBarContentView: UIView, UICollectionViewDelegate, UICollectionViewDat
         return self.bounds.size
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         let indexPath = collectionView.indexPathForItem(at: scrollView.contentOffset)
@@ -87,16 +83,17 @@ class SlideBarContentView: UIView, UICollectionViewDelegate, UICollectionViewDat
         
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        
-    }
     
     
 }
 
-class SlideBarContentViewCell: UICollectionViewCell {
+class SlideBarContentViewCell: UICollectionViewCell, UITableViewDelegate {
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    lazy var heightForRow = {
+        (tableView: UITableView, indexPath: IndexPath) -> CGFloat in return 44
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -108,8 +105,26 @@ class SlideBarContentViewCell: UICollectionViewCell {
     }
     
     private func setup(){
-        self.tableView.frame = self.bounds
-        self.addSubview(tableView)
+        tableView.delegate = self
+        self.contentView.addSubview(tableView)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.tableView.frame = self.bounds
+        self.tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heightForRow(tableView, indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return kHeightZero
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return kHeightZero
+    }
 }

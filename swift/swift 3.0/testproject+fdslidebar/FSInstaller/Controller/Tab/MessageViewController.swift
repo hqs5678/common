@@ -6,13 +6,13 @@
 //  Copyright © 2016年 火星人. All rights reserved.
 //
 
-class MessageViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class MessageViewController: BaseViewController {
     
 //    var tableView: UITableView!
     private var slideBar: FDSlideBar!
     private var contentView: SlideBarContentView!
     
-    lazy var data = {
+    lazy var agencyArray = {
         return NSMutableArray()
     }()
     var refreshHeader: RefreshNormalHeader!
@@ -52,28 +52,35 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
         contentView.numberOfSections = slideBar.itemsTitle.count
         self.view.addSubview(contentView)
         
+        for _ in 0 ..< slideBar.itemsTitle.count {
+            agencyArray.add(TableViewAgency())
+        }
         
         contentView.collectionViewWillShowCellHandle = {
+            
             [weak self] (cell: SlideBarContentViewCell, indexPath: IndexPath) -> Void  in
             
-            cell.tableView.backgroundColor = UIColor.randomColor()
             weak var wcell = cell
             cell.tableView.mj_header = RefreshNormalHeader(refreshingBlock: {
-                [weak self] in
+                //[weak self] in
                 
                 doInMainThreadAfter(0.5, task: {
                     wcell?.tableView.mj_header.endRefreshing()
                 })
-                return
             })
+            cell.tableView.backgroundColor = kAppBackgroundColor
             
-            cell.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
-            cell.tableView.delegate = self
-            cell.tableView.dataSource = self
+            let agency = self?.agencyArray.object(at: indexPath.section) as! TableViewAgency
+            agency.data = self?.initData(index: indexPath.section)
             
-            
-            self?.initData(index: indexPath.section)
+            agency.tableView = cell.tableView
+            cell.heightForRow = agency.heightForRow
             cell.tableView.reloadData()
+            
+            var contentInset = cell.tableView.contentInset
+            contentInset.bottom = 130
+            cell.tableView.contentInset = contentInset
+            
             
             return
         }
@@ -90,87 +97,61 @@ class MessageViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         contentView.collectionView.reloadData()
         
-        
-        
-        
-//        tableView = UITableView(frame: self.view.bounds, style: .grouped)
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.backgroundColor = kAppBackgroundColor
-////        self.view.addSubview(tableView)
-//        
-//        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
-//        
-//        var contentInset = tableView.contentInset
-//        contentInset.bottom = 130
-//        tableView.contentInset = contentInset
-//        
-//        
-//        
-        // 下拉刷新
-        refreshHeader = RefreshNormalHeader(refreshingBlock: {
-            [weak self] in
-            
-            doInMainThreadAfter(0.5, task: {
-                self?.refreshHeader.endRefreshing()
-            })
-            return
-        })
-
-//        tableView.mj_header = refreshHeader
     }
     
-    override func initData() {
-        data.removeAllObjects()
-        
-    }
     
-    func initData(index: Int) {
-        data.removeAllObjects()
+    func initData(index: Int) -> NSArray {
+        let dataArray = NSMutableArray()
         
         if self.slideBar == nil {
-            return
+            return dataArray
         }
         let title = self.slideBar.itemsTitle[index]
         for i in 0 ... 10 {
-            data.add("\(title)---------\(i)")
+            dataArray.add("\(title)---------\(i)")
+        }
+        return dataArray
+    }
+    
+    
+    
+}
+
+private class TableViewAgency: NSObject, UITableViewDataSource {
+    
+    var data: NSArray?
+    var heightForRow = {
+        (tableView: UITableView, indexPath: IndexPath) -> CGFloat in return 66
+    }
+    
+    var tableView: UITableView? {
+        didSet{
+            didSetTableView()
         }
     }
     
+    private func didSetTableView(){
+        tableView?.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+        tableView?.dataSource = self
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        if let data = data {
+            return data.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.text = data[indexPath.row] as? String
+        
+        cell.textLabel?.text = data?[indexPath.row] as? String
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return kHeightZero
-    }
-     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return kHeightZero
-    }
-    
-    
-    // 选中某一行
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-    }
-    
-
 }
