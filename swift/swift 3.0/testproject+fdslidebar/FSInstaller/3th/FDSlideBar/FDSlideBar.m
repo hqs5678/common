@@ -134,7 +134,7 @@
     CGPoint offset = _scrollView.contentOffset;
     
     // If the item to be visible is in the screen, nothing to do
-    if (CGRectGetMinX(item.frame) > offset.x && CGRectGetMaxX(item.frame) < (offset.x + CGRectGetWidth(_scrollView.frame))) {
+    if (CGRectGetMinX(item.frame) >= offset.x && CGRectGetMaxX(item.frame) <= (offset.x + CGRectGetWidth(_scrollView.frame))) {
         return;
     }
     
@@ -154,7 +154,8 @@
             offset.x = CGRectGetMinX(item.frame);
         }
     }
-    _scrollView.contentOffset = offset;
+    [_scrollView setContentOffset:offset animated:true];
+//    _scrollView.contentOffset = offset;
 }
 
 - (void)addAnimationWithSelectedItem:(FDSlideBarItem *)item {
@@ -229,6 +230,7 @@
         return;
     }
     
+    [self scrollToVisibleItem:item];
     [self addAnimationWithSelectedItem:item];
     self.selectedItem = item;
     self.selectedTitle = item.title;

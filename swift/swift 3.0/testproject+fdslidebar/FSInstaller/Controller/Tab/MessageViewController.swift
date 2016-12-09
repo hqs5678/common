@@ -24,7 +24,7 @@ class MessageViewController: BaseViewController {
         setup()
          
     }
-      
+    
     fileprivate func setup(){
         
         slideBar = FDSlideBar(frame: CGRect(x: 0, y: 0, width: self.view.sizeWidth, height: self.navigationController!.navigationBar.sizeHeight))
