@@ -8,7 +8,6 @@
 
 class MessageViewController: BaseViewController {
     
-//    var tableView: UITableView!
     private var slideBar: FDSlideBar!
     private var contentView: SlideBarContentView!
     
@@ -25,9 +24,7 @@ class MessageViewController: BaseViewController {
         setup()
          
     }
-    
-    let types = ["系统消息","公司通告","公司派单"]
-    
+      
     fileprivate func setup(){
         
         slideBar = FDSlideBar(frame: CGRect(x: 0, y: 0, width: self.view.sizeWidth, height: self.navigationController!.navigationBar.sizeHeight))
