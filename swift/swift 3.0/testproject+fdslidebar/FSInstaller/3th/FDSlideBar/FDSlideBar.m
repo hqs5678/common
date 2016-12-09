@@ -13,7 +13,7 @@
 #define DEFAULT_SLIDER_COLOR [UIColor orangeColor]
 #define SLIDER_VIEW_HEIGHT 2
 
-@interface FDSlideBar () <FDSlideBarItemDelegate>
+@interface FDSlideBar () <FDSlideBarItemDelegate, CAAnimationDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *items;
@@ -24,7 +24,10 @@
 
 @end
 
-@implementation FDSlideBar
+@implementation FDSlideBar{
+    CGFloat dx;
+    CGFloat tw;
+}
 
 #pragma mark - Lifecircle
 
@@ -156,7 +159,7 @@
 
 - (void)addAnimationWithSelectedItem:(FDSlideBarItem *)item {
     // Caculate the distance of translation
-    CGFloat dx = CGRectGetMidX(item.frame) - CGRectGetMidX(_selectedItem.frame);
+    dx = CGRectGetMidX(item.frame) - CGRectGetMidX(_selectedItem.frame);
     
     // Add the animation about translation
     CABasicAnimation *positionAnimation = [CABasicAnimation animation];
@@ -167,19 +170,27 @@
     // Add the animation about size
     CABasicAnimation *boundsAnimation = [CABasicAnimation animation];
     boundsAnimation.keyPath = @"bounds.size.width";
-    boundsAnimation.fromValue = @(CGRectGetWidth(_sliderView.layer.bounds));
+    boundsAnimation.fromValue = @(CGRectGetWidth(_selectedItem.layer.bounds));
     boundsAnimation.toValue = @(CGRectGetWidth(item.frame));
     
     // Combine all the animations to a group
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
     animationGroup.animations = @[positionAnimation, boundsAnimation];
     animationGroup.duration = 0.2;
+    animationGroup.fillMode = kCAFillModeForwards;
+    animationGroup.removedOnCompletion = NO;
+    animationGroup.delegate = self;
     [_sliderView.layer addAnimation:animationGroup forKey:@"basic"];
     
     // Keep the state after animating
+    CGRect rect = _sliderView.layer.bounds;
+    tw = rect.size.width;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     _sliderView.layer.position = CGPointMake(_sliderView.layer.position.x + dx, _sliderView.layer.position.y);
     CGRect rect = _sliderView.layer.bounds;
-    rect.size.width = CGRectGetWidth(item.frame);
+    rect.size.width = tw;
     _sliderView.layer.bounds = rect;
 }
 
