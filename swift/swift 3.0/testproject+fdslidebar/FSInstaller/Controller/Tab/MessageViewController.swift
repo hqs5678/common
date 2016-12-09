@@ -81,7 +81,7 @@ class MessageViewController: BaseViewController {
             contentInset.bottom = 130
             cell.tableView.contentInset = contentInset
             
-            
+            appPrint("\(indexPath.section)")
             return
         }
         
@@ -89,7 +89,7 @@ class MessageViewController: BaseViewController {
             [weak self] (cell: SlideBarContentViewCell, indexPath: IndexPath) -> Void  in
             
             self?.slideBar.selectItem(at: indexPath.section.uIntValue)
-            
+            appPrint("collectionViewDidShowCellHandle")
             
             return
         }

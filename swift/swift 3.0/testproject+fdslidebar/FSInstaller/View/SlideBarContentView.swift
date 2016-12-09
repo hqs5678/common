@@ -74,13 +74,19 @@ class SlideBarContentView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
+        didEndAnim(scrollView)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        didEndAnim(scrollView)
+    }
+    
+    private func didEndAnim(_ scrollView: UIScrollView){
         let indexPath = collectionView.indexPathForItem(at: scrollView.contentOffset)
         if let indexPath = indexPath {
             let cell = collectionView.cellForItem(at: indexPath) as! SlideBarContentViewCell
             self.collectionViewDidShowCellHandle(cell, indexPath)
         }
-        
     }
     
     
