@@ -34,7 +34,7 @@ class MessageViewController: BaseViewController {
         
         slideBar.itemsTitle = ["要闻", "视频", "上海", "娱乐", "体育NBA", "财经", "科技", "社会", "军事", "时尚", "汽车", "游戏", "图片", "股票"]
         slideBar.slideBarItemSelectedCallback { [weak self] (index) in
-            appPrint("\(index)")
+            appPrint("slideBar   \(index)")
             
             let rect = CGRect(x: index.floatValue * self!.contentView.sizeWidth, y: 0, width: self!.contentView.sizeWidth, height: self!.contentView.sizeHeight)
             self?.contentView.collectionView.scrollRectToVisible(rect, animated: true)

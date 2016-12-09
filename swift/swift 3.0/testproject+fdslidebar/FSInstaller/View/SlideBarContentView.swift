@@ -119,7 +119,6 @@ class SlideBarContentViewCell: UICollectionViewCell, UITableViewDelegate {
         super.layoutSubviews()
         
         self.tableView.frame = self.bounds
-        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
