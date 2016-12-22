@@ -12,7 +12,7 @@ android {
         config {
             keyAlias 'fstm'
             keyPassword 'woshijidutu2012'
-            storeFile file('/Users/apple/Documents/WorkSpace/fstm-installer-andorid/Android SignedKey/fstm_android_sign_key.jks')
+            storeFile file('/Users/super/Documents/workspace/common/android/project-android/Android SignedKey/fstm_android_sign_key.jks')
             storePassword 'woshijidutu2012'
         }
     }
