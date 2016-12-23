@@ -2,6 +2,7 @@ package com.fstm.fsinstaller.activity;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.fstm.fsinstaller.R;
@@ -131,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 mViewPager.setCurrentItem(newIndex, false);
                 navigationBar.titleView.setText(tabBarView.getTabBarItems().get(newIndex).title);
 
+                if (newIndex == 0){
+                    hideNavigationBar();
+                }
+                else{
+                    showNavigationBar();
+                }
             }
         });
 
@@ -232,6 +240,22 @@ public class MainActivity extends AppCompatActivity {
         public void notifyDataSetChanged() {
             super.notifyDataSetChanged();
         }
+    }
+
+    public void hideNavigationBar(){
+        navigationBar.setVisibility(View.GONE);
+
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) mViewPager.getLayoutParams();
+        layoutParams.topMargin = 0;
+        mViewPager.setLayoutParams(layoutParams);
+    }
+
+    public void showNavigationBar(){
+        navigationBar.setVisibility(View.VISIBLE);
+
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) mViewPager.getLayoutParams();
+        layoutParams.topMargin = (int) getResources().getDimension(R.dimen.titleBarHeight);
+        mViewPager.setLayoutParams(layoutParams);
     }
 
 

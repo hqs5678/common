@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.fstm.fsinstaller.R;
+import com.fstm.fsinstaller.activity.MainActivity;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -51,8 +52,6 @@ public class MessageFragment extends BaseFragment implements SwipeRefreshLayout.
 //        lvMessage = (ListView) rootView.findViewById(R.id.lv_message);
 
 
-        Toolbar toolbar = (android.support.v7.widget.Toolbar) rootView.findViewById(R.id.toolbar);
-        ((AppCompatActivity)this.getActivity()).setSupportActionBar(toolbar);
 
         tabHost = (MaterialTabHost) rootView.findViewById(R.id.tabHost);
         pager = (ViewPager) rootView.findViewById(R.id.pager );
@@ -76,9 +75,9 @@ public class MessageFragment extends BaseFragment implements SwipeRefreshLayout.
                             .setText(adapter.getPageTitle(i))
                             .setTabListener(this)
             );
-
         }
 
+        tabHost.setBackgroundResource(R.color.colorPrimary);
     }
 
     @Override
