@@ -82,7 +82,7 @@ public class SwipableIconTabActivity extends ActionBarActivity implements Materi
         }
         @Override
         public int getCount() {
-            return 6;
+            return 12;
         }
         @Override
         public CharSequence getPageTitle(int position) {

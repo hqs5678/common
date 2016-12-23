@@ -1,7 +1,5 @@
 package it.neokree.materialtabs;
 
-import java.util.Locale;
-
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +15,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Locale;
+
 import at.markushi.ui.RevealColorView;
 
 @SuppressLint({ "InflateParams", "ClickableViewAccessibility" })

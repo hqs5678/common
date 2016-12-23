@@ -1,27 +1,20 @@
 package it.neokree.materialtabs;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-
-import it.neokree.materialtabs.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.widget.LinearLayoutCompat;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -185,19 +178,30 @@ public class MaterialTabHost extends RelativeLayout implements View.OnClickListe
 	}
 
     private void scrollTo(int position) {
-        int totalWidth = 0;//(int) ( 60 * density);
-        for (int i = 0; i < position; i++) {
-            int width = tabs.get(i).getView().getWidth();
-            if(width == 0) {
-                if(!isTablet)
-                    width = (int) (tabs.get(i).getTabMinWidth() + (24 * density));
-                else
-                    width = (int) (tabs.get(i).getTabMinWidth() + (48 * density));
-            }
 
-            totalWidth += width;
+        MaterialTab tab = this.tabs.get(position);
+        View v = tab.getView();
+        if(v.getLeft() + v.getWidth() < scrollView.getWidth() + scrollView.getScrollX()
+                && v.getLeft() > scrollView.getScrollX()
+                && v.getLeft() - scrollView.getScrollX() > v.getWidth() * 0.5
+                && scrollView.getWidth() + scrollView.getScrollX() - (v.getLeft() + v.getWidth())
+                    > v.getWidth() * 0.5 ) {
+            return;
         }
-        scrollView.smoothScrollTo(totalWidth, 0);
+
+
+        int totalWidth;
+        totalWidth = (int) (v.getLeft() - v.getWidth() * 0.8);
+        if(scrollView.getScrollX() > totalWidth){
+            // scroll to left
+            scrollView.smoothScrollTo(totalWidth, 0);
+        }
+        else{
+            // scroll to right
+            totalWidth = (int) (v.getLeft() - scrollView.getWidth() + 1.8 * v.getWidth());
+            scrollView.smoothScrollTo(totalWidth, 0);
+        }
+
     }
 	
 	@Override
@@ -348,6 +352,5 @@ public class MaterialTabHost extends RelativeLayout implements View.OnClickListe
             tabs.get(currentPosition).getTabListener().onTabSelected(tabs.get(currentPosition));
             return;
         }
-
     }
 }
