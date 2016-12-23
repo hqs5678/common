@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏颜色-->
+    <color name="colorPrimary">#ead24e</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">#c9a103</color>
+    <color name="colorAccent">#eebf19</color>
+    <color name="colorButtonNormal">#b4d337</color>
+    <!--按钮长按颜色, 水波颜色  ripple color-->
+    <color name="colorControlHighlight">#c1e2ef</color>
+    <color name="colorControlNormal">#fdee16</color>
+
+</resources>
