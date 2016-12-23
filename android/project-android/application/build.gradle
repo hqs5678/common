@@ -79,4 +79,5 @@ dependencies {
     compile project(':takephoto_library')
     compile project(':togglebutton')
     compile project(':logreport')
+    compile project(':MaterialTabsModule')
 }
