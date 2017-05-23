@@ -41,22 +41,22 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
     
     class func menu() -> RectangleMenu {
         let warterfallLayout = CollectionViewWaterfallLayout()
-        return RectangleMenu(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: warterfallLayout)
+        return RectangleMenu(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: warterfallLayout)
     }
     
-    private func setup(){
+    fileprivate func setup(){
         
-        self.registerClass(RectangleMenuCell.classForCoder(), forCellWithReuseIdentifier: "RectangleMenuCell")
+        self.register(RectangleMenuCell.classForCoder(), forCellWithReuseIdentifier: "RectangleMenuCell")
         self.delegate = self
         self.dataSource = self
         
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
+    func numberOfSections(in collectionView: UICollectionView) -> Int{
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
         if self.menus == nil {
             return 0
@@ -64,13 +64,13 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
         return self.menus.count
     }
 
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(1, 1)
+    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 1, height: 1)
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RectangleMenuCell", forIndexPath: indexPath) as! RectangleMenuCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RectangleMenuCell", for: indexPath) as! RectangleMenuCell
         
         cell.contentInsets = UIEdgeInsetsMake(10, 10, 10, 10)
         
@@ -80,8 +80,8 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
         return cell
     }
      
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
         let model = menus[indexPath.item] as! RectangleMenuModel
         model.onClickHandle(model.title)
@@ -91,7 +91,7 @@ class RectangleMenu: UICollectionView, UICollectionViewDelegate, UICollectionVie
     
     
     
-    @objc private func updateLayout(){
+    @objc fileprivate func updateLayout(){
        
         let warterfallLayout = self.collectionViewLayout as! CollectionViewWaterfallLayout
         
@@ -114,7 +114,7 @@ class RectangleMenuCell: UICollectionViewCell {
     
     var titleLabelHeight: CGFloat = 20
     
-    var contentInsets = UIEdgeInsetsZero
+    var contentInsets = UIEdgeInsets.zero
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -135,19 +135,19 @@ class RectangleMenuCell: UICollectionViewCell {
         }
     }
     
-    private func setup(){
+    fileprivate func setup(){
         let view = UIView()
-        view.frame = CGRectMake(0, 0, 10, 10)
-        view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        view.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        view.backgroundColor = UIColor.groupTableViewBackground
         self.selectedBackgroundView = view
         
-        titleLabel.textColor = UIColor.blackColor()
-        titleLabel.font = UIFont.systemFontOfSize(12)
-        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.textAlignment = .center
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(iconView)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
 //        
 //        titleLabel.backgroundColor = UIColor.lightGrayColor()
 //        iconView.backgroundColor = UIColor.grayColor()
@@ -166,7 +166,7 @@ class RectangleMenuCell: UICollectionViewCell {
         
         iconView.frame = frame
         
-        frame.origin.y = CGRectGetMaxY(iconView.frame) + 2
+        frame.origin.y = iconView.frame.maxY + 2
         frame.origin.x = contentInsets.left
         frame.size.height = titleLabelHeight
         frame.size.width = contentView.frame.size.width - contentInsets.left - contentInsets.right

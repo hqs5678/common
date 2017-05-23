@@ -37,11 +37,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
         
-        collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        collectionView.backgroundColor = UIColor.groupTableViewBackground
         
         collectionView.collectionViewLayout = layout
-        collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, withReuseIdentifier: "Header")
-        collectionView.registerClass(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, withReuseIdentifier: "Footer")
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, withReuseIdentifier: "Header")
+        collectionView.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, withReuseIdentifier: "Footer")
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,47 +49,47 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellSizes.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.whiteColor()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.backgroundColor = UIColor.white
         if let label = cell.contentView.viewWithTag(1) as? UILabel {
             label.text = String(indexPath.row)
         }
         
-        let selectedView = UIView(frame: CGRectMake(0, 0, 10, 10))
-        selectedView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        let selectedView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        selectedView.backgroundColor = UIColor.groupTableViewBackground
         cell.selectedBackgroundView = selectedView
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var reusableView: UICollectionReusableView? = nil
         
         if kind == CollectionViewWaterfallElementKindSectionHeader {
-            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath)
+            reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
             
             if let view = reusableView {
-                view.backgroundColor = UIColor.redColor()
+                view.backgroundColor = UIColor.red
             }
         }
         else if kind == CollectionViewWaterfallElementKindSectionFooter {
-            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath)
+            reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath)
             if let view = reusableView {
-                view.backgroundColor = UIColor.blueColor()
+                view.backgroundColor = UIColor.blue
             }
         }
         
@@ -98,7 +98,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
     
     // MARK: WaterfallLayoutDelegate
     
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return cellSizes[indexPath.item]
     }
 }

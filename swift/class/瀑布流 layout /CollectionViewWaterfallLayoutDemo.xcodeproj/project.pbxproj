@@ -182,6 +182,8 @@
 				TargetAttributes = {
 					029C0A24197E226600DA6FE9 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Y6KJ5Z4R4Z;
+						LastSwiftMigration = 0830;
 					};
 					029C0A36197E226600DA6FE9 = {
 						CreatedOnToolsVersion = 6.0;
@@ -355,11 +357,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Y6KJ5Z4R4Z;
 				INFOPLIST_FILE = WaterfallFlowLayout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecerney.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CollectionViewWaterfallLayoutDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -368,11 +372,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = Y6KJ5Z4R4Z;
 				INFOPLIST_FILE = WaterfallFlowLayout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecerney.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CollectionViewWaterfallLayoutDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -392,6 +398,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecerney.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CollectionViewWaterfallLayoutDemo;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollectionViewWaterfallLayoutDemo.app/CollectionViewWaterfallLayoutDemo";
 			};
 			name = Debug;
@@ -408,6 +415,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecerney.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CollectionViewWaterfallLayoutDemo;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollectionViewWaterfallLayoutDemo.app/CollectionViewWaterfallLayoutDemo";
 			};
 			name = Release;

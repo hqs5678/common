@@ -18,14 +18,14 @@ class TestViewController: UIViewController {
         
         menu.frame = self.view.bounds
         
-        menu.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        menu.backgroundColor = UIColor.groupTableViewBackground
         menu.numberOfColumn = 3
         
         let items = NSMutableArray()
         
         
         for i in 1 ... 20 {
-            var item = RectangleMenuModel()
+            let item = RectangleMenuModel()
             item.title = "我的好友 \(i)"
             if i % 2 == 0 {
                 item.iconImage = UIImage(named: "icon")
@@ -40,7 +40,7 @@ class TestViewController: UIViewController {
                 return
             }
             
-            items.addObject(item)
+            items.add(item)
         }
         
         menu.menus = items
