@@ -7,7 +7,6 @@
 //
 
 #import "PerformanceMonitor.h"
-#import <CrashReporter/CrashReporter.h>
 
 @interface PerformanceMonitor ()
 {
@@ -74,6 +73,8 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         while (YES)
         {
+            // 1000ms / 20帧 = 50 ms/帧
+            // 记录小于20帧
             long st = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 50*NSEC_PER_MSEC));
             if (st != 0)
             {
@@ -89,21 +90,11 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
                 {
                     if (++timeoutCount < 5)
                         continue;
-                    else{
-                        timeoutCount = 0;
-                    }
                     
-                    PLCrashReporterConfig *config = [[PLCrashReporterConfig alloc] initWithSignalHandlerType:PLCrashReporterSignalHandlerTypeBSD
-                                                                                       symbolicationStrategy:PLCrashReporterSymbolicationStrategyAll];
-                    PLCrashReporter *crashReporter = [[PLCrashReporter alloc] initWithConfiguration:config];
+                    NSLog(@"有点卡.....");
                     
-                    NSData *data = [crashReporter generateLiveReport];
-                    PLCrashReport *reporter = [[PLCrashReport alloc] initWithData:data error:NULL];
-                    NSString *report = [PLCrashReportTextFormatter stringValueForCrashReport:reporter
-                                                                              withTextFormat:PLCrashReportTextFormatiOS];
-                    
-                    NSLog(@"------------\n%@\n------------", report);
                 }
+                timeoutCount = 0;
             }
         }
     });

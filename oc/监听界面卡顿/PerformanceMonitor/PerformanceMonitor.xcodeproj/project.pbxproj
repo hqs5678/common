@@ -13,7 +13,6 @@
 		B8B10FAB1BF5E02400447088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B10FA91BF5E02400447088 /* Main.storyboard */; };
 		B8B10FAD1BF5E02400447088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8B10FAC1BF5E02400447088 /* Assets.xcassets */; };
 		B8B10FB01BF5E02400447088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B10FAE1BF5E02400447088 /* LaunchScreen.storyboard */; };
-		B8B10FB81BF5E05200447088 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B10FB71BF5E05200447088 /* CrashReporter.framework */; };
 		B8B10FBB1BF5E0BE00447088 /* PerformanceMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B10FBA1BF5E0BE00447088 /* PerformanceMonitor.m */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		B8B10FAC1BF5E02400447088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8B10FAF1BF5E02400447088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8B10FB11BF5E02400447088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8B10FB71BF5E05200447088 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		B8B10FB91BF5E0BE00447088 /* PerformanceMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceMonitor.h; sourceTree = "<group>"; };
 		B8B10FBA1BF5E0BE00447088 /* PerformanceMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceMonitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8B10FB81BF5E05200447088 /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +61,6 @@
 		B8B10F9F1BF5E02300447088 /* PerformanceMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				B8B10FB71BF5E05200447088 /* CrashReporter.framework */,
 				B8B10FA31BF5E02300447088 /* AppDelegate.h */,
 				B8B10FA41BF5E02300447088 /* AppDelegate.m */,
 				B8B10FA61BF5E02300447088 /* ViewController.h */,

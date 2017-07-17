@@ -36,7 +36,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    return 200;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,8 +48,9 @@
     }
     
     NSString *cellText = nil;
-    if (indexPath.row%10 == 0)
+    if (indexPath.row%15 == 0)
     {
+        // 线程挂起  单位微秒
         usleep(200*1000);
         cellText = @"我需要一些时间";
     }else
